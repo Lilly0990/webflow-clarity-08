@@ -76,96 +76,127 @@ export const projects: Project[] = [
   {
     id: "fixar",
     title: "Fixar",
-    description: "Defense Tech Website with Custom AWS Infrastructure",
+    description: "Enterprise-Grade Website for Defense Tech Innovation",
     category: "SaaS",
-    highlights: ["High-performance", "Advanced integrations"],
-    fullDescription: "Fixar is a defense technology company specializing in autonomous drone systems. We built their corporate website with a focus on security, performance, and seamless integration with their custom AWS infrastructure.",
-    challenge: "As a defense tech company, Fixar required exceptional security standards, blazing-fast performance for global audiences, and the ability to handle traffic spikes during product announcements and media coverage.",
-    solution: "We developed a high-performance Webflow site with custom AWS CloudFront CDN integration, advanced caching strategies, and security hardening. The site features dynamic content loading, interactive 3D product showcases, and real-time stock/investor information.",
+    highlights: ["60fps animations", "10+ pages", "85+ Lighthouse"],
+    fullDescription: "webf.love delivered a high-performance, visually striking website for Fixar, an American autonomous UAV manufacturer serving defense, law enforcement, and commercial sectors globally.",
+    challenge: "The company required a website that could showcase three distinct drone models while conveying their high-tech capabilities to a B2B audience. The challenge extended beyond aesthetics—they needed cinema-quality animations and 3D effects while maintaining fast performance across all devices. Adding complexity, the defense industry demanded strict privacy standards with no third-party tracking, and everything had to run on Webflow for future content management. Balancing visual sophistication with technical constraints required careful architecture and optimization.",
+    solution: "We built a multi-page enterprise website combining Webflow's CMS capabilities with advanced JavaScript libraries. The architecture integrated GSAP for scroll-triggered animations, Three.js for 3D effects, and Lottie for product showcases—all orchestrated to deliver 60fps performance. Each of the 10+ pages features custom animations while maintaining sub-3-second load times. We implemented conditional loading for heavy 3D graphics, optimized all assets for performance, and built a scalable CMS structure. The system includes three lead capture forms and 18+ case studies, all manageable through Webflow's interface without developer intervention.",
     results: [
-      "Sub-second page load times globally",
-      "99.99% uptime achieved",
-      "Passed rigorous security audits",
-      "50% reduction in bounce rate"
+      { value: "60fps Animations", label: "Complex 3D effects and scroll interactions without sacrificing performance" },
+      { value: "10+ Pages", label: "GSAP, Three.js, and Lottie working seamlessly on Webflow platform" },
+      { value: "85+ Lighthouse Score", label: "Enterprise-grade performance despite heavy animation stack" },
+      { value: "Enterprise Scalability", label: "CMS-powered architecture for easy content updates and future expansion" }
     ],
-    technologies: ["Webflow", "AWS CloudFront", "Lambda@Edge", "Custom Security Headers", "Three.js"],
+    technologies: ["Webflow", "GSAP", "Three.js", "Lottie", "Custom JS"],
     gallery: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
-    year: "2023",
+    year: "2024",
     duration: "3 months",
-    websiteUrl: "https://fixar.pro"
+    websiteUrl: "https://fixar.pro",
+    serviceType: "Design + Dev",
+    heroTitle: "Enterprise-Grade Website for <gradient>Defense Tech</gradient> Innovation",
+    industry: "Defense Tech",
+    stats: [
+      { label: "Lighthouse Score", value: "85+" },
+      { label: "Pages", value: "10+" },
+      { label: "Animation FPS", value: "60" }
+    ],
+    introText: "webf.love delivered a high-performance, visually striking website for Fixar, an American autonomous UAV manufacturer serving defense, law enforcement, and commercial sectors globally.",
+    backgroundTitle: "The Background",
+    backgroundText: "Fixar is a Virginia-based manufacturer of autonomous unmanned aerial vehicles with AI systems for beyond-visual-line-of-sight operations. Founded in 2018, they serve government and corporate clients across the US, Europe, Middle East, and Africa with cutting-edge defense technology.\n\nThey needed an enterprise-grade web presence that would match their technical sophistication and stand out in the competitive aerospace industry."
   },
   {
     id: "csmplt",
     title: "CSMPLT",
-    description: "Immigration Platform Built on Webflow",
+    description: "Website for Immigration Consultancy Helping Tech Professionals Secure US & UK Visas",
     category: "SaaS",
-    highlights: ["Complex architecture", "GSAP animations", "Web-app features"],
-    fullDescription: "CSMPLT (Cosmopolit) is an immigration consulting platform that helps people navigate complex visa and relocation processes. We built a feature-rich website that feels more like a web application than a traditional marketing site.",
-    challenge: "CSMPLT needed a platform that could handle complex user flows, multi-step forms, dynamic content based on user location, and smooth animations that wouldn't compromise performance. They also needed multi-language support for their global audience.",
-    solution: "We pushed Webflow to its limits, implementing custom GSAP animations, complex multi-step forms with conditional logic, geolocation-based content personalization, and a robust CMS structure supporting 5 languages. The result is a seamless blend of marketing site and web application.",
+    highlights: ["Complex animations", "Multi-layered architecture", "CMS system"],
+    fullDescription: "webf.love built a sophisticated website for CSMPLT, a tech-focused immigration firm helping tech professionals and entrepreneurs secure US and UK visas through a strategy-first, data-driven approach.",
+    challenge: "The company required a digital presence that could compete with traditional law firms while differentiating through modern design and technical sophistication. Our challenge was translating their design concepts into a functional Webflow website—presenting multiple visa types, self-assessment tools, and their Navigator platform in a way that feels cohesive rather than overwhelming. Beyond information architecture, the project demanded technical execution of complex animations and interactions. The website needed to handle smooth motion design, multiple carousel systems, and scroll-triggered effects while maintaining fast performance and professional credibility with their target audience of tech professionals and investors.",
+    solution: "We implemented the client's design vision in Webflow, bringing their modern brand positioning to life through technical execution. The information architecture organizes multiple visa programs (US and UK) with clear pathways for different user types—whether someone wants full service, self-assessment, or their Navigator DIY platform. The technical implementation includes smooth animations using GSAP and Lottie to convey premium positioning, HelpCrunch integration for real-time support, and a structured CMS accommodating their extensive content library. We developed dedicated sections for self-assessment quizzes, detailed visa guides, and testimonials from tech founders, all structured to build credibility with their target audience of software engineers, startup founders, and tech executives.",
     results: [
-      "5 languages supported",
-      "60% increase in form completions",
-      "Award-winning animations and UX",
-      "2x increase in time on site"
+      { value: "Complex Design Implementation", label: "Brought sophisticated animations and modern interface to life through Webflow development" },
+      { value: "Multi-Layered Architecture", label: "Organized multiple visa programs, self-service tools, and Navigator platform into clear user journeys" },
+      { value: "Comprehensive CMS", label: "Structure supports self-assessment quizzes, detailed guides, and testimonials for credibility building" }
     ],
-    technologies: ["Webflow", "GSAP", "Lottie", "Weglot", "Make.com", "Airtable"],
-    testimonial: {
-      quote: "They understood our vision from day one and delivered something beyond our expectations. The attention to detail in every animation and interaction is remarkable.",
-      author: "Alex Petrov",
-      role: "Founder, CSMPLT"
-    },
+    technologies: ["Webflow", "GSAP", "Lottie", "HelpCrunch", "Custom JS"],
     gallery: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
-    year: "2023",
-    duration: "4 months",
-    websiteUrl: "https://csmplt.com"
+    year: "2024",
+    duration: "3 months",
+    websiteUrl: "https://csmplt.com",
+    serviceType: "Dev",
+    heroTitle: "Website for Immigration Consultancy Helping <gradient>Tech Professionals</gradient> Secure US & UK Visas",
+    industry: "Immigration",
+    stats: [
+      { label: "Client Recommendation", value: "98%" },
+      { label: "Visa Programs", value: "US & UK" },
+      { label: "User Journeys", value: "3+" }
+    ],
+    introText: "webf.love built a sophisticated website for CSMPLT, a tech-focused immigration firm helping tech professionals and entrepreneurs secure US and UK visas through a strategy-first, data-driven approach.",
+    backgroundTitle: "The Background",
+    backgroundText: "CSMPLT is an immigration consultancy specializing in tech talent—software engineers, startup founders, and tech executives seeking O-1A, EB-1A, Global Talent, and other visas. Unlike traditional law firms, they combine immigration expertise with technology, offering a proprietary Navigator app that guides clients through the visa process.\n\nThey needed a website that would reflect their tech-forward positioning while showcasing their complex service offerings across US and UK visa programs."
   },
   {
     id: "exonode",
     title: "Exonode",
-    description: "AI-Powered SaaS Platform on Webflow",
+    description: "SaaS Website for AI-Powered eCommerce Returns Management Platform",
     category: "SaaS",
-    highlights: ["Performance-optimized", "SEO-ready structure"],
-    fullDescription: "Exonode is an AI-powered data infrastructure platform. We created a sleek, modern website that communicates complex technical concepts clearly while maintaining excellent performance and SEO rankings.",
-    challenge: "Exonode needed to stand out in the crowded AI/SaaS space while clearly explaining their complex technical offering. The site needed to rank well for competitive keywords and load instantly to satisfy their technical audience.",
-    solution: "We designed and built a conversion-focused website with crystal-clear messaging hierarchy, interactive product demos, and a blog/resources section optimized for SEO. Every element was optimized for Core Web Vitals and search engine visibility.",
+    highlights: ["Product-focused", "Performance-optimized", "B2B conversion"],
+    fullDescription: "webf.love developed a conversion-focused Webflow website for Exonode, a SaaS platform helping eCommerce businesses reduce return costs through AI-driven personalized alternatives and risk recognition.",
+    challenge: "The company needed to explain a complex AI solution in a way that resonates with busy eCommerce operators who care about ROI, not technical details. Our challenge was translating their product vision into a website that balances technical sophistication with clarity—showing enough innovation to build credibility without overwhelming potential customers. The project required strategic use of animations to demonstrate their platform's capabilities while maintaining fast load times. Unlike heavy animation showcases, this needed to prioritize conversion and clear messaging, with visual elements supporting rather than dominating the content.",
+    solution: "We implemented a clean, product-focused Webflow website using Lottie animations to illustrate key concepts—returns flow, analytics dashboard, and platform capabilities—without sacrificing performance. The lightweight animation approach ensures fast load times while maintaining visual interest that communicates their AI-driven technology. The technical implementation includes Lenis for smooth scrolling, a structured content hierarchy that guides visitors from problem to solution, and comprehensive B2B tracking through Google Analytics 4, GTM, and LinkedIn Insight Tag. We organized content to address eCommerce-specific pain points with clear CTAs driving demo requests, positioning Exonode as a modern alternative to traditional returns management approaches.",
     results: [
-      "Page 1 rankings for target keywords",
-      "95+ Lighthouse performance score",
-      "3x increase in demo requests",
-      "40% reduction in bounce rate"
+      { value: "Product-Focused Implementation", label: "Translated complex AI technology into clear messaging that resonates with eCommerce decision-makers" },
+      { value: "Performance-Optimized Animations", label: "Used Lottie strategically to demonstrate platform capabilities without sacrificing load speed" },
+      { value: "B2B Conversion Infrastructure", label: "Integrated analytics and tracking systems to support lead generation and marketing optimization" }
     ],
-    technologies: ["Webflow", "Custom JS", "Lottie", "Segment", "Intercom"],
+    technologies: ["Webflow", "Lottie", "Lenis", "GA4", "GTM", "LinkedIn Insight"],
     gallery: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     year: "2024",
-    duration: "2 months",
-    websiteUrl: "https://exonode.ai"
+    duration: "6 weeks",
+    websiteUrl: "https://exonode.ai",
+    serviceType: "Dev",
+    heroTitle: "SaaS Website for <gradient>AI-Powered</gradient> eCommerce Returns Management Platform",
+    industry: "SaaS / eCommerce",
+    stats: [
+      { label: "Focus", value: "Conversion" },
+      { label: "Animations", value: "Lottie" },
+      { label: "Tracking", value: "Full B2B" }
+    ],
+    introText: "webf.love developed a conversion-focused Webflow website for Exonode, a SaaS platform helping eCommerce businesses reduce return costs through AI-driven personalized alternatives and risk recognition.",
+    backgroundTitle: "The Background",
+    backgroundText: "Exonode is an AI-powered returns management platform that helps mid to large-sized eCommerce businesses handle one of their biggest pain points—product returns. Their technology provides personalized return alternatives and advanced analytics to reduce return costs while improving customer experience.\n\nAs a SaaS startup, they needed a website that would clearly communicate their value proposition to eCommerce decision-makers while demonstrating technical credibility through clean, modern design."
   },
   {
     id: "value-productions",
     title: "Value Productions",
-    description: "Portfolio Website for Video Production Studio",
+    description: "Bold Brand Identity for Ukrainian Video Production Studio",
     category: "Agencies",
-    highlights: ["Pixel-perfect implementation", "Marketing tools setup"],
-    fullDescription: "Value Productions is a premium video production studio working with global brands. We built a portfolio website that showcases their stunning work while maintaining fast load times despite heavy video content.",
-    challenge: "Video production portfolios are notoriously heavy and slow. Value Productions needed a site that would wow visitors with their video work while loading quickly and providing a smooth browsing experience on all devices.",
-    solution: "We implemented smart video loading strategies — lightweight previews that expand to full videos on interaction, optimized video compression pipelines, and a custom video player integration. The result is a visually stunning portfolio that loads in under 2 seconds.",
+    highlights: ["Pixel-perfect design", "Marketing integration", "Dynamic CMS"],
+    fullDescription: "webf.love created a vibrant, conversion-focused website for Value Productions, a video production studio specializing in explainer videos for crypto, fintech, and SaaS companies.",
+    challenge: "Working with Tisami's bold creative vision, we needed to translate their design concepts into a high-performance Webflow website without compromising on visual impact. The challenge was bringing their artistic direction to life through code while maintaining smooth animations and fast load times. Beyond the visual execution, the project required comprehensive marketing infrastructure. We needed to integrate multiple analytics and tracking systems, implement dynamic content filtering, and create conversion-optimized booking flows—all while preserving the playful, creative feel of Tisami's design.",
+    solution: "We transformed Tisami's design concepts into a fully functional Webflow website, implementing their bold yellow-blue color scheme and playful animations using Lenis for smooth scrolling. Working from their design files, references, and animation examples, we built each interaction to match their creative vision pixel-perfect. The technical architecture integrates multiple marketing tools: Google Analytics 4, Hotjar for behavior tracking, LinkedIn Insight, and B2B identification services (Apollo.io, Clearbit, Reb2b). We implemented Finsweet Attributes for dynamic filtering of case studies and blog content, plus Calendly integration for seamless consultation booking. The CMS structure allows their team to independently manage cases, blog posts, and portfolio pieces.",
     results: [
-      "Sub-2-second load time despite video content",
-      "200% increase in portfolio engagement",
-      "Seamless mobile video experience",
-      "Integrated with their project management tools"
+      { value: "Pixel-Perfect Implementation", label: "Translated Tisami's creative vision into functional Webflow code with smooth animations" },
+      { value: "Marketing Integration", label: "Connected analytics, B2B tracking, and lead identification tools for complete visitor insights" },
+      { value: "Dynamic Content System", label: "CMS-powered case studies and blog with filtering capabilities for easy content management" }
     ],
-    technologies: ["Webflow", "Vimeo API", "Custom Video Player", "GSAP", "Notion Integration"],
-    testimonial: {
-      quote: "Our new website finally does justice to our work. The team nailed the balance between visual impact and performance.",
-      author: "James Miller",
-      role: "Creative Director, Value Productions"
-    },
+    technologies: ["Webflow", "Lenis", "Finsweet Attributes", "GA4", "Hotjar", "Calendly", "Apollo.io"],
     gallery: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     year: "2024",
     duration: "6 weeks",
-    websiteUrl: "https://valueproductions.co"
+    websiteUrl: "https://value.productions",
+    serviceType: "Dev",
+    heroTitle: "Bold Brand Identity for <ukraine>Ukrainian</ukraine> Video Production Studio",
+    industry: "Video Production",
+    stats: [
+      { label: "Design Partner", value: "Tisami" },
+      { label: "Integrations", value: "7+" },
+      { label: "CMS Collections", value: "5+" }
+    ],
+    introText: "webf.love created a vibrant, conversion-focused website for Value Productions, a video production studio specializing in explainer videos for crypto, fintech, and SaaS companies.",
+    backgroundTitle: "The Background",
+    backgroundText: "Value Productions is a Ukrainian video production studio that creates ROI-driven explainer videos for complex tech products. Founded in 2020, they work with blockchain startups, fintech companies, and SaaS businesses that need to simplify sophisticated concepts for their audiences.\n\nThey partnered with Tisami design studio for brand identity and website design, then came to us for technical implementation and integration."
   },
   {
     id: "prozora",

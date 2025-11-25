@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 const Hero = () => {
   return (
     <section className="section-padding container-custom min-h-[90vh] flex items-center pt-24">
-      <div className="max-w-5xl mx-auto text-center space-y-8">
+      <div className="max-w-6xl mx-auto text-center space-y-6">
         <div className="inline-block px-4 py-2 bg-secondary/50 rounded-full border border-border mb-4 animate-fade-in">
           <p className="text-sm text-muted-foreground">Webflow Development Agency</p>
         </div>
@@ -18,7 +18,7 @@ const Hero = () => {
           transparent process, clear communication — no technical gatekeeping.
         </p>
         
-        <div className="flex flex-wrap gap-4 justify-center pt-4 animate-fade-in animation-delay-600">
+        <div className="flex flex-wrap gap-4 justify-center pt-2 animate-fade-in animation-delay-600">
           <div className="text-left">
             <p className="text-sm text-muted-foreground">6+ years</p>
           </div>
@@ -32,7 +32,7 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 animate-fade-in animation-delay-[800ms]">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2 animate-fade-in animation-delay-[800ms]">
           <Button size="lg" className="text-lg px-8 glow-effect hover-lift">
             View Our Work
           </Button>
