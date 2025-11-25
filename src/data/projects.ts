@@ -20,6 +20,15 @@ export interface Project {
   duration: string;
   websiteUrl?: string;
   heroLottie?: string; // Path to Lottie JSON animation
+  // Hero section data
+  logo?: string; // Path to client logo
+  serviceType?: string; // e.g. "Dev", "Design + Dev"
+  heroTitle?: string; // Main headline for hero
+  stats?: {
+    label: string;
+    value: string;
+  }[];
+  industry?: string;
 }
 
 export const projects: Project[] = [
@@ -43,7 +52,16 @@ export const projects: Project[] = [
     year: "2021 - Present",
     duration: "3+ Years Ongoing",
     websiteUrl: "https://englishdom.com",
-    heroLottie: "/englishdom-1440.json"
+    heroLottie: "/englishdom-1440.json",
+    // New hero data
+    serviceType: "Dev",
+    heroTitle: "Long-Term Development Partnership with Ukraine's Leading EdTech Platform",
+    industry: "EdTech",
+    stats: [
+      { label: "Pages delivered", value: "40+" },
+      { label: "Partnership", value: "3+ years" },
+      { label: "Delays", value: "Zero" }
+    ]
   },
   {
     id: "fixar",

@@ -1,5 +1,5 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Calendar, Clock, Quote } from "lucide-react";
+import { ArrowLeft, ExternalLink, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
@@ -48,7 +48,7 @@ const ProjectPage = () => {
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 container-custom">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <Link
             to="/#projects"
             className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors mb-8"
@@ -58,29 +58,52 @@ const ProjectPage = () => {
           </Link>
 
           <div className="animate-fade-in">
-            <Badge className="mb-4">{project.category}</Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">{project.title}</h1>
-            <p className="text-xl text-muted-foreground mb-8">{project.fullDescription}</p>
+            {/* Logo and Tags */}
+            <div className="flex items-center gap-4 mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold">{project.title}</h2>
+              <div className="flex gap-2">
+                {project.industry && (
+                  <Badge variant="outline" className="rounded-full px-4 py-1">
+                    {project.industry}
+                  </Badge>
+                )}
+                {project.serviceType && (
+                  <Badge variant="outline" className="rounded-full px-4 py-1">
+                    {project.serviceType}
+                  </Badge>
+                )}
+              </div>
+            </div>
 
-            <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                <span>{project.year}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>{project.duration}</span>
-              </div>
+            {/* Main Headline */}
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-12 leading-tight">
+              {project.heroTitle || project.description}
+            </h1>
+
+            {/* Divider */}
+            <div className="border-t border-border mb-8" />
+
+            {/* Stats Row */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {project.stats?.map((stat, index) => (
+                <div key={index}>
+                  <p className="text-sm text-muted-foreground mb-1">{stat.label}</p>
+                  <p className="text-2xl md:text-3xl font-bold">{stat.value}</p>
+                </div>
+              ))}
               {project.websiteUrl && (
-                <a
-                  href={project.websiteUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-foreground transition-colors"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  <span>Visit Website</span>
-                </a>
+                <div>
+                  <p className="text-sm text-muted-foreground mb-1">Check it out</p>
+                  <a
+                    href={project.websiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-2xl md:text-3xl font-bold hover:text-primary transition-colors group"
+                  >
+                    Visit Website
+                    <ExternalLink className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
               )}
             </div>
           </div>
@@ -119,7 +142,7 @@ const ProjectPage = () => {
       </section>
 
       {/* Solution */}
-      <section className="section-padding container-custom">
+      <section className="section-padding pb-0 container-custom">
         <div className="max-w-4xl mx-auto animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Solution</h2>
           <p className="text-lg text-muted-foreground leading-relaxed">{project.solution}</p>
