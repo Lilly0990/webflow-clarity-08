@@ -1,5 +1,5 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Quote } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
@@ -142,7 +142,7 @@ const ProjectPage = () => {
 
       {/* Intro & Background */}
       {(project.introText || project.backgroundText) && (
-        <section className="section-padding container-custom">
+        <section className="pt-8 pb-20 md:pt-12 md:pb-32 container-custom">
           <div className="max-w-4xl mx-auto space-y-12">
             {project.introText && (
               <p className="text-2xl md:text-3xl font-medium leading-relaxed animate-fade-in">
@@ -206,29 +206,24 @@ const ProjectPage = () => {
       </section>
 
       {/* Results */}
-      <section className="section-padding container-custom bg-secondary/30">
+      <section className="section-padding container-custom">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center animate-fade-in">Key Results</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            {project.results.map((result, index) => {
-              const isObject = typeof result === 'object';
-              return (
-                <div
-                  key={index}
-                  className="text-center animate-scale-in"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <p className="text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-2">
-                    {isObject ? result.value : result}
-                  </p>
-                  {isObject && (
-                    <p className="text-sm md:text-base text-muted-foreground">
-                      {result.label}
-                    </p>
-                  )}
-                </div>
-              );
-            })}
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center animate-fade-in">Key Results</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {project.results.map((result, index) => (
+              <div
+                key={index}
+                className="bg-card border border-border rounded-2xl p-8 animate-scale-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <h3 className="text-xl md:text-2xl font-bold mb-3 text-accent">
+                  {typeof result === 'string' ? result : result.value}
+                </h3>
+                {typeof result !== 'string' && result.label && (
+                  <p className="text-muted-foreground">{result.label}</p>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -258,7 +253,7 @@ const ProjectPage = () => {
       )}
 
       {/* Technologies */}
-      <section className="section-padding container-custom">
+      <section className="section-padding pb-8 container-custom">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-center animate-fade-in">Technologies Used</h2>
           <div className="flex flex-wrap justify-center gap-3">
@@ -293,26 +288,32 @@ const ProjectPage = () => {
       )}
 
       {/* Navigation */}
-      <section className="section-padding container-custom">
+      <section className="py-12 container-custom">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col sm:flex-row justify-between gap-4">
             <Link
               to={`/projects/${prevProject.id}`}
-              className="group flex-1 bg-card border border-border rounded-lg p-6 hover:border-primary transition-colors"
+              className="group flex-1 bg-card border border-border rounded-lg p-6 hover:border-primary transition-colors flex items-center gap-4"
             >
-              <span className="text-sm text-muted-foreground">Previous Project</span>
-              <p className="text-xl font-semibold group-hover:text-primary transition-colors">
-                {prevProject.title}
-              </p>
+              <ArrowLeft className="h-6 w-6 text-muted-foreground group-hover:text-primary group-hover:-translate-x-1 transition-all flex-shrink-0" />
+              <div>
+                <span className="text-sm text-muted-foreground">Previous Project</span>
+                <p className="text-xl font-semibold group-hover:text-primary transition-colors">
+                  {prevProject.title}
+                </p>
+              </div>
             </Link>
             <Link
               to={`/projects/${nextProject.id}`}
-              className="group flex-1 bg-card border border-border rounded-lg p-6 hover:border-primary transition-colors text-right"
+              className="group flex-1 bg-card border border-border rounded-lg p-6 hover:border-primary transition-colors flex items-center justify-end gap-4 text-right"
             >
-              <span className="text-sm text-muted-foreground">Next Project</span>
-              <p className="text-xl font-semibold group-hover:text-primary transition-colors">
-                {nextProject.title}
-              </p>
+              <div>
+                <span className="text-sm text-muted-foreground">Next Project</span>
+                <p className="text-xl font-semibold group-hover:text-primary transition-colors">
+                  {nextProject.title}
+                </p>
+              </div>
+              <ArrowRight className="h-6 w-6 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" />
             </Link>
           </div>
         </div>

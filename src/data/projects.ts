@@ -48,10 +48,10 @@ export const projects: Project[] = [
     challenge: "The marketing team operates at high velocity, needing a development partner who could keep pace—delivering dozens of promotional pages throughout the year, each launching in days rather than weeks. Beyond speed, the project required pixel-perfect implementation, integration with CRM and analytics systems, and smooth coordination across internal marketing, design, and development teams. The real challenge was building a sustainable process that maintains quality at scale.",
     solution: "We built a development system designed for speed and consistency. Using reusable Webflow components and standardized workflows, we reduced production time while maintaining quality standards. By integrating directly with their team and establishing clear communication channels, we eliminated bottlenecks. Each landing page includes pixel-perfect design implementation, CMS setup, third-party integrations (Zapier, ClickUp, Typeform), CRM connectivity, and analytics configuration. Our streamlined process takes designs from handoff to production in days.",
     results: [
-      { value: "40+", label: "Landing pages delivered" },
-      { value: "3+", label: "Years of partnership" },
-      { value: "Days", label: "From design to launch" },
-      { value: "100%", label: "On-time delivery rate" }
+      { value: "40+ Landing Pages", label: "Delivered with rapid turnaround for continuous marketing campaigns" },
+      { value: "3+ Year Partnership", label: "Long-term collaboration built on trust and consistent results" },
+      { value: "Days → Launch", label: "From design handoff to production in days, not weeks" },
+      { value: "Full Integration", label: "Seamless CRM, analytics, and third-party connectivity" }
     ],
     technologies: ["Webflow", "Zapier", "ClickUp", "Typeform", "CRM Integration", "Analytics"],
     gallery: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
