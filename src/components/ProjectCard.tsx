@@ -1,14 +1,16 @@
+import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 interface ProjectCardProps {
+  id: string;
   title: string;
   description: string;
   category: string;
   highlights: string[];
 }
 
-const ProjectCard = ({ title, description, category, highlights }: ProjectCardProps) => {
+const ProjectCard = ({ id, title, description, category, highlights }: ProjectCardProps) => {
   return (
     <div className="group bg-card border border-border rounded-lg p-8 card-hover">
       <Badge className="mb-4">{category}</Badge>
@@ -21,8 +23,8 @@ const ProjectCard = ({ title, description, category, highlights }: ProjectCardPr
           </span>
         ))}
       </div>
-      <Button variant="outline" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-        View Case Study
+      <Button variant="outline" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors" asChild>
+        <Link to={`/projects/${id}`}>View Case Study</Link>
       </Button>
     </div>
   );

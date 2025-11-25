@@ -1,0 +1,253 @@
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { ArrowLeft, ExternalLink, Calendar, Clock, Quote } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ScrollLottie from "@/components/ScrollLottie";
+import { getProjectById, projects } from "@/data/projects";
+import { useEffect, useState } from "react";
+
+const ProjectPage = () => {
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const project = getProjectById(id || "");
+  const [lottieData, setLottieData] = useState(null);
+
+  useEffect(() => {
+    if (project?.heroLottie) {
+      fetch(project.heroLottie)
+        .then(res => res.json())
+        .then(data => setLottieData(data))
+        .catch(err => console.error("Failed to load Lottie:", err));
+    }
+  }, [project?.heroLottie]);
+
+  if (!project) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
+          <p className="text-muted-foreground mb-6">The project you're looking for doesn't exist.</p>
+          <Button onClick={() => navigate("/")}>
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Home
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  const currentIndex = projects.findIndex(p => p.id === project.id);
+  const nextProject = projects[(currentIndex + 1) % projects.length];
+  const prevProject = projects[(currentIndex - 1 + projects.length) % projects.length];
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Header />
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 container-custom">
+        <div className="max-w-4xl mx-auto">
+          <Link
+            to="/#projects"
+            className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors mb-8"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Projects
+          </Link>
+
+          <div className="animate-fade-in">
+            <Badge className="mb-4">{project.category}</Badge>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">{project.title}</h1>
+            <p className="text-xl text-muted-foreground mb-8">{project.fullDescription}</p>
+
+            <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                <span>{project.year}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="h-4 w-4" />
+                <span>{project.duration}</span>
+              </div>
+              {project.websiteUrl && (
+                <a
+                  href={project.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-foreground transition-colors"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  <span>Visit Website</span>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Visual - Lottie or Image */}
+      <section className="container-custom pb-16">
+        <div className="max-w-5xl mx-auto">
+          <div className="bg-secondary/50 rounded-lg overflow-hidden animate-scale-in">
+            {project.heroLottie && lottieData ? (
+              <ScrollLottie
+                animationData={lottieData}
+                autoPlayDuration={2}
+                className="w-full"
+              />
+            ) : (
+              <div className="aspect-video">
+                <img
+                  src={project.gallery[0]}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Challenge */}
+      <section className="section-padding container-custom bg-secondary/30">
+        <div className="max-w-4xl mx-auto animate-fade-in">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">The Challenge</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">{project.challenge}</p>
+        </div>
+      </section>
+
+      {/* Solution */}
+      <section className="section-padding container-custom">
+        <div className="max-w-4xl mx-auto animate-fade-in">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Solution</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">{project.solution}</p>
+        </div>
+      </section>
+
+      {/* Results */}
+      <section className="section-padding container-custom">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center animate-fade-in">Key Results</h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {project.results.map((result, index) => (
+              <div
+                key={index}
+                className="bg-card border border-border rounded-lg p-6 animate-scale-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                  <p className="text-lg">{result}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      {project.gallery.length > 1 && (
+        <section className="section-padding container-custom bg-secondary/30">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-bold mb-8 text-center animate-fade-in">Project Gallery</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {project.gallery.slice(1).map((image, index) => (
+                <div
+                  key={index}
+                  className="aspect-video bg-secondary/50 rounded-lg overflow-hidden animate-scale-in"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <img
+                    src={image}
+                    alt={`${project.title} screenshot ${index + 2}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Technologies */}
+      <section className="section-padding container-custom">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center animate-fade-in">Technologies Used</h2>
+          <div className="flex flex-wrap justify-center gap-3">
+            {project.technologies.map((tech, index) => (
+              <Badge
+                key={index}
+                variant="secondary"
+                className="text-base px-4 py-2 animate-scale-in"
+                style={{ animationDelay: `${index * 50}ms` }}
+              >
+                {tech}
+              </Badge>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonial */}
+      {project.testimonial && (
+        <section className="section-padding container-custom bg-secondary/30">
+          <div className="max-w-3xl mx-auto text-center animate-fade-in">
+            <Quote className="h-12 w-12 mx-auto mb-6 text-primary opacity-50" />
+            <blockquote className="text-2xl md:text-3xl font-medium mb-6 leading-relaxed">
+              "{project.testimonial.quote}"
+            </blockquote>
+            <div>
+              <p className="font-semibold">{project.testimonial.author}</p>
+              <p className="text-muted-foreground">{project.testimonial.role}</p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Navigation */}
+      <section className="section-padding container-custom">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col sm:flex-row justify-between gap-4">
+            <Link
+              to={`/projects/${prevProject.id}`}
+              className="group flex-1 bg-card border border-border rounded-lg p-6 hover:border-primary transition-colors"
+            >
+              <span className="text-sm text-muted-foreground">Previous Project</span>
+              <p className="text-xl font-semibold group-hover:text-primary transition-colors">
+                {prevProject.title}
+              </p>
+            </Link>
+            <Link
+              to={`/projects/${nextProject.id}`}
+              className="group flex-1 bg-card border border-border rounded-lg p-6 hover:border-primary transition-colors text-right"
+            >
+              <span className="text-sm text-muted-foreground">Next Project</span>
+              <p className="text-xl font-semibold group-hover:text-primary transition-colors">
+                {nextProject.title}
+              </p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section-padding container-custom bg-primary text-primary-foreground">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Project?</h2>
+          <p className="text-lg opacity-90 mb-8">
+            Let's discuss how we can bring your vision to life with Webflow.
+          </p>
+          <Button size="lg" variant="secondary" asChild>
+            <Link to="/#contact">Start a Conversation</Link>
+          </Button>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default ProjectPage;
