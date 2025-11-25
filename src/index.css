@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Color System - Slate & Neon Palette */
+    --background: 200 14% 18%;
+    --foreground: 26 57% 84%;
+    
+    --card: 200 14% 22%;
+    --card-foreground: 26 57% 84%;
+    
+    --popover: 200 14% 22%;
+    --popover-foreground: 26 57% 84%;
+    
+    --primary: 0 87% 62%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 0 87% 72%;
+    
+    --secondary: 18 12% 33%;
+    --secondary-foreground: 26 57% 84%;
+    
+    --muted: 18 12% 33%;
+    --muted-foreground: 26 57% 70%;
+    
+    --accent: 26 57% 84%;
+    --accent-foreground: 200 14% 18%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 18 12% 33%;
+    --input: 18 12% 33%;
+    --ring: 0 87% 62%;
+    
+    --radius: 0.75rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(0 87% 62%), hsl(0 87% 72%));
+    --gradient-subtle: linear-gradient(180deg, hsl(200 14% 22%), hsl(200 14% 18%));
+    --gradient-accent: linear-gradient(135deg, hsl(26 57% 84%), hsl(0 87% 62%));
+    
+    /* Shadows */
+    --shadow-elegant: 0 10px 40px -10px hsl(0 87% 62% / 0.4);
+    --shadow-glow: 0 0 60px hsl(0 87% 62% / 0.3);
+    --shadow-card: 0 4px 20px hsl(200 14% 18% / 0.6);
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 200 14% 18%;
+    
+    --card: 26 57% 96%;
+    --card-foreground: 200 14% 18%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 14% 18%;
+    
+    --primary: 0 87% 62%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 0 87% 72%;
+    
+    --secondary: 26 57% 90%;
+    --secondary-foreground: 200 14% 18%;
+    
+    --muted: 26 57% 90%;
+    --muted-foreground: 18 12% 33%;
+    
+    --accent: 18 12% 33%;
+    --accent-foreground: 26 57% 84%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 26 57% 80%;
+    --input: 26 57% 80%;
+    --ring: 0 87% 62%;
+    
+    --shadow-elegant: 0 10px 40px -10px hsl(0 87% 62% / 0.3);
+    --shadow-glow: 0 0 60px hsl(0 87% 62% / 0.2);
+    --shadow-card: 0 4px 20px hsl(200 14% 18% / 0.15);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    @apply font-bold;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-20 md:py-32;
+  }
+  
+  .container-custom {
+    @apply container mx-auto px-6 md:px-8 lg:px-12 max-w-7xl;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-400 hover:scale-[1.02] hover:shadow-[var(--shadow-elegant)];
+  }
+  
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+    transition: all 0.3s ease;
+  }
+  
+  .glow-effect:hover {
+    box-shadow: var(--shadow-glow), 0 0 80px hsl(var(--primary) / 0.3);
+    transform: translateY(-2px);
+  }
+  
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+}
+
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+  .animation-delay-\[800ms\] {
+    animation-delay: 800ms;
+  }
+}
