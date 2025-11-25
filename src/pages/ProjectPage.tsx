@@ -82,6 +82,8 @@ const ProjectPage = () => {
                 __html: (project.heroTitle || project.description)
                   .replace(/<gradient>/g, '<span class="gradient-text">')
                   .replace(/<\/gradient>/g, '</span>')
+                  .replace(/<ukraine>/g, '<span class="gradient-ukraine">')
+                  .replace(/<\/ukraine>/g, '</span>')
               }}
             />
 
@@ -204,22 +206,29 @@ const ProjectPage = () => {
       </section>
 
       {/* Results */}
-      <section className="section-padding container-custom">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center animate-fade-in">Key Results</h2>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {project.results.map((result, index) => (
-              <div
-                key={index}
-                className="bg-card border border-border rounded-lg p-6 animate-scale-in"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <p className="text-lg">{result}</p>
+      <section className="section-padding container-custom bg-secondary/30">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center animate-fade-in">Key Results</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            {project.results.map((result, index) => {
+              const isObject = typeof result === 'object';
+              return (
+                <div
+                  key={index}
+                  className="text-center animate-scale-in"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <p className="text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-2">
+                    {isObject ? result.value : result}
+                  </p>
+                  {isObject && (
+                    <p className="text-sm md:text-base text-muted-foreground">
+                      {result.label}
+                    </p>
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

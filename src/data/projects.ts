@@ -61,7 +61,7 @@ export const projects: Project[] = [
     heroLottie: "/englishdom-1440.json",
     // New hero data
     serviceType: "Dev",
-    heroTitle: "Long-Term <gradient>Development Partnership</gradient> with Ukraine's Leading EdTech Platform",
+    heroTitle: "Long-Term Development Partnership with <ukraine>Ukraine's Leading</ukraine> EdTech Platform",
     industry: "EdTech",
     stats: [
       { label: "Pages delivered", value: "40+" },
