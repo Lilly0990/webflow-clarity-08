@@ -76,9 +76,14 @@ const ProjectPage = () => {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-12 leading-tight">
-              {project.heroTitle || project.description}
-            </h1>
+            <h1
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-12 leading-tight"
+              dangerouslySetInnerHTML={{
+                __html: (project.heroTitle || project.description)
+                  .replace(/<gradient>/g, '<span class="gradient-text">')
+                  .replace(/<\/gradient>/g, '</span>')
+              }}
+            />
 
             {/* Divider */}
             <div className="border-t border-border mb-8" />
@@ -133,6 +138,30 @@ const ProjectPage = () => {
         </div>
       </section>
 
+      {/* Intro & Background */}
+      {(project.introText || project.backgroundText) && (
+        <section className="section-padding container-custom">
+          <div className="max-w-4xl mx-auto space-y-12">
+            {project.introText && (
+              <p className="text-2xl md:text-3xl font-medium leading-relaxed animate-fade-in">
+                {project.introText}
+              </p>
+            )}
+
+            {project.backgroundTitle && project.backgroundText && (
+              <div className="animate-fade-in">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">{project.backgroundTitle}</h2>
+                <div className="text-lg text-muted-foreground leading-relaxed space-y-4">
+                  {project.backgroundText.split('\n\n').map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* Challenge */}
       <section className="section-padding container-custom bg-secondary/30">
         <div className="max-w-4xl mx-auto animate-fade-in">
@@ -140,6 +169,31 @@ const ProjectPage = () => {
           <p className="text-lg text-muted-foreground leading-relaxed">{project.challenge}</p>
         </div>
       </section>
+
+      {/* Mobile Screenshots */}
+      {project.mobileScreenshots && project.mobileScreenshots.length > 0 && (
+        <section className="section-padding pb-0 container-custom">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              {project.mobileScreenshots.map((screenshot, index) => (
+                <div
+                  key={index}
+                  className="bg-secondary/30 rounded-2xl p-6 md:p-8 animate-scale-in"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="aspect-[9/16] rounded-xl overflow-hidden bg-card border border-border shadow-lg">
+                    <img
+                      src={screenshot}
+                      alt={`${project.title} mobile screenshot ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Solution */}
       <section className="section-padding pb-0 container-custom">

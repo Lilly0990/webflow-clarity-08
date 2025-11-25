@@ -8,7 +8,7 @@ export interface Project {
   fullDescription: string;
   challenge: string;
   solution: string;
-  results: string[];
+  results: { value: string; label: string }[] | string[];
   technologies: string[];
   testimonial?: {
     quote: string;
@@ -29,6 +29,12 @@ export interface Project {
     value: string;
   }[];
   industry?: string;
+  // Intro section after video
+  introText?: string;
+  backgroundTitle?: string;
+  backgroundText?: string;
+  // Mobile screenshots
+  mobileScreenshots?: string[];
 }
 
 export const projects: Project[] = [
@@ -42,10 +48,10 @@ export const projects: Project[] = [
     challenge: "The marketing team operates at high velocity, needing a development partner who could keep pace—delivering dozens of promotional pages throughout the year, each launching in days rather than weeks. Beyond speed, the project required pixel-perfect implementation, integration with CRM and analytics systems, and smooth coordination across internal marketing, design, and development teams. The real challenge was building a sustainable process that maintains quality at scale.",
     solution: "We built a development system designed for speed and consistency. Using reusable Webflow components and standardized workflows, we reduced production time while maintaining quality standards. By integrating directly with their team and establishing clear communication channels, we eliminated bottlenecks. Each landing page includes pixel-perfect design implementation, CMS setup, third-party integrations (Zapier, ClickUp, Typeform), CRM connectivity, and analytics configuration. Our streamlined process takes designs from handoff to production in days.",
     results: [
-      "40+ landing pages delivered with rapid turnaround",
-      "Zero delays over 3+ years",
-      "Marketing campaigns launch on schedule, every time",
-      "Proven reliability with an industry leader"
+      { value: "40+", label: "Landing pages delivered" },
+      { value: "3+", label: "Years of partnership" },
+      { value: "Days", label: "From design to launch" },
+      { value: "100%", label: "On-time delivery rate" }
     ],
     technologies: ["Webflow", "Zapier", "ClickUp", "Typeform", "CRM Integration", "Analytics"],
     gallery: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
@@ -55,13 +61,17 @@ export const projects: Project[] = [
     heroLottie: "/englishdom-1440.json",
     // New hero data
     serviceType: "Dev",
-    heroTitle: "Long-Term Development Partnership with Ukraine's Leading EdTech Platform",
+    heroTitle: "Long-Term <gradient>Development Partnership</gradient> with Ukraine's Leading EdTech Platform",
     industry: "EdTech",
     stats: [
       { label: "Pages delivered", value: "40+" },
       { label: "Partnership", value: "3+ years" },
       { label: "Delays", value: "Zero" }
-    ]
+    ],
+    introText: "For 3+ years, webf.love has been EnglishDom's reliable Webflow partner, delivering 40+ landing pages that power their marketing campaigns.",
+    backgroundTitle: "The Background",
+    backgroundText: "EnglishDom is one of Ukraine's largest online English learning platforms, serving thousands of professionals. As a fast-growing EdTech company, they run continuous marketing campaigns—each requiring a unique landing page with custom design, seamless integrations, and flawless execution.\n\nFor over 3 years, we've been their technical partner for Webflow development, enabling consistent campaign launches without delays.",
+    mobileScreenshots: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"]
   },
   {
     id: "fixar",
