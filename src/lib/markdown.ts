@@ -209,8 +209,8 @@ const blogPosts: BlogPost[] = [
       publishedAt: "2025-11-26",
       updatedAt: "2025-11-26",
       status: "published",
-      metaTitle: "Why Your Business Needs Webflow Development in 2025–2026 | webf.love",
-      metaDescription: "Discover why Webflow development is the smartest choice for businesses. Faster builds, enterprise scalability, CMS freedom, and high-performance front-end development.",
+      metaTitle: "Your Business Doesn't Need Another Slow, Expensive Website — It Needs Webflow",
+      metaDescription: "Why Webflow development is the smartest choice for businesses in 2025–2026. Faster builds, custom Webflow development, enterprise scalability, CMS freedom, and high-performance Webflow front-end development.",
       canonicalUrl: "/blog/webflow-development-2025",
       keywords: [
         "webflow development",
