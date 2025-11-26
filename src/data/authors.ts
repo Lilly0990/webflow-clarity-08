@@ -12,13 +12,13 @@ export interface Author {
 
 export const authors: Author[] = [
   {
-    id: "egor-dvortsevoy",
-    name: "Egor Dvortsevoy",
+    id: "vlad-rulikovskiy",
+    name: "Vlad Rulikovskiy",
     role: "Webflow Developer",
     bio: "Expert in Webflow development with focus on enterprise solutions and high-performance websites.",
-    avatar: "/images/team/egor.jpg",
+    avatar: "/images/team/vlad.jpg",
     social: {
-      linkedin: "https://linkedin.com/in/egor-dvortsevoy"
+      linkedin: "https://linkedin.com/in/vlad-rulikovskiy"
     }
   }
 ];

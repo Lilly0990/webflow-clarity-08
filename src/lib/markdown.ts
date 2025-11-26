@@ -5,35 +5,163 @@ function calculateReadingTime(text: string): number {
   return Math.ceil(words / wordsPerMinute);
 }
 
+// Helper to generate slug from text
+function slugify(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
 // Simple markdown to HTML converter (browser-compatible)
 function markdownToHtml(markdown: string): string {
-  let html = markdown
-    // Headers
-    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-    // Bold
-    .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
-    // Italic
-    .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+  // Process line by line for better control
+  const lines = markdown.split('\n');
+  const result: string[] = [];
+  let inList = false;
+  let listType = '';
+  let inBlockquote = false;
+  let inCallout = false;
+  let calloutContent: string[] = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i];
+
+    // Callout blocks (:::tip, :::warning, :::info)
+    if (line.match(/^:::(tip|warning|info|note)/)) {
+      inCallout = true;
+      const type = line.match(/^:::(tip|warning|info|note)/)?.[1] || 'info';
+      calloutContent = [`<div class="callout callout-${type}">`];
+      continue;
+    }
+    if (line === ':::' && inCallout) {
+      inCallout = false;
+      calloutContent.push('</div>');
+      result.push(calloutContent.join(''));
+      calloutContent = [];
+      continue;
+    }
+    if (inCallout) {
+      // Process content inside callout
+      line = line
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>');
+      calloutContent.push(`<p>${line}</p>`);
+      continue;
+    }
+
+    // Headers with IDs
+    if (line.match(/^### /)) {
+      if (inList) { result.push(listType === 'ul' ? '</ul>' : '</ol>'); inList = false; }
+      const text = line.replace(/^### /, '').replace(/\*\*/g, '');
+      result.push(`<h3 id="${slugify(text)}">${text}</h3>`);
+      continue;
+    }
+    if (line.match(/^## /)) {
+      if (inList) { result.push(listType === 'ul' ? '</ul>' : '</ol>'); inList = false; }
+      const text = line.replace(/^## /, '').replace(/\*\*/g, '');
+      result.push(`<h2 id="${slugify(text)}">${text}</h2>`);
+      continue;
+    }
+    if (line.match(/^# /)) {
+      if (inList) { result.push(listType === 'ul' ? '</ul>' : '</ol>'); inList = false; }
+      const text = line.replace(/^# /, '').replace(/\*\*/g, '');
+      result.push(`<h1 id="${slugify(text)}">${text}</h1>`);
+      continue;
+    }
+
+    // Blockquotes
+    if (line.match(/^> /)) {
+      if (!inBlockquote) {
+        result.push('<blockquote>');
+        inBlockquote = true;
+      }
+      const text = line.replace(/^> /, '')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>');
+      result.push(`<p>${text}</p>`);
+      continue;
+    } else if (inBlockquote) {
+      result.push('</blockquote>');
+      inBlockquote = false;
+    }
+
     // Unordered lists
-    .replace(/^\- (.*$)/gim, '<li>$1</li>')
-    // Paragraphs
-    .replace(/\n\n/gim, '</p><p>')
-    // Line breaks
-    .replace(/\n/gim, '<br>');
+    if (line.match(/^- /)) {
+      if (!inList || listType !== 'ul') {
+        if (inList) result.push('</ol>');
+        result.push('<ul>');
+        inList = true;
+        listType = 'ul';
+      }
+      const text = line.replace(/^- /, '')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>');
+      result.push(`<li>${text}</li>`);
+      continue;
+    }
 
-  // Wrap in paragraph tags
-  html = '<p>' + html + '</p>';
+    // Numbered lists
+    if (line.match(/^\d+\. /)) {
+      if (!inList || listType !== 'ol') {
+        if (inList) result.push('</ul>');
+        result.push('<ol>');
+        inList = true;
+        listType = 'ol';
+      }
+      const text = line.replace(/^\d+\. /, '')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>');
+      result.push(`<li>${text}</li>`);
+      continue;
+    }
 
-  // Fix list items - wrap consecutive li tags in ul
-  html = html.replace(/(<li>.*<\/li>)+/gim, '<ul>$&</ul>');
+    // Close list if we're not in a list item anymore
+    if (inList && !line.match(/^[-\d]/)) {
+      result.push(listType === 'ul' ? '</ul>' : '</ol>');
+      inList = false;
+    }
 
-  // Clean up empty paragraphs
-  html = html.replace(/<p><\/p>/g, '');
-  html = html.replace(/<p><br><\/p>/g, '');
+    // Horizontal rule
+    if (line.match(/^---$/)) {
+      result.push('<hr>');
+      continue;
+    }
 
-  return html;
+    // Empty lines
+    if (line.trim() === '') {
+      continue;
+    }
+
+    // Regular paragraphs
+    const text = line
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+    result.push(`<p>${text}</p>`);
+  }
+
+  // Close any open tags
+  if (inList) result.push(listType === 'ul' ? '</ul>' : '</ol>');
+  if (inBlockquote) result.push('</blockquote>');
+
+  return result.join('\n');
+}
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export interface PricingPlan {
+  name: string;
+  price: string;
+  period?: string;
+  description?: string;
+  features: string[];
+  highlighted?: boolean;
+  cta?: {
+    label: string;
+    url: string;
+  };
 }
 
 export interface BlogPostMeta {
@@ -58,6 +186,10 @@ export interface BlogPostMeta {
   featuredImageAlt: string;
   readingTime: number;
   schemaType: string;
+  // Enhanced components (optional)
+  keyTakeaways?: string[];
+  faq?: FAQItem[];
+  pricingTable?: PricingPlan[];
 }
 
 export interface BlogPost {
@@ -73,7 +205,7 @@ const blogPosts: BlogPost[] = [
       title: "Your Business Doesn't Need Another Slow, Expensive Website — It Needs Webflow",
       slug: "webflow-development-2025",
       description: "Why Webflow development is the smartest choice for businesses in 2025–2026. Faster builds, custom Webflow development, enterprise scalability, CMS freedom, and high-performance Webflow front-end development.",
-      author: "egor-dvortsevoy",
+      author: "vlad-rulikovskiy",
       publishedAt: "2025-11-26",
       updatedAt: "2025-11-26",
       status: "published",
@@ -98,7 +230,32 @@ const blogPosts: BlogPost[] = [
       featuredImage: "/images/blog/webflow-development-2025-hero.jpg",
       featuredImageAlt: "Modern Webflow development workspace",
       readingTime: 5,
-      schemaType: "BlogPosting"
+      schemaType: "BlogPosting",
+      keyTakeaways: [
+        "Webflow development reduces time-to-market from months to weeks",
+        "Custom Webflow development delivers full creative freedom without technical chaos",
+        "Enterprise teams gain stability, security, and scalability with Webflow",
+        "Non-technical teams can manage content independently with Webflow CMS",
+        "High-performance front-end development is built into Webflow by default"
+      ],
+      faq: [
+        {
+          question: "How long does a typical Webflow project take?",
+          answer: "Most Webflow projects are completed in 2-6 weeks, depending on complexity. This is significantly faster than traditional development which can take 3-6 months."
+        },
+        {
+          question: "Is Webflow suitable for enterprise companies?",
+          answer: "Yes, Webflow offers enterprise-grade features including advanced security, granular permissions, component libraries, and dedicated support. Many Fortune 500 companies use Webflow."
+        },
+        {
+          question: "Can my marketing team update the website without developers?",
+          answer: "Absolutely. Webflow's CMS is designed for non-technical users. Your team can publish updates, manage content, and launch new pages independently."
+        },
+        {
+          question: "How does Webflow compare to WordPress?",
+          answer: "Webflow offers better performance, built-in hosting, visual development, and no plugin vulnerabilities. It's more secure and easier to maintain than WordPress."
+        }
+      ]
     },
     content: `**Why Webflow development is the smartest choice for businesses in 2025–2026.**
 
