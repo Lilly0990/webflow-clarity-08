@@ -29,7 +29,7 @@ const Projects = () => {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <div className="grid md:grid-cols-2 gap-8 mb-12">
         {filteredProjects.map((project, index) => (
           <div key={project.id} className="animate-scale-in" style={{ animationDelay: `${index * 100}ms` }}>
             <ProjectCard {...project} />

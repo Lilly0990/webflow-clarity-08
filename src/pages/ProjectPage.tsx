@@ -117,11 +117,20 @@ const ProjectPage = () => {
         </div>
       </section>
 
-      {/* Main Visual - Lottie or Image */}
+      {/* Main Visual - Video, Lottie or Image */}
       <section className="container-custom pb-16">
         <div className="max-w-5xl mx-auto">
           <div className="bg-secondary/50 rounded-lg overflow-hidden animate-scale-in">
-            {project.heroLottie && lottieData ? (
+            {project.heroVideo ? (
+              <video
+                src={project.heroVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full"
+              />
+            ) : project.heroLottie && lottieData ? (
               <ScrollLottie
                 animationData={lottieData}
                 autoPlayDuration={2}

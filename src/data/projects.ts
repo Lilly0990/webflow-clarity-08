@@ -4,6 +4,7 @@ export interface Project {
   description: string;
   category: string;
   highlights: string[];
+  previewImage?: string; // Preview image for card
   // Extended info for project page
   fullDescription: string;
   challenge: string;
@@ -20,6 +21,7 @@ export interface Project {
   duration: string;
   websiteUrl?: string;
   heroLottie?: string; // Path to Lottie JSON animation
+  heroVideo?: string; // Path to video file (loops automatically)
   // Hero section data
   logo?: string; // Path to client logo
   serviceType?: string; // e.g. "Dev", "Design + Dev"
@@ -44,6 +46,7 @@ export const projects: Project[] = [
     description: "Long-Term Development Partnership with Ukraine's Leading EdTech Platform",
     category: "EdTech",
     highlights: ["40+ pages delivered", "3+ year partnership", "Zero delays"],
+    previewImage: "/projects/englishdom-preview.png",
     fullDescription: "EnglishDom is one of Ukraine's largest online English learning platforms, serving thousands of professionals. As a fast-growing EdTech company, they run continuous marketing campaigns—each requiring a unique landing page with custom design, seamless integrations, and flawless execution. For over 3 years, we've been their technical partner for Webflow development, enabling consistent campaign launches without delays.",
     challenge: "The marketing team operates at high velocity, needing a development partner who could keep pace—delivering dozens of promotional pages throughout the year, each launching in days rather than weeks. Beyond speed, the project required pixel-perfect implementation, integration with CRM and analytics systems, and smooth coordination across internal marketing, design, and development teams. The real challenge was building a sustainable process that maintains quality at scale.",
     solution: "We built a development system designed for speed and consistency. Using reusable Webflow components and standardized workflows, we reduced production time while maintaining quality standards. By integrating directly with their team and establishing clear communication channels, we eliminated bottlenecks. Each landing page includes pixel-perfect design implementation, CMS setup, third-party integrations (Zapier, ClickUp, Typeform), CRM connectivity, and analytics configuration. Our streamlined process takes designs from handoff to production in days.",
@@ -79,6 +82,8 @@ export const projects: Project[] = [
     description: "Enterprise-Grade Website for Defense Tech Innovation",
     category: "SaaS",
     highlights: ["60fps animations", "10+ pages", "85+ Lighthouse"],
+    previewImage: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&h=600&fit=crop",
+    heroVideo: "/projects/fixar-1440-showreel.mp4",
     fullDescription: "webf.love delivered a high-performance, visually striking website for Fixar, an American autonomous UAV manufacturer serving defense, law enforcement, and commercial sectors globally.",
     challenge: "The company required a website that could showcase three distinct drone models while conveying their high-tech capabilities to a B2B audience. The challenge extended beyond aesthetics—they needed cinema-quality animations and 3D effects while maintaining fast performance across all devices. Adding complexity, the defense industry demanded strict privacy standards with no third-party tracking, and everything had to run on Webflow for future content management. Balancing visual sophistication with technical constraints required careful architecture and optimization.",
     solution: "We built a multi-page enterprise website combining Webflow's CMS capabilities with advanced JavaScript libraries. The architecture integrated GSAP for scroll-triggered animations, Three.js for 3D effects, and Lottie for product showcases—all orchestrated to deliver 60fps performance. Each of the 10+ pages features custom animations while maintaining sub-3-second load times. We implemented conditional loading for heavy 3D graphics, optimized all assets for performance, and built a scalable CMS structure. The system includes three lead capture forms and 18+ case studies, all manageable through Webflow's interface without developer intervention.",
@@ -111,6 +116,8 @@ export const projects: Project[] = [
     description: "Website for Immigration Consultancy Helping Tech Professionals Secure US & UK Visas",
     category: "SaaS",
     highlights: ["Complex animations", "Multi-layered architecture", "CMS system"],
+    previewImage: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop",
+    heroVideo: "/projects/csmplt-1440-showreel.mp4",
     fullDescription: "webf.love built a sophisticated website for CSMPLT, a tech-focused immigration firm helping tech professionals and entrepreneurs secure US and UK visas through a strategy-first, data-driven approach.",
     challenge: "The company required a digital presence that could compete with traditional law firms while differentiating through modern design and technical sophistication. Our challenge was translating their design concepts into a functional Webflow website—presenting multiple visa types, self-assessment tools, and their Navigator platform in a way that feels cohesive rather than overwhelming. Beyond information architecture, the project demanded technical execution of complex animations and interactions. The website needed to handle smooth motion design, multiple carousel systems, and scroll-triggered effects while maintaining fast performance and professional credibility with their target audience of tech professionals and investors.",
     solution: "We implemented the client's design vision in Webflow, bringing their modern brand positioning to life through technical execution. The information architecture organizes multiple visa programs (US and UK) with clear pathways for different user types—whether someone wants full service, self-assessment, or their Navigator DIY platform. The technical implementation includes smooth animations using GSAP and Lottie to convey premium positioning, HelpCrunch integration for real-time support, and a structured CMS accommodating their extensive content library. We developed dedicated sections for self-assessment quizzes, detailed visa guides, and testimonials from tech founders, all structured to build credibility with their target audience of software engineers, startup founders, and tech executives.",
@@ -142,6 +149,8 @@ export const projects: Project[] = [
     description: "SaaS Website for AI-Powered eCommerce Returns Management Platform",
     category: "SaaS",
     highlights: ["Product-focused", "Performance-optimized", "B2B conversion"],
+    previewImage: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+    heroVideo: "/projects/exonode-showrell-1440.mp4",
     fullDescription: "webf.love developed a conversion-focused Webflow website for Exonode, a SaaS platform helping eCommerce businesses reduce return costs through AI-driven personalized alternatives and risk recognition.",
     challenge: "The company needed to explain a complex AI solution in a way that resonates with busy eCommerce operators who care about ROI, not technical details. Our challenge was translating their product vision into a website that balances technical sophistication with clarity—showing enough innovation to build credibility without overwhelming potential customers. The project required strategic use of animations to demonstrate their platform's capabilities while maintaining fast load times. Unlike heavy animation showcases, this needed to prioritize conversion and clear messaging, with visual elements supporting rather than dominating the content.",
     solution: "We implemented a clean, product-focused Webflow website using Lottie animations to illustrate key concepts—returns flow, analytics dashboard, and platform capabilities—without sacrificing performance. The lightweight animation approach ensures fast load times while maintaining visual interest that communicates their AI-driven technology. The technical implementation includes Lenis for smooth scrolling, a structured content hierarchy that guides visitors from problem to solution, and comprehensive B2B tracking through Google Analytics 4, GTM, and LinkedIn Insight Tag. We organized content to address eCommerce-specific pain points with clear CTAs driving demo requests, positioning Exonode as a modern alternative to traditional returns management approaches.",
@@ -173,6 +182,8 @@ export const projects: Project[] = [
     description: "Bold Brand Identity for Ukrainian Video Production Studio",
     category: "Agencies",
     highlights: ["Pixel-perfect design", "Marketing integration", "Dynamic CMS"],
+    previewImage: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&h=600&fit=crop",
+    heroVideo: "/projects/value-showreel-1440.mp4",
     fullDescription: "webf.love created a vibrant, conversion-focused website for Value Productions, a video production studio specializing in explainer videos for crypto, fintech, and SaaS companies.",
     challenge: "Working with Tisami's bold creative vision, we needed to translate their design concepts into a high-performance Webflow website without compromising on visual impact. The challenge was bringing their artistic direction to life through code while maintaining smooth animations and fast load times. Beyond the visual execution, the project required comprehensive marketing infrastructure. We needed to integrate multiple analytics and tracking systems, implement dynamic content filtering, and create conversion-optimized booking flows—all while preserving the playful, creative feel of Tisami's design.",
     solution: "We transformed Tisami's design concepts into a fully functional Webflow website, implementing their bold yellow-blue color scheme and playful animations using Lenis for smooth scrolling. Working from their design files, references, and animation examples, we built each interaction to match their creative vision pixel-perfect. The technical architecture integrates multiple marketing tools: Google Analytics 4, Hotjar for behavior tracking, LinkedIn Insight, and B2B identification services (Apollo.io, Clearbit, Reb2b). We implemented Finsweet Attributes for dynamic filtering of case studies and blog content, plus Calendly integration for seamless consultation booking. The CMS structure allows their team to independently manage cases, blog posts, and portfolio pieces.",
@@ -204,6 +215,7 @@ export const projects: Project[] = [
     description: "Web3 Blockchain Platform on Webflow",
     category: "E-commerce",
     highlights: ["Multi-language", "Custom integrations"],
+    previewImage: "/projects/prozora-preview.png",
     fullDescription: "Prozora is a Web3 transparency platform using blockchain technology. We built their marketing website with custom wallet integrations and multi-language support for their global community.",
     challenge: "Web3 projects need to build trust while explaining complex technology. Prozora needed a professional website that would connect with both crypto-native users and newcomers, supporting multiple languages and integrating with Web3 wallets.",
     solution: "We created a clean, trustworthy design that demystifies blockchain technology. The site features custom Web3 wallet connection, real-time blockchain data displays, and full localization for 4 languages. Smart contract interactions are seamlessly integrated into the Webflow site.",
@@ -214,7 +226,7 @@ export const projects: Project[] = [
       "Strong community trust established"
     ],
     technologies: ["Webflow", "Web3.js", "WalletConnect", "Weglot", "Custom APIs"],
-    gallery: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    gallery: ["/projects/prozora-preview.png", "/placeholder.svg", "/placeholder.svg"],
     year: "2024",
     duration: "2.5 months",
     websiteUrl: "https://prozora.io"
