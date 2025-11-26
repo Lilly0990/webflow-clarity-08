@@ -16,7 +16,7 @@ export const authors: Author[] = [
     name: "Vlad Rulikovskiy",
     role: "Webflow Developer",
     bio: "Expert in Webflow development with focus on enterprise solutions and high-performance websites.",
-    avatar: "/images/team/vlad.jpg",
+    avatar: "/images/team/vlad-logo.png",
     social: {
       linkedin: "https://linkedin.com/in/vlad-rulikovskiy"
     }
