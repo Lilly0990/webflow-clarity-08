@@ -1,7 +1,13 @@
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
-import readingTime from 'reading-time';
+
+// Simple reading time calculator (browser-compatible)
+function calculateReadingTime(text: string): number {
+  const wordsPerMinute = 200;
+  const words = text.trim().split(/\s+/).length;
+  return Math.ceil(words / wordsPerMinute);
+}
 
 export interface BlogPostMeta {
   title: string;
@@ -131,8 +137,7 @@ export async function parseMarkdown(content: string): Promise<{ meta: BlogPostMe
   const htmlContent = processedContent.toString();
 
   // Calculate reading time if not provided
-  const stats = readingTime(markdownContent);
-  const calculatedReadingTime = Math.ceil(stats.minutes);
+  const calculatedReadingTime = calculateReadingTime(markdownContent);
 
   return {
     meta: {
