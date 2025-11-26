@@ -45,12 +45,12 @@ const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
         </h3>
 
         {/* Description */}
-        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-4">
+        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
           {post.description}
         </p>
 
-        {/* Date */}
-        <div className="text-sm text-muted-foreground">{formattedDate}</div>
+        {/* Date - hidden visually, kept for SEO */}
+        <time dateTime={post.publishedAt} className="sr-only">{formattedDate}</time>
       </div>
     </Link>
   );

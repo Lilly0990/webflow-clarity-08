@@ -52,8 +52,15 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} webf.love. All rights reserved.</p>
+        <div className="mt-12 pt-8 border-t border-border text-sm text-muted-foreground">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>&copy; {new Date().getFullYear()} webf.love. All rights reserved.</p>
+            <div className="flex gap-6">
+              <a href="/privacy-policy" className="hover:text-foreground transition-colors">Privacy Policy</a>
+              <a href="/terms" className="hover:text-foreground transition-colors">Terms of Service</a>
+              <a href="/cookie-policy" className="hover:text-foreground transition-colors">Cookie Policy</a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
