@@ -47,8 +47,6 @@ const PrivacyPolicy = () => {
                 <header className="mb-8 animate-fade-in">
                   <div className="flex items-center gap-3 text-sm text-muted-foreground mb-4">
                     <span className="text-primary font-medium">Legal</span>
-                    <span>·</span>
-                    <span>5 min read</span>
                   </div>
                   <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
                     Privacy Policy
