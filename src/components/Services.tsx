@@ -35,7 +35,7 @@ const Services = () => {
     <section className="section-padding container-custom">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-6xl font-bold mb-4">What We Do</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-4">Our Services</h2>
           <p className="text-xl text-muted-foreground">
             Three core services. One goal — helping you move faster with Webflow.
           </p>
