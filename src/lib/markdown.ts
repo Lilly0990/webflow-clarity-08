@@ -1,12 +1,39 @@
-import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
-
 // Simple reading time calculator (browser-compatible)
 function calculateReadingTime(text: string): number {
   const wordsPerMinute = 200;
   const words = text.trim().split(/\s+/).length;
   return Math.ceil(words / wordsPerMinute);
+}
+
+// Simple markdown to HTML converter (browser-compatible)
+function markdownToHtml(markdown: string): string {
+  let html = markdown
+    // Headers
+    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+    // Bold
+    .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+    // Italic
+    .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+    // Unordered lists
+    .replace(/^\- (.*$)/gim, '<li>$1</li>')
+    // Paragraphs
+    .replace(/\n\n/gim, '</p><p>')
+    // Line breaks
+    .replace(/\n/gim, '<br>');
+
+  // Wrap in paragraph tags
+  html = '<p>' + html + '</p>';
+
+  // Fix list items - wrap consecutive li tags in ul
+  html = html.replace(/(<li>.*<\/li>)+/gim, '<ul>$&</ul>');
+
+  // Clean up empty paragraphs
+  html = html.replace(/<p><\/p>/g, '');
+  html = html.replace(/<p><br><\/p>/g, '');
+
+  return html;
 }
 
 export interface BlogPostMeta {
@@ -39,45 +66,41 @@ export interface BlogPost {
   htmlContent: string;
 }
 
-// Blog posts data (in a real app, this would come from files or CMS)
-const blogPostsData: Record<string, string> = {
-  'webflow-development-2025': `---
-title: "Your Business Doesn't Need Another Slow, Expensive Website — It Needs Webflow"
-slug: "webflow-development-2025"
-description: "Why Webflow development is the smartest choice for businesses in 2025–2026. Faster builds, custom Webflow development, enterprise scalability, CMS freedom, and high-performance Webflow front-end development."
-author: "egor-dvortsevoy"
-publishedAt: "2025-11-26"
-updatedAt: "2025-11-26"
-status: "published"
-metaTitle: "Why Your Business Needs Webflow Development in 2025–2026 | webf.love"
-metaDescription: "Discover why Webflow development is the smartest choice for businesses. Faster builds, enterprise scalability, CMS freedom, and high-performance front-end development."
-canonicalUrl: "/blog/webflow-development-2025"
-keywords:
-  - "webflow development"
-  - "custom webflow development"
-  - "webflow enterprise development"
-  - "webflow cms development"
-  - "webflow front-end development"
-  - "webflow website development"
-  - "webflow development services"
-ogImage: "/images/blog/webflow-development-2025-og.jpg"
-ogImageAlt: "Webflow development for modern businesses in 2025"
-twitterCard: "summary_large_image"
-category: "Development"
-tags:
-  - "webflow"
-  - "web development"
-  - "enterprise"
-  - "cms"
-  - "performance"
-language: "en"
-featuredImage: "/images/blog/webflow-development-2025-hero.jpg"
-featuredImageAlt: "Modern Webflow development workspace"
-readingTime: 5
-schemaType: "BlogPosting"
----
-
-**Why Webflow development is the smartest choice for businesses in 2025–2026.**
+// Blog posts stored as objects (no parsing needed)
+const blogPosts: BlogPost[] = [
+  {
+    meta: {
+      title: "Your Business Doesn't Need Another Slow, Expensive Website — It Needs Webflow",
+      slug: "webflow-development-2025",
+      description: "Why Webflow development is the smartest choice for businesses in 2025–2026. Faster builds, custom Webflow development, enterprise scalability, CMS freedom, and high-performance Webflow front-end development.",
+      author: "egor-dvortsevoy",
+      publishedAt: "2025-11-26",
+      updatedAt: "2025-11-26",
+      status: "published",
+      metaTitle: "Why Your Business Needs Webflow Development in 2025–2026 | webf.love",
+      metaDescription: "Discover why Webflow development is the smartest choice for businesses. Faster builds, enterprise scalability, CMS freedom, and high-performance front-end development.",
+      canonicalUrl: "/blog/webflow-development-2025",
+      keywords: [
+        "webflow development",
+        "custom webflow development",
+        "webflow enterprise development",
+        "webflow cms development",
+        "webflow front-end development",
+        "webflow website development",
+        "webflow development services"
+      ],
+      ogImage: "/images/blog/webflow-development-2025-og.jpg",
+      ogImageAlt: "Webflow development for modern businesses in 2025",
+      twitterCard: "summary_large_image",
+      category: "Development",
+      tags: ["webflow", "web development", "enterprise", "cms", "performance"],
+      language: "en",
+      featuredImage: "/images/blog/webflow-development-2025-hero.jpg",
+      featuredImageAlt: "Modern Webflow development workspace",
+      readingTime: 5,
+      schemaType: "BlogPosting"
+    },
+    content: `**Why Webflow development is the smartest choice for businesses in 2025–2026.**
 
 ## The Problem: Businesses Want Speed, but Their Websites Slow Them Down
 
@@ -124,58 +147,31 @@ Businesses in 2025–2026 don't just need a website—they need a flexible, scal
 
 That's exactly what modern **Webflow development services** deliver. Whether you're a startup, enterprise, or scale-up, Webflow helps you build faster, adapt quicker, and stay competitive.
 
-**If you're tired of slow, outdated, over-engineered websites—Webflow isn't just a good idea. It's the upgrade your business has been waiting for.**`
-};
+**If you're tired of slow, outdated, over-engineered websites—Webflow isn't just a good idea. It's the upgrade your business has been waiting for.**`,
+    htmlContent: ""
+  }
+];
 
-export async function parseMarkdown(content: string): Promise<{ meta: BlogPostMeta; htmlContent: string }> {
-  const { data, content: markdownContent } = matter(content);
-
-  const processedContent = await remark()
-    .use(html)
-    .process(markdownContent);
-
-  const htmlContent = processedContent.toString();
-
-  // Calculate reading time if not provided
-  const calculatedReadingTime = calculateReadingTime(markdownContent);
-
-  return {
-    meta: {
-      ...data,
-      readingTime: data.readingTime || calculatedReadingTime,
-    } as BlogPostMeta,
-    htmlContent,
-  };
-}
+// Generate HTML content for each post
+blogPosts.forEach(post => {
+  post.htmlContent = markdownToHtml(post.content);
+  // Calculate reading time if not set
+  if (!post.meta.readingTime) {
+    post.meta.readingTime = calculateReadingTime(post.content);
+  }
+});
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
-  const content = blogPostsData[slug];
-  if (!content) return null;
-
-  const { meta, htmlContent } = await parseMarkdown(content);
-  const { content: markdownContent } = matter(content);
-
-  return {
-    meta,
-    content: markdownContent,
-    htmlContent,
-  };
+  const post = blogPosts.find(p => p.meta.slug === slug);
+  return post || null;
 }
 
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
-  const posts: BlogPost[] = [];
-
-  for (const slug of Object.keys(blogPostsData)) {
-    const post = await getBlogPost(slug);
-    if (post && post.meta.status === 'published') {
-      posts.push(post);
-    }
-  }
-
-  // Sort by date, newest first
-  return posts.sort((a, b) =>
-    new Date(b.meta.publishedAt).getTime() - new Date(a.meta.publishedAt).getTime()
-  );
+  return blogPosts
+    .filter(post => post.meta.status === 'published')
+    .sort((a, b) =>
+      new Date(b.meta.publishedAt).getTime() - new Date(a.meta.publishedAt).getTime()
+    );
 }
 
 export function getCategories(): string[] {
