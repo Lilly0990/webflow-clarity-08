@@ -1,4 +1,5 @@
 import { getAuthorById } from '@/data/authors';
+import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 
 interface AuthorCardProps {
   authorId: string;
@@ -12,18 +13,13 @@ const AuthorCard = ({ authorId }: AuthorCardProps) => {
   return (
     <div className="bg-card border border-border rounded-lg p-6 flex items-start gap-4">
       {/* Avatar */}
-      <div className="w-16 h-16 rounded-full bg-secondary/50 overflow-hidden flex-shrink-0">
-        {author.avatar ? (
-          <img
-            src={author.avatar}
-            alt={author.name}
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center text-2xl font-bold text-muted-foreground">
-            {author.name.charAt(0)}
-          </div>
-        )}
+      <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
+        <ImagePlaceholder
+          src={author.avatar}
+          alt={author.name}
+          className="w-full h-full rounded-full"
+          type="avatar"
+        />
       </div>
 
       {/* Info */}

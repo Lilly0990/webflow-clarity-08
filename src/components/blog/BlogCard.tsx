@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import type { BlogPostMeta } from '@/lib/markdown';
+import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 
 interface BlogCardProps {
   post: BlogPostMeta;
@@ -20,32 +21,13 @@ const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
       style={{ animationDelay: `${index * 100}ms` }}
     >
       {/* Featured Image */}
-      <div className="aspect-video bg-secondary/50 overflow-hidden">
-        {post.featuredImage ? (
-          <img
-            src={post.featuredImage}
-            alt={post.featuredImageAlt || post.title}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="48"
-              height="48"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-              <circle cx="9" cy="9" r="2" />
-              <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-            </svg>
-          </div>
-        )}
+      <div className="aspect-video overflow-hidden">
+        <ImagePlaceholder
+          src={post.featuredImage}
+          alt={post.featuredImageAlt || post.title}
+          className="w-full h-full transition-transform duration-300 group-hover:scale-105"
+          type="post"
+        />
       </div>
 
       {/* Content */}

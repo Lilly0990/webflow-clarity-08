@@ -11,6 +11,7 @@ import PricingTable from '@/components/blog/PricingTable';
 import SEOHead from '@/components/seo/SEOHead';
 import { BlogPostSchema } from '@/components/seo/SchemaMarkup';
 import { getBlogPost, type BlogPost } from '@/lib/markdown';
+import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 
 const ShareButtons = ({ url, title }: { url: string; title: string }) => {
   const encodedUrl = encodeURIComponent(url);
@@ -206,15 +207,14 @@ const BlogArticle = () => {
                 </header>
 
                 {/* Featured Image */}
-                {meta.featuredImage && (
-                  <div className="aspect-video bg-secondary/50 rounded-lg overflow-hidden mb-8 animate-fade-in">
-                    <img
-                      src={meta.featuredImage}
-                      alt={meta.featuredImageAlt || meta.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                )}
+                <div className="aspect-video rounded-lg overflow-hidden mb-8 animate-fade-in">
+                  <ImagePlaceholder
+                    src={meta.featuredImage}
+                    alt={meta.featuredImageAlt || meta.title}
+                    className="w-full h-full"
+                    type="post"
+                  />
+                </div>
 
                 {/* Key Takeaways */}
                 {meta.keyTakeaways && meta.keyTakeaways.length > 0 && (
