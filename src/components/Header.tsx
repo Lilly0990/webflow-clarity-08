@@ -1,17 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   const navLinks = [
-    { href: "#projects", label: "Projects" },
-    { href: "#about", label: "About" },
-    { href: "#services", label: "Services" },
-    { href: "#process", label: "Process" },
-    { href: "#testimonials", label: "Testimonials" },
-    { href: "#contact", label: "Contact" },
+    { href: "#projects", label: "Projects", isAnchor: true },
+    { href: "#about", label: "About", isAnchor: true },
+    { href: "#services", label: "Services", isAnchor: true },
+    { href: "/blog", label: "Blog", isAnchor: false },
+    { href: "#contact", label: "Contact", isAnchor: true },
   ];
 
   return (
@@ -25,13 +27,23 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </a>
+              link.isAnchor ? (
+                <a
+                  key={link.href}
+                  href={isHomePage ? link.href : `/${link.href}`}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
             <Button size="sm" className="glow-effect">
               Start a Project
@@ -52,14 +64,25 @@ const Header = () => {
         {isMenuOpen && (
           <nav className="md:hidden pt-4 pb-2 flex flex-col gap-4">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.label}
-              </a>
+              link.isAnchor ? (
+                <a
+                  key={link.href}
+                  href={isHomePage ? link.href : `/${link.href}`}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
             <Button size="sm" className="glow-effect w-full">
               Start a Project
