@@ -17,23 +17,23 @@ const About = () => {
       <div className="max-w-4xl mx-auto animate-fade-in">
         <h2 className="text-4xl md:text-6xl font-bold mb-8 text-center">Who We Are</h2>
         <p className="text-xl text-muted-foreground mb-12 text-center">
-          We're a 4-person Webflow studio from Ukraine working globally for 6+ years.
+          We're a 4-person Webflow development team working globally for 6+ years.
         </p>
 
         <div className="space-y-8 mb-16">
           <div>
             <h3 className="text-2xl font-bold mb-3">What makes us different?</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Our founder started as a designer before moving into development — so we naturally 
-              think in UX, structure, logic, and long-term maintainability, not just code.
+              Our founder started as a designer before becoming a Webflow developer — so we think in UX,
+              structure, logic, and long-term maintainability, not just code.
             </p>
           </div>
 
           <div>
-            <h3 className="text-2xl font-bold mb-3">How we work:</h3>
+            <h3 className="text-2xl font-bold mb-3">How we work</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Clear communication. Honest pricing. No hidden complexity. No technical gatekeeping. 
-              Most of our clients come from referrals — that says more than any tagline.
+              Clear communication. Honest pricing. No complexity for the sake of complexity.
+              No technical gatekeeping. Most clients come from referrals — that says more than any tagline.
             </p>
           </div>
 

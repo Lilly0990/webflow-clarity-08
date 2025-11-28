@@ -45,9 +45,11 @@ const Header = () => {
                 </Link>
               )
             ))}
-            <Button size="sm" className="glow-effect">
-              Start a Project
-            </Button>
+            <Link to="/lets-talk">
+              <Button size="sm" className="glow-effect">
+                Let's Talk
+              </Button>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -84,9 +86,11 @@ const Header = () => {
                 </Link>
               )
             ))}
-            <Button size="sm" className="glow-effect w-full">
-              Start a Project
-            </Button>
+            <Link to="/lets-talk" className="w-full">
+              <Button size="sm" className="glow-effect w-full">
+                Let's Talk
+              </Button>
+            </Link>
           </nav>
         )}
       </div>

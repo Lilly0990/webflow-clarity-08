@@ -1,7 +1,7 @@
 const advantages = [
   {
     title: "Designer → Developer Advantage",
-    description: "We understand structure, UX, and how users interact — not just code.",
+    description: "We understand structure, UX, and user behavior — not just code.",
   },
   {
     title: "Transparent Hourly Billing",
@@ -22,7 +22,7 @@ const Advantages = () => {
     <section className="section-padding container-custom">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-4xl md:text-6xl font-bold mb-16 text-center animate-fade-in">
-          Why webf.love?
+          Why Companies Choose Our Webflow Development Agency
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6">

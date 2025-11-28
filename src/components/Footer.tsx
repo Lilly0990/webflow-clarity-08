@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   const navLinks = [
     { href: "#projects", label: "Projects" },
@@ -5,7 +7,7 @@ const Footer = () => {
     { href: "#services", label: "Services" },
     { href: "#process", label: "Process" },
     { href: "#testimonials", label: "Testimonials" },
-    { href: "#contact", label: "Contact" },
+    { href: "/lets-talk", label: "Let's Talk", isRoute: true },
   ];
 
   return (
@@ -28,13 +30,23 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Navigation</h4>
             <nav className="flex flex-col gap-2">
               {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {link.label}
-                </a>
+                link.isRoute ? (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                )
               ))}
             </nav>
           </div>

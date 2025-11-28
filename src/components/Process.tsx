@@ -12,7 +12,7 @@ const principles = [
   {
     number: "3",
     title: "Full Clarity & Control",
-    description: "You get walkthroughs and access — manage independently or keep us on retainer.",
+    description: "You choose autonomy or long-term support — you always own your website.",
   },
 ];
 
@@ -35,7 +35,7 @@ const steps = [
   {
     number: "04",
     title: "Launch",
-    description: "Testing, access handover, team training, support or autonomy.",
+    description: "Testing, handover, team training, and support — or full autonomy.",
   },
 ];
 
@@ -43,7 +43,7 @@ const Process = () => {
   return (
     <section className="section-padding container-custom bg-secondary/30">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl md:text-6xl font-bold mb-6 text-center animate-fade-in">Our Process</h2>
+        <h2 className="text-4xl md:text-6xl font-bold mb-6 text-center animate-fade-in">Our Webflow Development Process</h2>
         <p className="text-xl text-muted-foreground text-center mb-16">
           No hidden fees. No inflated features. No "trust us, it's complicated." Just clarity and honest work.
         </p>
