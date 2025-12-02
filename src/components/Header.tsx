@@ -12,6 +12,7 @@ const Header = () => {
     { href: "#projects", label: "Projects", isAnchor: true },
     { href: "#about", label: "About", isAnchor: true },
     { href: "#services", label: "Services", isAnchor: true },
+    { href: "/for-agency", label: "For Agencies", isAnchor: false },
     { href: "/blog", label: "Blog", isAnchor: false },
     { href: "#contact", label: "Contact", isAnchor: true },
   ];

@@ -12,6 +12,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
 import LetsTalk from "./pages/LetsTalk";
+import ForAgency from "./pages/ForAgency";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -44,6 +45,7 @@ const App = () => {
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="/lets-talk" element={<LetsTalk />} />
+            <Route path="/for-agency" element={<ForAgency />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

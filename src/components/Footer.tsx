@@ -7,6 +7,7 @@ const Footer = () => {
     { href: "#services", label: "Services" },
     { href: "#process", label: "Process" },
     { href: "#testimonials", label: "Testimonials" },
+    { href: "/for-agency", label: "For Agencies", isRoute: true },
     { href: "/lets-talk", label: "Let's Talk", isRoute: true },
   ];
 
