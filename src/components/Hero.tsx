@@ -4,19 +4,19 @@ import { Layers, LayoutGrid, Unlock } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="section-padding container-custom min-h-[90vh] flex items-center pt-24">
-      <div className="max-w-6xl mx-auto text-center space-y-6">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-200">
+    <section className="container-custom h-screen flex items-center justify-center px-6">
+      <div className="max-w-5xl mx-auto text-center space-y-8">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] animate-fade-in animation-delay-200">
           Webflow Development Agency for Fast, Scalable,{" "}
           <span className="gradient-text">High-Performance</span> Websites
         </h1>
 
-        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-fade-in animation-delay-400">
+        <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-fade-in animation-delay-400">
           We build Webflow websites that load fast, scale easily, and stay clean under the hood —
           without technical bloat or complex setups.
         </p>
 
-        <div className="flex flex-wrap gap-3 justify-center animate-fade-in animation-delay-400">
+        <div className="flex flex-wrap gap-3 justify-center pt-2 animate-fade-in animation-delay-400">
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/50 rounded-full border border-border text-sm">
             <Layers className="w-4 h-4 text-primary" />
             Clean architecture
@@ -31,7 +31,7 @@ const Hero = () => {
           </span>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 animate-fade-in animation-delay-600">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2 animate-fade-in animation-delay-600">
           <a href="#projects">
             <Button size="lg" className="text-lg px-8 glow-effect hover-lift">
               View Our Work
