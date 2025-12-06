@@ -1,6 +1,5 @@
 const clients = [
   { name: "EnglishDom", logo: "/images/clients/englishdom.svg" },
-  { name: "Fixar", logo: "/images/clients/fixar.svg" },
   { name: "Client 3", logo: "/images/clients/client3.svg" },
   { name: "Client 4", logo: "/images/clients/client4.svg" },
   { name: "Client 5", logo: "/images/clients/client5.svg" },

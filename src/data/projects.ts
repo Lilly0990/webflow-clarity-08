@@ -77,40 +77,6 @@ export const projects: Project[] = [
     mobileScreenshots: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"]
   },
   {
-    id: "fixar",
-    title: "Fixar",
-    description: "Enterprise-Grade Website for Defense Tech Innovation",
-    category: "SaaS",
-    highlights: ["60fps animations", "10+ pages", "85+ Lighthouse"],
-    previewImage: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&h=600&fit=crop",
-    heroVideo: "/projects/fixar-1440-showreel.mp4",
-    fullDescription: "webf.love delivered a high-performance, visually striking website for Fixar, an American autonomous UAV manufacturer serving defense, law enforcement, and commercial sectors globally.",
-    challenge: "The company required a website that could showcase three distinct drone models while conveying their high-tech capabilities to a B2B audience. The challenge extended beyond aesthetics—they needed cinema-quality animations and 3D effects while maintaining fast performance across all devices. Adding complexity, the defense industry demanded strict privacy standards with no third-party tracking, and everything had to run on Webflow for future content management. Balancing visual sophistication with technical constraints required careful architecture and optimization.",
-    solution: "We built a multi-page enterprise website combining Webflow's CMS capabilities with advanced JavaScript libraries. The architecture integrated GSAP for scroll-triggered animations, Three.js for 3D effects, and Lottie for product showcases—all orchestrated to deliver 60fps performance. Each of the 10+ pages features custom animations while maintaining sub-3-second load times. We implemented conditional loading for heavy 3D graphics, optimized all assets for performance, and built a scalable CMS structure. The system includes three lead capture forms and 18+ case studies, all manageable through Webflow's interface without developer intervention.",
-    results: [
-      { value: "60fps Animations", label: "Complex 3D effects and scroll interactions without sacrificing performance" },
-      { value: "10+ Pages", label: "GSAP, Three.js, and Lottie working seamlessly on Webflow platform" },
-      { value: "85+ Lighthouse Score", label: "Enterprise-grade performance despite heavy animation stack" },
-      { value: "Enterprise Scalability", label: "CMS-powered architecture for easy content updates and future expansion" }
-    ],
-    technologies: ["Webflow", "GSAP", "Three.js", "Lottie", "Custom JS"],
-    gallery: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
-    year: "2024",
-    duration: "3 months",
-    websiteUrl: "https://fixar.pro",
-    serviceType: "Design + Dev",
-    heroTitle: "Enterprise-Grade Website for <gradient>Defense Tech</gradient> Innovation",
-    industry: "Defense Tech",
-    stats: [
-      { label: "Lighthouse Score", value: "85+" },
-      { label: "Pages", value: "10+" },
-      { label: "Animation FPS", value: "60" }
-    ],
-    introText: "webf.love delivered a high-performance, visually striking website for Fixar, an American autonomous UAV manufacturer serving defense, law enforcement, and commercial sectors globally.",
-    backgroundTitle: "The Background",
-    backgroundText: "Fixar is a Virginia-based manufacturer of autonomous unmanned aerial vehicles with AI systems for beyond-visual-line-of-sight operations. Founded in 2018, they serve government and corporate clients across the US, Europe, Middle East, and Africa with cutting-edge defense technology.\n\nThey needed an enterprise-grade web presence that would match their technical sophistication and stand out in the competitive aerospace industry."
-  },
-  {
     id: "csmplt",
     title: "CSMPLT",
     description: "Website for Immigration Consultancy Helping Tech Professionals Secure US & UK Visas",

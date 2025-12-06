@@ -4,10 +4,6 @@ const testimonials = [
     author: "Marketing Team, EnglishDom",
   },
   {
-    quote: "webf.love delivered on schedule with zero issues. The AWS setup they built handles our high-traffic site flawlessly.",
-    author: "Technical Team, Fixar",
-  },
-  {
     quote: "Feels like having an internal team. Clear explanations, full training, complete autonomy.",
     author: "Founder, Client Name",
   },
