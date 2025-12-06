@@ -10,14 +10,14 @@ import Process from "@/components/Process";
 import Capabilities from "@/components/Capabilities";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
-import ClientLogos from "@/components/ClientLogos";
+// import ClientLogos from "@/components/ClientLogos";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <Header />
       <Hero />
-      <ClientLogos />
+      {/* <ClientLogos /> */}
       <div id="services">
         <Services />
       </div>
