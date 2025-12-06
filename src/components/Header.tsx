@@ -46,11 +46,11 @@ const Header = () => {
                 </Link>
               )
             ))}
-            <Link to="/lets-talk">
+            <a href="https://t.me/webflove" target="_blank" rel="noopener noreferrer">
               <Button size="sm" className="glow-effect">
                 Let's Talk
               </Button>
-            </Link>
+            </a>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -87,11 +87,11 @@ const Header = () => {
                 </Link>
               )
             ))}
-            <Link to="/lets-talk" className="w-full">
+            <a href="https://t.me/webflove" target="_blank" rel="noopener noreferrer" className="w-full">
               <Button size="sm" className="glow-effect w-full">
                 Let's Talk
               </Button>
-            </Link>
+            </a>
           </nav>
         )}
       </div>

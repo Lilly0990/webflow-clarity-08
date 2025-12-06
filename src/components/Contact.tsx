@@ -11,11 +11,11 @@ const Contact = () => {
             Tell us about your project — we respond within 24 hours with realistic timelines and an honest assessment.
           </p>
 
-          <Link to="/lets-talk">
+          <a href="https://t.me/webflove" target="_blank" rel="noopener noreferrer">
             <Button size="lg" className="glow-effect text-lg px-8 py-6">
               Let's Talk
             </Button>
-          </Link>
+          </a>
 
           <div className="mt-8 text-muted-foreground">
             <p>

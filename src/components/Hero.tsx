@@ -37,11 +37,11 @@ const Hero = () => {
               View Our Work
             </Button>
           </a>
-          <Link to="/lets-talk">
+          <a href="https://t.me/webflove" target="_blank" rel="noopener noreferrer">
             <Button size="lg" variant="outline" className="text-lg px-8 hover-lift">
               Start a Project
             </Button>
-          </Link>
+          </a>
         </div>
       </div>
     </section>

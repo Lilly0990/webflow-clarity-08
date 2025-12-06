@@ -278,11 +278,11 @@ const ForAgency = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2 animate-fade-in animation-delay-600">
-            <Link to="/lets-talk">
+            <a href="https://t.me/webflove" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="text-lg px-8 glow-effect hover-lift">
                 Start a project
               </Button>
-            </Link>
+            </a>
             <Link to="/#projects">
               <Button size="lg" variant="outline" className="text-lg px-8 hover-lift">
                 See projects
@@ -739,11 +739,11 @@ const ForAgency = () => {
             <br />
             Let's build something your clients will love.
           </p>
-          <Link to="/lets-talk" className="animate-fade-in animation-delay-200 inline-block">
+          <a href="https://t.me/webflove" target="_blank" rel="noopener noreferrer" className="animate-fade-in animation-delay-200 inline-block">
             <Button size="lg" className="glow-effect">
               Start a project
             </Button>
-          </Link>
+          </a>
         </div>
       </section>
 
