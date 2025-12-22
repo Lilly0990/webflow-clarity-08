@@ -21,8 +21,12 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container-custom py-4">
         <div className="flex items-center justify-between">
-          <a href="/" className="text-2xl font-bold gradient-text">
-            webf.love
+          <a href="/" className="flex items-center">
+            <img
+              src="/images/logo-webflove.png"
+              alt="webf.love"
+              className="h-8 w-auto"
+            />
           </a>
 
           {/* Desktop Navigation */}
