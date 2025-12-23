@@ -113,8 +113,8 @@ const Founder = () => {
                     <div>
                       <p className="text-sm text-muted-foreground mb-1">Address</p>
                       <address className="not-italic text-foreground">
-                        Mykhaila Drahomanova, 2A block 3 apt 864<br />
-                        Kyiv, 01001<br />
+                        Drahomanova Mykhaila, build 2A, housing 3, fl 864<br />
+                        Kyiv, 02159<br />
                         Ukraine
                       </address>
                     </div>
