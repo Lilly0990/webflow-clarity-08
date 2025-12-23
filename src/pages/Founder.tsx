@@ -130,12 +130,12 @@ const Founder = () => {
                     <div>
                       <p className="text-sm text-muted-foreground mb-1">LinkedIn</p>
                       <a
-                        href="https://linkedin.com/in/vlad-rulikovskiy"
+                        href="https://www.linkedin.com/in/rulikovskyi"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-foreground hover:text-primary transition-colors"
                       >
-                        linkedin.com/in/vlad-rulikovskiy
+                        linkedin.com/in/rulikovskyi
                       </a>
                     </div>
                   </div>
