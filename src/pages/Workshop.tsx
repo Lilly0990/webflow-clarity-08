@@ -42,8 +42,7 @@ const Workshop = () => {
             </p>
 
             <p className="text-lg text-muted-foreground/80 max-w-2xl">
-              Будуємо якісний лендінг для оренди авто: вибір дат, фільтрація доступних авто,
-              оформлення замовлення, збереження в базу — від нуля до деплою.
+              Зробимо сервіс оренди авто — лендінг з вибором дат, списком машин та простим букінгом.
             </p>
           </header>
 
@@ -55,33 +54,23 @@ const Workshop = () => {
               {/* Avatars */}
               <div className="flex items-center mb-6">
                 <div className="flex -space-x-3">
-                  <img
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face"
-                    alt=""
-                    className="w-10 h-10 rounded-full border-2 border-card object-cover"
-                  />
-                  <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face"
-                    alt=""
-                    className="w-10 h-10 rounded-full border-2 border-card object-cover"
-                  />
-                  <img
-                    src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&h=80&fit=crop&crop=face"
-                    alt=""
-                    className="w-10 h-10 rounded-full border-2 border-card object-cover"
-                  />
-                  <img
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face"
-                    alt=""
-                    className="w-10 h-10 rounded-full border-2 border-card object-cover"
-                  />
-                  <img
-                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face"
-                    alt=""
-                    className="w-10 h-10 rounded-full border-2 border-card object-cover"
-                  />
+                  <div className="w-10 h-10 rounded-full border-2 border-card overflow-hidden">
+                    <img src="/images/1111.png" alt="" className="w-full h-full object-cover scale-[1.4]" />
+                  </div>
+                  <div className="w-10 h-10 rounded-full border-2 border-card overflow-hidden">
+                    <img src="/images/1111.png" alt="" className="w-full h-full object-cover scale-[1.4]" />
+                  </div>
+                  <div className="w-10 h-10 rounded-full border-2 border-card overflow-hidden">
+                    <img src="/images/1111.png" alt="" className="w-full h-full object-cover scale-[1.4]" />
+                  </div>
+                  <div className="w-10 h-10 rounded-full border-2 border-card overflow-hidden">
+                    <img src="/images/1111.png" alt="" className="w-full h-full object-cover scale-[1.4]" />
+                  </div>
+                  <div className="w-10 h-10 rounded-full border-2 border-card overflow-hidden">
+                    <img src="/images/1111.png" alt="" className="w-full h-full object-cover scale-[1.4]" />
+                  </div>
                 </div>
-                              </div>
+              </div>
 
               <h2 className="text-2xl md:text-3xl font-bold mb-6">Дизайнери та маркетологи</h2>
               <div className="text-lg text-muted-foreground leading-relaxed space-y-4">
