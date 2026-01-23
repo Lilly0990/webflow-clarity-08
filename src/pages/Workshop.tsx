@@ -10,8 +10,8 @@ const Workshop = () => {
         <div className="max-w-4xl mx-auto">
           {/* Hero */}
           <header className="mb-20 animate-fade-in">
-            {/* Logos */}
-            <div className="flex items-center justify-between mb-16">
+            {/* Header info - mobile on top */}
+            <div className="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-4 mb-16">
               <div className="flex items-center gap-4">
                 <img
                   src="/images/logo-webflove.png"
@@ -25,7 +25,7 @@ const Workshop = () => {
                   className="h-8 md:h-10 w-auto"
                 />
               </div>
-              <div className="text-right text-sm text-muted-foreground">
+              <div className="text-left md:text-right text-sm text-muted-foreground">
                 <p className="font-semibold text-foreground">AI WORKSHOP</p>
                 <p>2026</p>
               </div>
@@ -93,138 +93,102 @@ const Workshop = () => {
             <div className="space-y-4">
               {/* Topic 1 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
-                <div className="flex gap-6">
-                  <span className="text-4xl font-bold text-primary/40 shrink-0">01</span>
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-bold mb-3">Lovable vs Claude Code</h3>
-                    <p className="text-muted-foreground leading-relaxed mb-4">
-                      Яка, блядь, різниця? Чому Lovable жере токени на кожен чих, а Claude Code — ні.
-                      Як їх юзати разом, а не битись головою об стіну окремо з кожним.
-                    </p>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Чому Claude Code дає набагато більше контролю над проєктом: доступ до терміналу,
-                      робота з будь-якими файлами, інтеграція з GitHub, MCP-сервери, паралельні сесії.
-                      Повний контроль замість чорної скриньки.
-                    </p>
-                  </div>
-                </div>
+                <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">01</span>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Lovable vs Claude Code</h3>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  Яка, блядь, різниця? Чому Lovable жере токени на кожен чих, а Claude Code — ні.
+                  Як їх юзати разом, а не битись головою об стіну окремо з кожним.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Чому Claude Code дає набагато більше контролю над проєктом: доступ до терміналу,
+                  робота з будь-якими файлами, інтеграція з GitHub, MCP-сервери, паралельні сесії.
+                  Повний контроль замість чорної скриньки.
+                </p>
               </div>
 
               {/* Topic 2 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
-                <div className="flex gap-6">
-                  <span className="text-4xl font-bold text-primary/40 shrink-0">02</span>
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-bold mb-3">Налаштування середовища</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Термінал, GitHub, базова конфігурація. Нудно, але без цього нікуди.
-                      Один раз налаштував — далі просто працюєш.
-                    </p>
-                  </div>
-                </div>
+                <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">02</span>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Налаштування середовища</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Термінал, GitHub, базова конфігурація. Нудно, але без цього нікуди.
+                  Один раз налаштував — далі просто працюєш.
+                </p>
               </div>
 
               {/* Topic 3 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
-                <div className="flex gap-6">
-                  <span className="text-4xl font-bold text-primary/40 shrink-0">03</span>
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-bold mb-3">PRD + Plan Mode</h3>
-                    <p className="text-muted-foreground leading-relaxed mb-4">
-                      Тут магія. Показую різницю між "зроби мені лендінг" і нормально сформульованим запитом.
-                      Два термінали поруч, однакова задача, результат — небо і земля.
-                    </p>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Чому Plan Mode критичний для будь-якого проєкту: AI спочатку аналізує задачу,
-                      продумує архітектуру, і тільки потім пише код. Замість хаотичних правок —
-                      структурований план. Plan mode — це не опція, це must have.
-                    </p>
-                  </div>
-                </div>
+                <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">03</span>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">PRD + Plan Mode</h3>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  Тут магія. Показую різницю між "зроби мені лендінг" і нормально сформульованим запитом.
+                  Два термінали поруч, однакова задача, результат — небо і земля.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Чому Plan Mode критичний для будь-якого проєкту: AI спочатку аналізує задачу,
+                  продумує архітектуру, і тільки потім пише код. Замість хаотичних правок —
+                  структурований план. Plan mode — це не опція, це must have.
+                </p>
               </div>
 
               {/* Topic 4 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
-                <div className="flex gap-6">
-                  <span className="text-4xl font-bold text-primary/40 shrink-0">04</span>
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-bold mb-3">Як писати промпти</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Забудьте про ChatGPT-generated промпти на три сторінки. AI розуміє прості речі, розбиті на кроки.
-                      І так, я тепер промпчу голосом — розкажу чому.
-                    </p>
-                  </div>
-                </div>
+                <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">04</span>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Як писати промпти</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Забудьте про ChatGPT-generated промпти на три сторінки. AI розуміє прості речі, розбиті на кроки.
+                  І так, я тепер промпчу голосом — розкажу чому.
+                </p>
               </div>
 
               {/* Topic 5 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
-                <div className="flex gap-6">
-                  <span className="text-4xl font-bold text-primary/40 shrink-0">05</span>
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-bold mb-3">Каркас проєкту</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Збираємо скелет букінг-сервісу. Supabase для бази, GitHub для коду, Lovable + Claude Code для роботи.
-                      Все зв'язуємо, щоб воно реально працювало.
-                    </p>
-                  </div>
-                </div>
+                <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">05</span>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Каркас проєкту</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Збираємо скелет букінг-сервісу. Supabase для бази, GitHub для коду, Lovable + Claude Code для роботи.
+                  Все зв'язуємо, щоб воно реально працювало.
+                </p>
               </div>
 
               {/* Topic 6 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
-                <div className="flex gap-6">
-                  <span className="text-4xl font-bold text-primary/40 shrink-0">06</span>
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-bold mb-3">Авторизація</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Робимо просту авторизацію і створюємо адмінські доступи через Supabase.
-                      Без цього ваш MVP — просто іграшка.
-                    </p>
-                  </div>
-                </div>
+                <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">06</span>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Авторизація</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Робимо просту авторизацію і створюємо адмінські доступи через Supabase.
+                  Без цього ваш MVP — просто іграшка.
+                </p>
               </div>
 
               {/* Topic 7 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
-                <div className="flex gap-6">
-                  <span className="text-4xl font-bold text-primary/40 shrink-0">07</span>
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-bold mb-3">Паралельна робота</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Два термінали одночасно. В одному — адмінка, в іншому — лендінг по референсу.
-                      Поки один думає, другий працює. Ефективність × 2.
-                    </p>
-                  </div>
-                </div>
+                <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">07</span>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Паралельна робота</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Два термінали одночасно. В одному — адмінка, в іншому — лендінг по референсу.
+                  Поки один думає, другий працює. Ефективність × 2.
+                </p>
               </div>
 
               {/* Topic 8 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
-                <div className="flex gap-6">
-                  <span className="text-4xl font-bold text-primary/40 shrink-0">08</span>
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-bold mb-3">Документація</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Як правильно зберігати документацію проєкту. Що фіксувати, де тримати, як не втратити контекст через тиждень.
-                      Бо без документації ваш проєкт — чорна скринька навіть для вас самих.
-                    </p>
-                  </div>
-                </div>
+                <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">08</span>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Документація</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Як правильно зберігати документацію проєкту. Що фіксувати, де тримати, як не втратити контекст через тиждень.
+                  Бо без документації ваш проєкт — чорна скринька навіть для вас самих.
+                </p>
               </div>
 
               {/* Topic 9 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
-                <div className="flex gap-6">
-                  <span className="text-4xl font-bold text-primary/40 shrink-0">09</span>
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-bold mb-3">Деплой + передача</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Як швидко деплоїти проєкт на домен. Які варіанти передачі проєкту клієнту:
-                      репозиторій, доступи до хостингу, документація.
-                    </p>
-                  </div>
-                </div>
+                <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">09</span>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Деплой + передача</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Як швидко деплоїти проєкт на домен. Які варіанти передачі проєкту клієнту:
+                  репозиторій, доступи до хостингу, документація.
+                </p>
               </div>
             </div>
           </section>
