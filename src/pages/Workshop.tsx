@@ -122,7 +122,7 @@ const Workshop = () => {
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">PRD + Plan Mode</h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Тут магія. Показую різницю між "зроби мені лендінг" і нормально сформульованим запитом.
-                  Два термінали поруч, однакова задача, результат — небо і земля.
+                  Однакова задача, результат — небо і земля.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   Чому Plan Mode критичний для будь-якого проєкту: AI спочатку аналізує задачу,
@@ -134,10 +134,13 @@ const Workshop = () => {
               {/* Topic 4 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
                 <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">04</span>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">Як писати промпти</h3>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Як я пишу промпти</h3>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  Чому ChatGPT-generated промпти на три сторінки — не завжди добре для розробки.
+                  AI відмінно розуміє звичайні пояснення і покрокові інструкції.
+                </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  Забудьте про ChatGPT-generated промпти на три сторінки. AI розуміє прості речі, розбиті на кроки.
-                  І так, я тепер промпчу голосом — розкажу чому.
+                  Покажу, чому я почав промптити голосом, а не текстом з клавіатури.
                 </p>
               </div>
 
@@ -147,7 +150,7 @@ const Workshop = () => {
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">Каркас проєкту</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Збираємо скелет букінг-сервісу. Supabase для бази, GitHub для коду, Lovable + Claude Code для роботи.
-                  Все зв'язуємо, щоб воно реально працювало.
+                  Робимо зв'язку, яка буде стабільно працювати.
                 </p>
               </div>
 
@@ -156,8 +159,8 @@ const Workshop = () => {
                 <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">06</span>
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">Авторизація</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Робимо просту авторизацію і створюємо адмінські доступи через Supabase.
-                  Без цього ваш MVP — просто іграшка.
+                  Робимо базову авторизацію через Supabase, створюємо адміна і одразу плануємо
+                  на майбутнє — ролі та доступи для інших користувачів. Все фіксуємо в документації.
                 </p>
               </div>
 
@@ -166,8 +169,8 @@ const Workshop = () => {
                 <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">07</span>
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">Паралельна робота</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Два термінали одночасно. В одному — адмінка, в іншому — лендінг по референсу.
-                  Поки один думає, другий працює. Ефективність × 2.
+                  Покажу, як і чому я одночасно працюю в двох, трьох, чотирьох терміналах
+                  і які плюси це дає.
                 </p>
               </div>
 
@@ -206,9 +209,13 @@ const Workshop = () => {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-xl md:text-2xl font-bold mb-3">Figma MCP</h3>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    Як підключити Claude Code до Figma через MCP, щоб він бачив стилі, кольори, шрифти
+                    і відступи макету. Як працювати з ним, щоб отримати pixel-perfect верстку.
+                  </p>
                   <p className="text-muted-foreground leading-relaxed">
-                    Підключаємо Claude Code напряму до Figma. Він читає макет, ти кажеш "зверстай" — і воно верстає.
-                    Pixel-perfect, без ручної роботи.
+                    І головне — як це масштабувати: один раз налаштував, далі верстаєш будь-який макет
+                    в рази швидше.
                   </p>
                 </div>
 
