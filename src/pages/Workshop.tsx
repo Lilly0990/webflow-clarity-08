@@ -26,8 +26,8 @@ const Workshop = () => {
                 />
               </div>
               <div className="text-left md:text-right text-sm text-muted-foreground">
-                <p className="font-semibold text-foreground">AI WORKSHOP</p>
-                <p>2026</p>
+                <p className="font-semibold text-foreground">WORKSHOP</p>
+                <p>Glow Team · 2026</p>
               </div>
             </div>
 

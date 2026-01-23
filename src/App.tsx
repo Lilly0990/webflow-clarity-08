@@ -49,7 +49,7 @@ const App = () => {
             <Route path="/lets-talk" element={<LetsTalk />} />
             <Route path="/for-agency" element={<ForAgency />} />
             <Route path="/about-me" element={<Founder />} />
-            <Route path="/workshop" element={<Workshop />} />
+            <Route path="/workshop_glow-team" element={<Workshop />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
