@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CodeBlock from "@/components/CodeBlock";
 
 const Workshop = () => {
   return (
@@ -110,10 +111,59 @@ const Workshop = () => {
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
                 <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">02</span>
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">Налаштування середовища</h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed mb-6">
                   Термінал, GitHub, базова конфігурація. Нудно, але без цього нікуди.
                   Один раз налаштував — далі просто працюєш.
                 </p>
+
+                <div className="space-y-4">
+                  <CodeBlock
+                    label="1. Homebrew"
+                    code={`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`}
+                  />
+
+                  <p className="text-sm text-muted-foreground/80 bg-muted/50 rounded-lg p-3">
+                    ⚠️ Після встановлення Homebrew покаже команди для додавання в PATH — виконайте їх!
+                    Потім перезапустіть Terminal.
+                  </p>
+
+                  <CodeBlock
+                    label="2. Перевірка Homebrew"
+                    code="brew --version"
+                  />
+
+                  <CodeBlock
+                    label="3. Node.js"
+                    code="brew install node"
+                  />
+
+                  <p className="text-sm text-muted-foreground/80 bg-muted/50 rounded-lg p-3">
+                    ⚠️ Перезапустіть Terminal після встановлення Node.js
+                  </p>
+
+                  <CodeBlock
+                    label="4. Перевірка Node.js"
+                    code={`node --version
+npm --version`}
+                  />
+
+                  <CodeBlock
+                    label="5. Claude Code"
+                    code={`curl -fsSL https://claude.ai/install.sh | bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
+claude --version`}
+                  />
+
+                  <CodeBlock
+                    label="6. GitHub Desktop"
+                    code="brew install --cask github"
+                  />
+
+                  <CodeBlock
+                    label="7. VS Code"
+                    code="brew install --cask visual-studio-code"
+                  />
+                </div>
               </div>
 
               {/* Topic 3 */}

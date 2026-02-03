@@ -41,6 +41,39 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "prozora-network",
+    title: "Prozora Network",
+    description: "Ukraine's First Bank Consortium for Instant A2A Payments",
+    category: "FinTech",
+    highlights: ["GSAP + ScrollTrigger", "SplitType text effects", "Swiper carousels", "Multi-language UA/EN", "21 partner banks"],
+    previewImage: "/projects/prozora-network-preview.png",
+    fullDescription: "webf.love developed a professional website for Prozora Network, Ukraine's first consortium of banks enabling instant account-to-account payments. The platform unites 21 leading Ukrainian banks and payment companies under a single infrastructure for seamless interbank transfers.",
+    challenge: "Prozora Network needed a website that would establish credibility and trust for Ukraine's first bank consortium while explaining complex payment infrastructure to both B2B partners and end users. The challenge was presenting technical payment solutions in an accessible way while showcasing their impressive roster of 21 partner banks. The site required multi-language support for Ukrainian and English audiences, smooth scroll animations, and a professional partner showcase.",
+    solution: "We implemented GSAP with ScrollTrigger for scroll-driven animations and SplitType for elegant text reveals that create visual sophistication. Swiper powers the partner carousel featuring logos of all 21 consortium members including PrivatBank, Monobank, PUMB, Sense Bank, and other major Ukrainian financial institutions. Finsweet Attributes handle cookie consent and scroll behavior. The multi-language implementation supports seamless switching between Ukrainian and English versions.",
+    results: [
+      { value: "Partner Showcase", label: "Interactive carousel featuring 21 banks and payment companies in the consortium" },
+      { value: "Text Animations", label: "SplitType-powered character reveals create professional, trustworthy impression" },
+      { value: "Multi-Language", label: "Full Ukrainian and English localization for domestic and international audiences" },
+      { value: "Scroll Experience", label: "GSAP ScrollTrigger animations guide users through payment infrastructure benefits" }
+    ],
+    technologies: ["Webflow", "GSAP", "ScrollTrigger", "SplitType", "Swiper", "Finsweet Attributes", "Multi-language", "Google Analytics"],
+    gallery: ["/projects/prozora-network-preview.png"],
+    year: "2024",
+    duration: "5 weeks",
+    websiteUrl: "https://www.prozora.network",
+    serviceType: "Dev",
+    heroTitle: "Ukraine's First Bank Consortium for <ukraine>Instant A2A</ukraine> Payments",
+    industry: "FinTech & Banking",
+    stats: [
+      { label: "Partner Banks", value: "21" },
+      { label: "Languages", value: "UA/EN" },
+      { label: "Animation Stack", value: "GSAP + SplitType" }
+    ],
+    introText: "webf.love developed a professional website for Prozora Network, Ukraine's first consortium of banks enabling instant account-to-account payments.",
+    backgroundTitle: "The Background",
+    backgroundText: "Prozora Network is Ukraine's pioneering bank consortium created to enable instant account-to-account (A2A) payments between financial institutions. The consortium unites 21 major Ukrainian banks and payment companies—including PrivatBank, Monobank, PUMB, Sense Bank, iBox Bank, and others—under a single interoperability infrastructure.\n\nThey needed a website that would communicate their role as the backbone of Ukraine's instant payment ecosystem while building trust with both financial partners and end users."
+  },
+  {
     id: "mindly-therapy",
     title: "Mindly Therapy",
     description: "Professional Online Therapy Platform with Premium Scroll Animations",
