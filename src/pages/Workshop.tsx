@@ -1,8 +1,13 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CodeBlock from "@/components/CodeBlock";
+import TerminalMock from "@/components/TerminalMock";
+import { ChevronDown } from "lucide-react";
 
 const Workshop = () => {
+  const [isSetupOpen, setIsSetupOpen] = useState(false);
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -27,7 +32,7 @@ const Workshop = () => {
                 />
               </div>
               <div className="text-left md:text-right text-sm text-muted-foreground">
-                <p className="font-semibold text-foreground">WORKSHOP</p>
+                <p className="font-medium text-foreground">WORKSHOP</p>
                 <p>Glow Team · 2026</p>
               </div>
             </div>
@@ -80,7 +85,7 @@ const Workshop = () => {
                   отримали купу галюцинацій і забили.
                 </p>
                 <p>
-                  <strong className="text-foreground">Мета</strong> — показати, як AI дійсно
+                  <span className="text-foreground">Мета</span> — показати, як AI дійсно
                   може допомагати у реальній роботі.
                 </p>
               </div>
@@ -116,53 +121,255 @@ const Workshop = () => {
                   Один раз налаштував — далі просто працюєш.
                 </p>
 
-                <div className="space-y-4">
-                  <CodeBlock
-                    label="1. Homebrew"
-                    code={`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`}
-                  />
+                {/* Collapsible Setup Guide */}
+                <div className="border border-border rounded-xl overflow-hidden">
+                  <button
+                    onClick={() => setIsSetupOpen(!isSetupOpen)}
+                    className="w-full flex items-center justify-between p-4 md:p-5 bg-muted/30 hover:bg-muted/50 transition-colors text-left"
+                  >
+                    <span className="font-medium">Гайд з налаштування</span>
+                    <ChevronDown
+                      className={`w-5 h-5 text-muted-foreground transition-transform duration-200 ${
+                        isSetupOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
 
-                  <p className="text-sm text-muted-foreground/80 bg-muted/50 rounded-lg p-3">
-                    ⚠️ Після встановлення Homebrew покаже команди для додавання в PATH — виконайте їх!
-                    Потім перезапустіть Terminal.
-                  </p>
+                  {isSetupOpen && (
+                    <div className="p-4 md:p-6 space-y-8 border-t border-border">
+                      {/* Step 0 - Open Terminal */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">0. Відкрий Terminal</h4>
+                        <p className="text-muted-foreground mb-3">
+                          Відкрий пошук на Mac (іконка лупи у верхньому правому куті або Spotlight),
+                          введи "Terminal" і відкрий програму. В терміналі ми будемо виконувати всі команди далі.
+                        </p>
+                        <TerminalMock
+                          title="Terminal — zsh"
+                          minHeight="200px"
+                          lines={[
+                            { text: "Last login: Mon Feb  3 10:30:00 on ttys000" },
+                            { text: "yourname@MacBook ~ %" },
+                          ]}
+                        />
+                        <div className="mt-4 bg-primary/5 border-l-2 border-primary/40 rounded-r-lg p-3">
+                          <p className="text-sm text-muted-foreground">
+                            Приблизно так виглядає термінал коли ти його відкриваєш. Тепер можеш копіювати команди нижче і вставляти їх сюди.
+                          </p>
+                        </div>
+                      </div>
 
-                  <CodeBlock
-                    label="2. Перевірка Homebrew"
-                    code="brew --version"
-                  />
+                      {/* Step 1 - Homebrew */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">1. Встановлення Homebrew</h4>
+                        <p className="text-muted-foreground mb-3">
+                          <span className="text-foreground">Homebrew</span> — це як App Store для програмістів на Mac.
+                          Замість шукати програми по інтернету і качати .dmg файли, ти просто пишеш одну команду — і все встановлюється.
+                        </p>
+                        <CodeBlock
+                          code={`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`}
+                        />
+                        <div className="mt-3 mb-3 bg-primary/5 border-l-2 border-primary/40 rounded-r-lg p-3">
+                          <p className="text-sm text-muted-foreground">
+                            Копіюєш, вставляєш в термінал, натискаєш Enter.
+                          </p>
+                        </div>
+                        <p className="text-sm bg-red-500/10 border border-red-500/30 text-red-400 rounded-lg p-3 mb-3">
+                          ⏱️ Час очікування: <span className="text-red-300">3-6 хвилин</span>. Не закривай термінал, просто чекай.
+                        </p>
+                        <p className="text-sm text-muted-foreground/80 mb-3">
+                          Коли завершиться, побачиш:
+                        </p>
+                        <TerminalMock
+                          title="Terminal — Homebrew Installation"
+                          lines={[
+                            { text: '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"', type: "command" },
+                            { text: "" },
+                            { text: "==> Checking for `sudo` access (which may request your password)...", type: "info" },
+                            { text: "Password: ********" },
+                            { text: "" },
+                            { text: "==> This script will install:", type: "info" },
+                            { text: "/opt/homebrew/bin/brew" },
+                            { text: "/opt/homebrew/share/doc/homebrew" },
+                            { text: "/opt/homebrew/share/man/man1/brew.1" },
+                            { text: "/opt/homebrew/share/zsh/site-functions/_brew" },
+                            { text: "/opt/homebrew/etc/bash_completion.d/brew" },
+                            { text: "" },
+                            { text: "==> The Xcode Command Line Tools will be installed.", type: "info" },
+                            { text: "" },
+                            { text: "Press RETURN/ENTER to continue or any other key to abort:" },
+                            { text: "" },
+                            { text: "==> Downloading Command Line Tools for Xcode...", type: "info" },
+                            { text: "==> Installing Command Line Tools for Xcode...", type: "info" },
+                            { text: "==> /usr/bin/sudo /usr/sbin/softwareupdate -i Command Line Tools...", type: "info" },
+                            { text: "" },
+                            { text: "==> Downloading and installing Homebrew...", type: "info" },
+                            { text: "==> Installation successful!", type: "success" },
+                            { text: "" },
+                            { text: "==> Next steps:", type: "warning" },
+                            { text: "- Run these commands in your terminal to add Homebrew to your PATH", type: "warning" },
+                          ]}
+                        />
+                      </div>
 
-                  <CodeBlock
-                    label="3. Node.js"
-                    code="brew install node"
-                  />
+                      {/* Step 1.5 - Add Homebrew to PATH */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">1.5 Додавання Homebrew в систему</h4>
+                        <p className="text-muted-foreground mb-3">
+                          Після встановлення Homebrew покаже команди які треба виконати. Скопіюй їх всі разом і встав в термінал.
+                        </p>
+                        <CodeBlock
+                          code={`echo >> ~/.zprofile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"`}
+                        />
+                        <div className="mt-3 mb-3 bg-primary/5 border-l-2 border-primary/40 rounded-r-lg p-3">
+                          <p className="text-sm text-muted-foreground">
+                            Копіюєш все разом, вставляєш, натискаєш Enter. Термінал нічого не відповість — це нормально.
+                          </p>
+                        </div>
+                        <TerminalMock
+                          title="Terminal"
+                          lines={[
+                            { text: 'echo >> ~/.zprofile', type: "command" },
+                            { text: 'echo \'eval "$(/opt/homebrew/bin/brew shellenv)"\' >> ~/.zprofile', type: "command" },
+                            { text: 'eval "$(/opt/homebrew/bin/brew shellenv)"', type: "command" },
+                            { text: "yourname@MacBook ~ %" },
+                          ]}
+                        />
+                        <p className="text-sm text-muted-foreground/80 bg-muted/50 rounded-lg p-3 mt-3">
+                          ⚠️ Тепер закрий термінал і відкрий заново.
+                        </p>
+                      </div>
 
-                  <p className="text-sm text-muted-foreground/80 bg-muted/50 rounded-lg p-3">
-                    ⚠️ Перезапустіть Terminal після встановлення Node.js
-                  </p>
+                      {/* Step 2 - Check Homebrew */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">2. Перевірка Homebrew</h4>
+                        <p className="text-muted-foreground mb-3">
+                          Перевіряємо, чи Homebrew працює. Якщо бачиш версію — все ок.
+                        </p>
+                        <CodeBlock
+                          code="brew --version"
+                        />
+                        <TerminalMock
+                          title="Terminal"
+                          lines={[
+                            { text: "brew --version", type: "command" },
+                            { text: "Homebrew 4.4.15", type: "success" },
+                          ]}
+                        />
+                      </div>
 
-                  <CodeBlock
-                    label="4. Перевірка Node.js"
-                    code={`node --version
+                      {/* Step 3 - Node.js */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">3. Встановлення Node.js</h4>
+                        <p className="text-muted-foreground mb-3">
+                          Node.js потрібен для запуску веб-проєктів.
+                        </p>
+                        <CodeBlock
+                          code="brew install node"
+                        />
+                        <p className="text-sm text-muted-foreground/80 bg-muted/50 rounded-lg p-3 mt-3">
+                          ⚠️ Перезапусти Terminal після встановлення Node.js
+                        </p>
+                      </div>
+
+                      {/* Step 4 - Check Node.js */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">4. Перевірка Node.js та npm</h4>
+                        <p className="text-muted-foreground mb-3">
+                          Перевіряємо, чи Node.js встановився. <span className="text-foreground">npm</span> — це менеджер пакетів,
+                          який йде разом з Node.js. Через нього встановлюються бібліотеки для проєктів.
+                        </p>
+                        <CodeBlock
+                          code={`node --version
 npm --version`}
-                  />
+                        />
+                        <TerminalMock
+                          title="Terminal"
+                          lines={[
+                            { text: "node --version", type: "command" },
+                            { text: "v22.12.0", type: "success" },
+                            { text: "npm --version", type: "command" },
+                            { text: "10.9.0", type: "success" },
+                          ]}
+                        />
+                      </div>
 
-                  <CodeBlock
-                    label="5. Claude Code"
-                    code={`curl -fsSL https://claude.ai/install.sh | bash
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
-claude --version`}
-                  />
+                      {/* Step 5 - Claude Code */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">5. Встановлення Claude Code</h4>
+                        <p className="text-muted-foreground mb-3">
+                          Claude Code — AI-помічник в терміналі, за допомогою якого будемо робити магію.
+                          Він бачить твій код, може його редагувати, запускати команди, працювати з Git,
+                          переходити на сайти і працювати з документами на твоєму комп'ютері, до яких ти даси доступ.
+                        </p>
+                        <CodeBlock
+                          code="curl -fsSL https://claude.ai/install.sh | bash"
+                        />
+                        <CodeBlock
+                          code={`echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc`}
+                        />
+                        <CodeBlock
+                          code="claude --version"
+                        />
+                        <div className="mt-3 mb-3 bg-primary/5 border-l-2 border-primary/40 rounded-r-lg p-3">
+                          <p className="text-sm text-muted-foreground">
+                            По черзі вставляєш ці три команди в термінал. На фіналі маєш побачити:
+                          </p>
+                        </div>
+                        <TerminalMock
+                          title="Terminal"
+                          lines={[
+                            { text: "claude --version", type: "command" },
+                            { text: "1.0.17 (Claude Code)", type: "success" },
+                          ]}
+                        />
+                      </div>
 
-                  <CodeBlock
-                    label="6. GitHub Desktop"
-                    code="brew install --cask github"
-                  />
-
-                  <CodeBlock
-                    label="7. VS Code"
-                    code="brew install --cask visual-studio-code"
-                  />
+                      {/* Step 6 - Launch Claude Code */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">6. Запуск Claude Code</h4>
+                        <p className="text-muted-foreground mb-3">
+                          Відкриваєш термінал, пишеш claude і натискаєш Enter.
+                        </p>
+                        <CodeBlock
+                          code="claude"
+                        />
+                        <TerminalMock
+                          title="Terminal"
+                          minHeight="380px"
+                          lines={[
+                            { text: "claude", type: "command" },
+                            { text: "" },
+                            { text: "  ╭───────────────────────────────────────────────╮" },
+                            { text: "  │  ✻ Welcome to the Claude Code research preview! │" },
+                            { text: "  ╰───────────────────────────────────────────────╯" },
+                            { text: "" },
+                            { text: "   ██████╗██╗      █████╗ ██╗   ██╗██████╗ ███████╗", type: "orange" },
+                            { text: "  ██╔════╝██║     ██╔══██╗██║   ██║██╔══██╗██╔════╝", type: "orange" },
+                            { text: "  ██║     ██║     ███████║██║   ██║██║  ██║█████╗  ", type: "orange" },
+                            { text: "  ██║     ██║     ██╔══██║██║   ██║██║  ██║██╔══╝  ", type: "orange" },
+                            { text: "  ╚██████╗███████╗██║  ██║╚██████╔╝██████╔╝███████╗", type: "orange" },
+                            { text: "   ╚═════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝", type: "orange" },
+                            { text: "   ██████╗ ██████╗ ██████╗ ███████╗", type: "orange" },
+                            { text: "  ██╔════╝██╔═══██╗██╔══██╗██╔════╝", type: "orange" },
+                            { text: "  ██║     ██║   ██║██║  ██║█████╗  ", type: "orange" },
+                            { text: "  ██║     ██║   ██║██║  ██║██╔══╝  ", type: "orange" },
+                            { text: "  ╚██████╗╚██████╔╝██████╔╝███████╗", type: "orange" },
+                            { text: "   ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝", type: "orange" },
+                            { text: "" },
+                            { text: "  🎉 Login successful. Press Enter to continue", type: "success" },
+                          ]}
+                        />
+                        <div className="mt-4 bg-primary/5 border-l-2 border-primary/40 rounded-r-lg p-3">
+                          <p className="text-sm text-muted-foreground">
+                            Якщо бачиш щось схоже — вітаю, тепер ти майже хакер. Ти встановив Claude Code на свій комп'ютер. Далі треба під'єднати акаунт.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 

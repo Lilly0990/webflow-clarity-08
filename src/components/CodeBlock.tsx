@@ -28,15 +28,15 @@ const CodeBlock = ({ code, label }: CodeBlockProps) => {
           {label}
         </div>
       )}
-      <div className="relative bg-zinc-900 rounded-lg overflow-hidden">
+      <div className="relative bg-zinc-800/60 rounded-lg overflow-hidden border border-zinc-700/50">
         <pre className="p-4 pr-14 overflow-x-auto">
-          <code className="text-sm text-zinc-100 font-mono whitespace-pre-wrap break-all">
+          <code className="text-sm text-zinc-200 font-mono whitespace-pre-wrap break-all">
             {code}
           </code>
         </pre>
         <button
           onClick={handleCopy}
-          className="absolute top-3 right-3 p-2 rounded-md bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-zinc-100 transition-all"
+          className="absolute top-3 right-3 p-2 rounded-md bg-zinc-700/60 hover:bg-zinc-600/60 text-zinc-400 hover:text-zinc-100 transition-all"
           aria-label="Копіювати код"
         >
           {copied ? (
