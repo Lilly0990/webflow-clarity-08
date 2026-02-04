@@ -7,6 +7,7 @@ import { ChevronDown } from "lucide-react";
 
 const Workshop = () => {
   const [isSetupOpen, setIsSetupOpen] = useState(false);
+  const [isWindowsSetupOpen, setIsWindowsSetupOpen] = useState(false);
 
   return (
     <div className="min-h-screen">
@@ -127,7 +128,7 @@ const Workshop = () => {
                     onClick={() => setIsSetupOpen(!isSetupOpen)}
                     className="w-full flex items-center justify-between p-4 md:p-5 bg-muted/30 hover:bg-muted/50 transition-colors text-left"
                   >
-                    <span className="font-medium">Гайд з налаштування</span>
+                    <span className="font-medium">Гайд для Mac</span>
                     <ChevronDown
                       className={`w-5 h-5 text-muted-foreground transition-transform duration-200 ${
                         isSetupOpen ? "rotate-180" : ""
@@ -342,6 +343,136 @@ npm --version`}
                         />
                         <TerminalMock
                           title="Terminal"
+                          minHeight="380px"
+                          lines={[
+                            { text: "claude", type: "command" },
+                            { text: "" },
+                            { text: "  ╭───────────────────────────────────────────────╮" },
+                            { text: "  │  ✻ Welcome to the Claude Code research preview! │" },
+                            { text: "  ╰───────────────────────────────────────────────╯" },
+                            { text: "" },
+                            { text: "   ██████╗██╗      █████╗ ██╗   ██╗██████╗ ███████╗", type: "orange" },
+                            { text: "  ██╔════╝██║     ██╔══██╗██║   ██║██╔══██╗██╔════╝", type: "orange" },
+                            { text: "  ██║     ██║     ███████║██║   ██║██║  ██║█████╗  ", type: "orange" },
+                            { text: "  ██║     ██║     ██╔══██║██║   ██║██║  ██║██╔══╝  ", type: "orange" },
+                            { text: "  ╚██████╗███████╗██║  ██║╚██████╔╝██████╔╝███████╗", type: "orange" },
+                            { text: "   ╚═════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝", type: "orange" },
+                            { text: "   ██████╗ ██████╗ ██████╗ ███████╗", type: "orange" },
+                            { text: "  ██╔════╝██╔═══██╗██╔══██╗██╔════╝", type: "orange" },
+                            { text: "  ██║     ██║   ██║██║  ██║█████╗  ", type: "orange" },
+                            { text: "  ██║     ██║   ██║██║  ██║██╔══╝  ", type: "orange" },
+                            { text: "  ╚██████╗╚██████╔╝██████╔╝███████╗", type: "orange" },
+                            { text: "   ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝", type: "orange" },
+                            { text: "" },
+                            { text: "  🎉 Login successful. Press Enter to continue", type: "success" },
+                          ]}
+                        />
+                        <div className="mt-4 bg-primary/5 border-l-2 border-primary/40 rounded-r-lg p-3">
+                          <p className="text-sm text-muted-foreground">
+                            Якщо бачиш щось схоже — вітаю, тепер ти майже хакер. Ти встановив Claude Code на свій комп'ютер. Далі треба під'єднати акаунт.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Windows Guide */}
+                <div className="border border-border rounded-xl overflow-hidden mt-4">
+                  <button
+                    onClick={() => setIsWindowsSetupOpen(!isWindowsSetupOpen)}
+                    className="w-full flex items-center justify-between p-4 md:p-5 bg-muted/30 hover:bg-muted/50 transition-colors text-left"
+                  >
+                    <span className="font-medium">Гайд для Windows</span>
+                    <ChevronDown
+                      className={`w-5 h-5 text-muted-foreground transition-transform duration-200 ${
+                        isWindowsSetupOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {isWindowsSetupOpen && (
+                    <div className="p-4 md:p-6 space-y-8 border-t border-border">
+                      {/* Step 0 - Open PowerShell */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">0. Відкрий PowerShell</h4>
+                        <p className="text-muted-foreground mb-3">
+                          Натисни клавішу Windows, введи "PowerShell", клікни правою кнопкою і вибери "Запустити від імені адміністратора".
+                        </p>
+                        <TerminalMock
+                          title="Windows PowerShell"
+                          minHeight="120px"
+                          lines={[
+                            { text: "Windows PowerShell" },
+                            { text: "Copyright (C) Microsoft Corporation. All rights reserved." },
+                            { text: "" },
+                            { text: "PS C:\\Users\\YourName>" },
+                          ]}
+                        />
+                      </div>
+
+                      {/* Step 1 - Install Node.js */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">1. Встановлення Node.js</h4>
+                        <p className="text-muted-foreground mb-3">
+                          Перейди на <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">nodejs.org</a>, завантаж LTS версію і встанови. Або через winget:
+                        </p>
+                        <CodeBlock
+                          code="winget install OpenJS.NodeJS.LTS"
+                        />
+                        <p className="text-sm text-muted-foreground/80 bg-muted/50 rounded-lg p-3 mt-3">
+                          ⚠️ Після встановлення закрий і відкрий PowerShell заново.
+                        </p>
+                      </div>
+
+                      {/* Step 1.1 - Check Node.js */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">1.1 Перевірка Node.js</h4>
+                        <p className="text-muted-foreground mb-3">
+                          Перевіряємо чи встановився:
+                        </p>
+                        <CodeBlock
+                          code={`node --version
+npm --version`}
+                        />
+                        <TerminalMock
+                          title="Windows PowerShell"
+                          lines={[
+                            { text: "node --version", type: "command" },
+                            { text: "v22.12.0", type: "success" },
+                            { text: "npm --version", type: "command" },
+                            { text: "10.9.0", type: "success" },
+                          ]}
+                        />
+                      </div>
+
+                      {/* Step 2 - Install Claude Code */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">2. Встановлення Claude Code</h4>
+                        <p className="text-muted-foreground mb-3">
+                          Claude Code — AI-помічник в терміналі, за допомогою якого будемо робити магію.
+                        </p>
+                        <CodeBlock
+                          code="npm install -g @anthropic-ai/claude-code"
+                        />
+                        <div className="mt-3 mb-3 bg-primary/5 border-l-2 border-primary/40 rounded-r-lg p-3">
+                          <p className="text-sm text-muted-foreground">
+                            Чекаєш поки встановиться. Може зайняти 1-2 хвилини.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Step 2.1 - Launch Claude Code */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">2.1 Запуск Claude Code</h4>
+                        <p className="text-muted-foreground mb-3">
+                          Пишеш claude і натискаєш Enter.
+                        </p>
+                        <CodeBlock
+                          code="claude"
+                        />
+                        <TerminalMock
+                          title="Windows PowerShell"
                           minHeight="380px"
                           lines={[
                             { text: "claude", type: "command" },
