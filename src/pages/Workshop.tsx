@@ -207,16 +207,20 @@ const Workshop = () => {
                             { text: "==> Installation successful!", type: "success" },
                             { text: "" },
                             { text: "==> Next steps:", type: "warning" },
-                            { text: "- Run these commands in your terminal to add Homebrew to your PATH", type: "warning" },
+                            { text: "- Run these commands in your terminal to add Homebrew to your PATH:", type: "warning" },
+                            { text: "" },
+                            { text: '    echo >> ~/.zprofile' },
+                            { text: '    echo \'eval "$(/opt/homebrew/bin/brew shellenv)"\' >> ~/.zprofile' },
+                            { text: '    eval "$(/opt/homebrew/bin/brew shellenv)"' },
                           ]}
                         />
                       </div>
 
                       {/* Step 1.5 - Add Homebrew to PATH */}
                       <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
-                        <h4 className="text-lg font-medium mb-2">1.5 Додавання Homebrew в систему</h4>
+                        <h4 className="text-lg font-medium mb-2">1.1 Додавання Homebrew в систему</h4>
                         <p className="text-muted-foreground mb-3">
-                          Після встановлення Homebrew покаже команди які треба виконати. Скопіюй їх всі разом і встав в термінал.
+                          Після встановлення Homebrew покаже команди які треба виконати. Залежно від версії Mac ця команда може трохи відрізнятися — копіюй саме те, що показує твій термінал. На більшості MacBook це буде виглядати так:
                         </p>
                         <CodeBlock
                           code={`echo >> ~/.zprofile
@@ -244,7 +248,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"`}
 
                       {/* Step 2 - Check Homebrew */}
                       <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
-                        <h4 className="text-lg font-medium mb-2">2. Перевірка Homebrew</h4>
+                        <h4 className="text-lg font-medium mb-2">1.2 Перевірка Homebrew</h4>
                         <p className="text-muted-foreground mb-3">
                           Перевіряємо, чи Homebrew працює. Якщо бачиш версію — все ок.
                         </p>
@@ -262,7 +266,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"`}
 
                       {/* Step 3 - Node.js */}
                       <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
-                        <h4 className="text-lg font-medium mb-2">3. Встановлення Node.js</h4>
+                        <h4 className="text-lg font-medium mb-2">2. Встановлення Node.js</h4>
                         <p className="text-muted-foreground mb-3">
                           Node.js потрібен для запуску веб-проєктів.
                         </p>
@@ -276,7 +280,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"`}
 
                       {/* Step 4 - Check Node.js */}
                       <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
-                        <h4 className="text-lg font-medium mb-2">4. Перевірка Node.js та npm</h4>
+                        <h4 className="text-lg font-medium mb-2">2.1 Перевірка Node.js</h4>
                         <p className="text-muted-foreground mb-3">
                           Перевіряємо, чи Node.js встановився. <span className="text-foreground">npm</span> — це менеджер пакетів,
                           який йде разом з Node.js. Через нього встановлюються бібліотеки для проєктів.
@@ -298,7 +302,7 @@ npm --version`}
 
                       {/* Step 5 - Claude Code */}
                       <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
-                        <h4 className="text-lg font-medium mb-2">5. Встановлення Claude Code</h4>
+                        <h4 className="text-lg font-medium mb-2">3. Встановлення Claude Code</h4>
                         <p className="text-muted-foreground mb-3">
                           Claude Code — AI-помічник в терміналі, за допомогою якого будемо робити магію.
                           Він бачить твій код, може його редагувати, запускати команди, працювати з Git,
@@ -329,7 +333,7 @@ npm --version`}
 
                       {/* Step 6 - Launch Claude Code */}
                       <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
-                        <h4 className="text-lg font-medium mb-2">6. Запуск Claude Code</h4>
+                        <h4 className="text-lg font-medium mb-2">3.1 Запуск Claude Code</h4>
                         <p className="text-muted-foreground mb-3">
                           Відкриваєш термінал, пишеш claude і натискаєш Enter.
                         </p>
