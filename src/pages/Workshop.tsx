@@ -27,7 +27,7 @@ const Workshop = () => {
     <div className="min-h-screen">
       <SEOHead
         title="Claude Code Workshop — webf.love × Glow Team"
-        description="Як я будую веб-продукти за допомогою Claude Code. Без магії, без bullshit. Зробимо сервіс оренди авто — лендінг з вибором дат, списком машин та простим букінгом."
+        description="Як я будую веб-продукти за допомогою Claude Code. Зробимо сервіс оренди авто — лендінг з вибором дат, списком машин та простим букінгом."
         ogImage="/images/og-workshop.png"
         ogImageAlt="Claude Code Workshop — webf.love × Glow Team"
         canonicalUrl="/workshop_glow-team"
@@ -67,7 +67,6 @@ const Workshop = () => {
 
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mb-8">
               Як я будую веб-продукти за допомогою Claude Code.
-              Без магії, без bullshit.
             </p>
 
             <p className="text-lg text-muted-foreground/80 max-w-2xl">
