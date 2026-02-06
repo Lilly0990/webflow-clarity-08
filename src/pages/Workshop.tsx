@@ -3,7 +3,19 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CodeBlock from "@/components/CodeBlock";
 import TerminalMock from "@/components/TerminalMock";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ExternalLink } from "lucide-react";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/ui/tabs";
 
 const Workshop = () => {
   const [isSetupOpen, setIsSetupOpen] = useState(false);
@@ -39,12 +51,12 @@ const Workshop = () => {
             </div>
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-8">
-              Практичний<br />
-              <span className="gradient-text">AI Workshop</span>
+              <span className="gradient-text">Claude Code</span><br />
+              Workshop
             </h1>
 
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mb-8">
-              Як реально використовувати AI для створення веб-продуктів.
+              Як я будую веб-продукти за допомогою Claude Code.
               Без магії, без bullshit.
             </p>
 
@@ -101,16 +113,84 @@ const Workshop = () => {
               {/* Topic 1 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
                 <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">01</span>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">Lovable vs Claude Code</h3>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  Яка, блядь, різниця? Чому Lovable жере токени на кожен чих, а Claude Code — ні.
-                  Як їх юзати разом, а не битись головою об стіну окремо з кожним.
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Що вміє Claude Code</h3>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  Один інструмент — замість десяти. Ось для чого я використовую його щодня.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  Чому Claude Code дає набагато більше контролю над проєктом: доступ до терміналу,
-                  робота з будь-якими файлами, інтеграція з GitHub, MCP-сервери, паралельні сесії.
-                  Повний контроль замість чорної скриньки.
-                </p>
+
+                {/* Три режими роботи */}
+                <div className="bg-muted/20 border border-border/50 rounded-xl p-5 mb-4">
+                  <p className="text-sm text-muted-foreground mb-3 uppercase tracking-wider">Три режими роботи</p>
+                  <ul className="space-y-2 text-muted-foreground leading-relaxed">
+                    <li><span className="text-foreground">Terminal (Claude Code)</span> — повний доступ до файлів на комп'ютері, може заходити на сайти, робити перевірки, підключатися до Google. Максимальний контроль.</li>
+                    <li><span className="text-foreground">Web (claude.ai)</span> — для роботи з контентом: тексти, редагування, брейншторм</li>
+                    <li><span className="text-foreground">Desktop (Claude Desktop)</span> — для підключення через MCP: Figma, n8n, інші інтеграції</li>
+                  </ul>
+                </div>
+
+                <Accordion type="multiple" className="space-y-4">
+                  <AccordionItem value="research" className="bg-muted/20 border border-border/50 rounded-xl overflow-hidden border-b-0">
+                    <AccordionTrigger className="px-5 py-4 text-sm text-muted-foreground uppercase tracking-wider hover:no-underline">
+                      Досліджую
+                    </AccordionTrigger>
+                    <AccordionContent className="text-base">
+                      <ul className="space-y-2 text-muted-foreground leading-relaxed px-5">
+                        <li><span className="text-foreground">Research</span> — шукаю технології, порівнюю рішення, аналізую документацію</li>
+                        <li><span className="text-foreground">Аналіз конкурентів</span> — розбираю сайти, фічі, підходи</li>
+                        <li><span className="text-foreground">Генерація ідей</span> — брейнштормлю концепції, структуру, UX</li>
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="build" className="bg-muted/20 border border-border/50 rounded-xl overflow-hidden border-b-0">
+                    <AccordionTrigger className="px-5 py-4 text-sm text-muted-foreground uppercase tracking-wider hover:no-underline">
+                      Будую
+                    </AccordionTrigger>
+                    <AccordionContent className="text-base">
+                      <ul className="space-y-2 text-muted-foreground leading-relaxed px-5">
+                        <li><span className="text-foreground">Верстка сайтів</span> — пишу фронтенд на React, Tailwind, TypeScript</li>
+                        <li><span className="text-foreground">Бази даних</span> — Supabase: таблиці, RLS, міграції, Edge Functions</li>
+                        <li><span className="text-foreground">Git і деплой</span> — коміти, PR, деплой на продакшн</li>
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="design" className="bg-muted/20 border border-border/50 rounded-xl overflow-hidden border-b-0">
+                    <AccordionTrigger className="px-5 py-4 text-sm text-muted-foreground uppercase tracking-wider hover:no-underline">
+                      Дизайню
+                    </AccordionTrigger>
+                    <AccordionContent className="text-base">
+                      <ul className="space-y-2 text-muted-foreground leading-relaxed px-5">
+                        <li><span className="text-foreground">Figma MCP</span> — бачить макет, стилі, кольори, шрифти і відступи</li>
+                        <li><span className="text-foreground">Контент</span> — тексти, мета-теги, SEO, Open Graph</li>
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="automate" className="bg-muted/20 border border-border/50 rounded-xl overflow-hidden border-b-0">
+                    <AccordionTrigger className="px-5 py-4 text-sm text-muted-foreground uppercase tracking-wider hover:no-underline">
+                      Автоматизую
+                    </AccordionTrigger>
+                    <AccordionContent className="text-base">
+                      <ul className="space-y-2 text-muted-foreground leading-relaxed px-5">
+                        <li><span className="text-foreground">n8n</span> — створюю workflows промптами замість ручних налаштувань</li>
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="support" className="bg-muted/20 border border-border/50 rounded-xl overflow-hidden border-b-0">
+                    <AccordionTrigger className="px-5 py-4 text-sm text-muted-foreground uppercase tracking-wider hover:no-underline">
+                      Підтримую
+                    </AccordionTrigger>
+                    <AccordionContent className="text-base">
+                      <ul className="space-y-2 text-muted-foreground leading-relaxed px-5">
+                        <li><span className="text-foreground">Дебаг</span> — знайти і пофіксити баг за хвилини замість годин</li>
+                        <li><span className="text-foreground">Code review</span> — перевірка коду, рефакторинг, оптимізація</li>
+                        <li><span className="text-foreground">Документація</span> — PRD, CLAUDE.md, технічні специфікації</li>
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
               </div>
 
               {/* Topic 2 */}
@@ -508,47 +588,282 @@ npm --version`}
                 </div>
               </div>
 
-              {/* Topic 3 */}
+              {/* Topic 3 — Мій стек */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
                 <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">03</span>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">PRD + Plan Mode</h3>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  Тут магія. Показую різницю між "зроби мені лендінг" і нормально сформульованим запитом.
-                  Однакова задача, результат — небо і земля.
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Мій стек</h3>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  Сервіси, які я використовую щодня разом з Claude Code. Кожен робить свою роботу — разом вони закривають весь цикл.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  Чому Plan Mode критичний для будь-якого проєкту: AI спочатку аналізує задачу,
-                  продумує архітектуру, і тільки потім пише код. Замість хаотичних правок —
-                  структурований план. Plan mode — це не опція, це must have.
-                </p>
+
+                <div className="space-y-2">
+                  <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-muted/20 border border-border/50 rounded-xl p-4 hover:bg-muted/30 transition-colors group">
+                    <img src="/images/stack/claude.png" alt="Claude" className="w-7 h-7 flex-shrink-0" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-foreground">Claude Code</p>
+                      <p className="text-sm text-muted-foreground">Мозок всього: пишу код, досліджую, дебажу. Три режими — Terminal, Web, Desktop</p>
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary transition-colors flex-shrink-0" />
+                  </a>
+
+                  <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-muted/20 border border-border/50 rounded-xl p-4 hover:bg-muted/30 transition-colors group">
+                    <img src="/images/stack/lovable.png" alt="Lovable" className="w-7 h-7 flex-shrink-0" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-foreground">Lovable</p>
+                      <p className="text-sm text-muted-foreground">Швидкий паблішинг. Створив проєкт — він вже на живому домені (категорично не використовую для розробки)</p>
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary transition-colors flex-shrink-0" />
+                  </a>
+
+                  <a href="https://desktop.github.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-muted/20 border border-border/50 rounded-xl p-4 hover:bg-muted/30 transition-colors group">
+                    <img src="/images/stack/github.png" alt="GitHub" className="w-7 h-7 flex-shrink-0" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-foreground">GitHub + GitHub Desktop</p>
+                      <p className="text-sm text-muted-foreground">Зв'язує все разом. Всі зміни зберігаються локально і синхронізуються</p>
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary transition-colors flex-shrink-0" />
+                  </a>
+
+                  <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-muted/20 border border-border/50 rounded-xl p-4 hover:bg-muted/30 transition-colors group">
+                    <img src="/images/stack/supabase.png" alt="Supabase" className="w-7 h-7 flex-shrink-0" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-foreground">Supabase</p>
+                      <p className="text-sm text-muted-foreground">База даних, CMS, аутентифікація, особисті кабінети</p>
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary transition-colors flex-shrink-0" />
+                  </a>
+
+                  <a href="https://code.visualstudio.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-muted/20 border border-border/50 rounded-xl p-4 hover:bg-muted/30 transition-colors group">
+                    <img src="/images/stack/vscode.png" alt="VS Code" className="w-7 h-7 flex-shrink-0" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-foreground">VS Code (Terminal)</p>
+                      <p className="text-sm text-muted-foreground">Редактор коду, в якому живе Claude Code через термінал</p>
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary transition-colors flex-shrink-0" />
+                  </a>
+
+                  <a href="https://withaqua.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-muted/20 border border-border/50 rounded-xl p-4 hover:bg-muted/30 transition-colors group">
+                    <img src="/images/stack/aqua.png" alt="Aqua Voice" className="w-7 h-7 flex-shrink-0" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-foreground">Aqua Voice</p>
+                      <p className="text-sm text-muted-foreground">Транскрибація голосу — промпчу голосом, а не клавіатурою</p>
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary transition-colors flex-shrink-0" />
+                  </a>
+
+                  <a href="https://teampaper.me" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-muted/20 border border-border/50 rounded-xl p-4 hover:bg-muted/30 transition-colors group">
+                    <img src="/images/stack/teampaper.png" alt="Team Paper" className="w-7 h-7 flex-shrink-0" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-foreground">Team Paper</p>
+                      <p className="text-sm text-muted-foreground">Скріншотер — швидко даю скріншоти і текст AI</p>
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary transition-colors flex-shrink-0" />
+                  </a>
+                </div>
+
+                {/* Інтеграції (MCP) */}
+                <div className="mt-6">
+                  <p className="text-sm text-muted-foreground mb-3 uppercase tracking-wider">Інтеграції (MCP)</p>
+                  <div className="space-y-2">
+                    <a href="https://figma.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-muted/20 border border-border/50 rounded-xl p-4 hover:bg-muted/30 transition-colors group">
+                      <img src="/images/stack/figma.png" alt="Figma" className="w-7 h-7 flex-shrink-0" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium text-foreground">Figma</p>
+                        <p className="text-sm text-muted-foreground">Дизайн макетів — Claude Code бачить стилі, кольори, відступи через MCP</p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary transition-colors flex-shrink-0" />
+                    </a>
+
+                    <a href="https://n8n.io" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-muted/20 border border-border/50 rounded-xl p-4 hover:bg-muted/30 transition-colors group">
+                      <img src="/images/stack/n8n.png" alt="n8n" className="w-7 h-7 flex-shrink-0" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium text-foreground">n8n</p>
+                        <p className="text-sm text-muted-foreground">Автоматизації промптами замість ручних налаштувань</p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary transition-colors flex-shrink-0" />
+                    </a>
+                  </div>
+                </div>
               </div>
 
-              {/* Topic 4 */}
+              {/* Topic 4 — PRD + Plan Mode */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
                 <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">04</span>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">Як я пишу промпти</h3>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  Чому ChatGPT-generated промпти на три сторінки — не завжди добре для розробки.
-                  AI відмінно розуміє звичайні пояснення і покрокові інструкції.
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">PRD + Plan Mode</h3>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  Plan Mode — один з основних режимів роботи з Claude Code. 80% роботи відбувається саме тут —
+                  обговорюєш задачу, аналізуєш, плануєш. І тільки 20% — AI реалізує. Це як мітинг з командою:
+                  зайшла нова задача, треба проговорити що робимо, хто потрібен, на які етапи розбити.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  Покажу, чому я почав промптити голосом, а не текстом з клавіатури.
-                </p>
+
+                <div className="space-y-4">
+                  {/* Крок 1 */}
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-sm text-muted-foreground mb-3 uppercase tracking-wider">Крок 1 — Аналіз в Plan Mode</p>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      Кидаємо лінку на сервіс оренди авто і просимо розібрати:
+                    </p>
+                    <CodeBlock
+                      code={`Проаналізуй сервіс оренди авто [лінка].
+
+Що мене цікавить:
+- які основні фічі є на сайті
+- як працює процес букінгу
+- яка структура сторінок
+- що зроблено добре, що можна покращити`}
+                    />
+                  </div>
+
+                  {/* Крок 2 */}
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-sm text-muted-foreground mb-3 uppercase tracking-wider">Крок 2 — PRD</p>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      PRD (Product Requirements Document) — документ, що описує що будуємо, для кого і як це працює. Просимо створити:
+                    </p>
+                    <CodeBlock
+                      code={`На базі аналізу створи PRD для нашого сервісу оренди авто.
+
+PRD має включати:
+- опис продукту (що це, для кого)
+- список фіч (MVP)
+- структуру сторінок
+- стек технологій (React, Supabase, Tailwind)
+- ролі користувачів (клієнт, адмін)`}
+                    />
+                  </div>
+                </div>
               </div>
 
-              {/* Topic 5 */}
+              {/* Topic 5 — Сетап проєкту */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
                 <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">05</span>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">Каркас проєкту</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Збираємо скелет букінг-сервісу. Supabase для бази, GitHub для коду, Lovable + Claude Code для роботи.
-                  Робимо зв'язку, яка буде стабільно працювати.
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Сетап проєкту</h3>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  Як я починаю будь-який новий проєкт — від нуля до робочого середовища за 10 хвилин.
                 </p>
+
+                <div className="space-y-4">
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-sm text-muted-foreground mb-3 uppercase tracking-wider">Крок 1</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <span className="text-foreground">Створюємо проєкт в <img src="/images/stack/lovable.png" alt="Lovable" className="w-4 h-4 inline-block align-middle mr-0.5" />Lovable</span> — новий проєкт, базовий шаблон, одразу живий URL
+                    </p>
+                  </div>
+
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-sm text-muted-foreground mb-3 uppercase tracking-wider">Крок 2</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <span className="text-foreground">Підв'язуємо до <img src="/images/stack/github.png" alt="GitHub" className="w-4 h-4 inline-block align-middle mr-0.5" />GitHub</span> — з'єднуємо Lovable з GitHub репозиторієм
+                    </p>
+                  </div>
+
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-sm text-muted-foreground mb-3 uppercase tracking-wider">Крок 3</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <span className="text-foreground">Клонуємо локально</span> — через <img src="/images/stack/github.png" alt="GitHub Desktop" className="w-4 h-4 inline-block align-middle mr-0.5" />GitHub Desktop скачуємо проєкт на комп'ютер
+                    </p>
+                  </div>
+
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-sm text-muted-foreground mb-3 uppercase tracking-wider">Крок 4</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <span className="text-foreground">Відкриваємо в <img src="/images/stack/claude.png" alt="Claude Code" className="w-4 h-4 inline-block align-middle mr-0.5" />Claude Code</span> — заходимо в папку проєкту, запускаємо claude і починаємо працювати
+                    </p>
+                  </div>
+                </div>
               </div>
 
               {/* Topic 6 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
                 <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">06</span>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Як я пишу промпти</h3>
+                <h4 className="text-lg font-semibold text-foreground mb-6">
+                  AI розуміє прості запити — якщо вони послідовні і структуровані. Одна задача = один промпт.
+                </h4>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  ChatGPT-generated промпти для розробки — часто шкодять більше ніж допомагають. Вони додають деталі, які ти не зрозумієш навіщо вони там, і нагружають проєкт зайвим кодом.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Покажу, чому останнім часом я промпчу голосом через <img src="/images/stack/aqua.png" alt="Aqua Voice" className="w-4 h-4 inline-block align-middle mr-0.5" />Aqua Voice
+                </p>
+              </div>
+
+              {/* Interlude — Vibe Coding */}
+              <div className="bg-card border border-border rounded-xl p-6 md:p-8 text-center">
+                <img
+                  src="/images/vibe-coding-meme.jpg"
+                  alt="Slot Machines vs. Vibe Coding"
+                  className="rounded-xl mx-auto mb-6 max-w-md w-full"
+                />
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto">
+                  Але не забуваємо, що vibe coding — це завжди рулетка. Особливо коли це стосується дизайну.
+                </p>
+              </div>
+
+              {/* Topic 7 */}
+              <div className="bg-card border border-border rounded-xl p-6 md:p-8">
+                <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">07</span>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Каркас проєкту + паралельна робота</h3>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  Відкриваємо три термінали і працюємо одночасно. Кожен планує свою частину проєкту.
+                </p>
+
+                <Tabs defaultValue="terminal-1">
+                  <TabsList className="w-full bg-muted/30 border border-border/50 rounded-xl p-1 h-auto">
+                    <TabsTrigger value="terminal-1" className="flex-1 rounded-lg data-[state=active]:bg-background/80 py-2 text-xs uppercase tracking-wider">Структура</TabsTrigger>
+                    <TabsTrigger value="terminal-2" className="flex-1 rounded-lg data-[state=active]:bg-background/80 py-2 text-xs uppercase tracking-wider">Функціонал</TabsTrigger>
+                    <TabsTrigger value="terminal-3" className="flex-1 rounded-lg data-[state=active]:bg-background/80 py-2 text-xs uppercase tracking-wider">База даних</TabsTrigger>
+                  </TabsList>
+
+                  <TabsContent value="terminal-1">
+                    <CodeBlock
+                      label="Термінал 1 — Структура лендінгу"
+                      code={`Прочитай PRD проєкту і на його основі спроєктуй структуру лендінгу.
+
+Які блоки потрібні:
+- hero секція з заголовком і CTA
+- каталог авто з фільтрацією
+- букінг-форма з вибором дат
+- секція контактів і FAQ
+
+Створи план компонентів і їх розташування на сторінці.`}
+                    />
+                  </TabsContent>
+
+                  <TabsContent value="terminal-2">
+                    <CodeBlock
+                      label="Термінал 2 — Функціонал MVP"
+                      code={`Прочитай PRD проєкту і спроєктуй функціонал MVP.
+
+Що має працювати:
+- вибір дат оренди (початок, кінець)
+- фільтрація машин (клас, ціна, наявність)
+- процес бронювання (вибір авто → форма → підтвердження)
+- базова валідація форм
+
+Опиши логіку кожного кроку і які дані потрібні.`}
+                    />
+                  </TabsContent>
+
+                  <TabsContent value="terminal-3">
+                    <CodeBlock
+                      label="Термінал 3 — База даних"
+                      code={`Прочитай PRD проєкту і спроєктуй базу даних в Supabase.
+
+Потрібні таблиці:
+- cars (марка, модель, ціна за день, фото, наявність)
+- bookings (авто, дати, статус, контакти клієнта)
+- users (email, роль: клієнт або адмін)
+
+Опиши поля, типи даних, зв'язки між таблицями і базові RLS політики.`}
+                    />
+                  </TabsContent>
+                </Tabs>
+              </div>
+
+              {/* Topic 8 */}
+              <div className="bg-card border border-border rounded-xl p-6 md:p-8">
+                <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">08</span>
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">Авторизація</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Робимо базову авторизацію через Supabase, створюємо адміна і одразу плануємо
@@ -556,19 +871,9 @@ npm --version`}
                 </p>
               </div>
 
-              {/* Topic 7 */}
+              {/* Topic 9 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
-                <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">07</span>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">Паралельна робота</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Покажу, як і чому я одночасно працюю в двох, трьох, чотирьох терміналах
-                  і які плюси це дає.
-                </p>
-              </div>
-
-              {/* Topic 8 */}
-              <div className="bg-card border border-border rounded-xl p-6 md:p-8">
-                <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">08</span>
+                <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">09</span>
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">Документація</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Як правильно зберігати документацію проєкту. Що фіксувати, де тримати, як не втратити контекст через тиждень.
@@ -576,9 +881,9 @@ npm --version`}
                 </p>
               </div>
 
-              {/* Topic 9 */}
+              {/* Topic 10 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
-                <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">09</span>
+                <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">10</span>
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">Деплой + передача</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Як швидко деплоїти проєкт на домен. Які варіанти передачі проєкту клієнту:
