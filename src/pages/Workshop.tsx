@@ -5,6 +5,7 @@ import CodeBlock from "@/components/CodeBlock";
 import SlideLightbox from "@/components/SlideLightbox";
 import TerminalMock from "@/components/TerminalMock";
 import { ChevronDown, ExternalLink, ClipboardList } from "lucide-react";
+import SEOHead from "@/components/seo/SEOHead";
 import {
   Accordion,
   AccordionItem,
