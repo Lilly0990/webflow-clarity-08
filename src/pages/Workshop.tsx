@@ -25,6 +25,14 @@ const Workshop = () => {
 
   return (
     <div className="min-h-screen">
+      <SEOHead
+        title="Claude Code Workshop — webf.love × Glow Team"
+        description="Як я будую веб-продукти за допомогою Claude Code. Без магії, без bullshit. Зробимо сервіс оренди авто — лендінг з вибором дат, списком машин та простим букінгом."
+        ogImage="/images/og-workshop.png"
+        ogImageAlt="Claude Code Workshop — webf.love × Glow Team"
+        canonicalUrl="/workshop_glow-team"
+        language="uk"
+      />
       <Header />
 
       <article className="container-custom pt-32 pb-24">
