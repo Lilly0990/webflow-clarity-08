@@ -2,8 +2,9 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CodeBlock from "@/components/CodeBlock";
+import SlideLightbox from "@/components/SlideLightbox";
 import TerminalMock from "@/components/TerminalMock";
-import { ChevronDown, ExternalLink } from "lucide-react";
+import { ChevronDown, ExternalLink, ClipboardList } from "lucide-react";
 import {
   Accordion,
   AccordionItem,
@@ -105,6 +106,65 @@ const Workshop = () => {
             </div>
           </section>
 
+          {/* Про мене */}
+          <section className="mb-20 animate-fade-in">
+            <div className="bg-card border border-border rounded-2xl p-8 md:p-10">
+              <div className="flex flex-col md:flex-row gap-8">
+                {/* Photo + LinkedIn */}
+                <div className="flex flex-col items-center md:items-start shrink-0">
+                  <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden mb-3">
+                    <img
+                      src="/images/my-photo.png"
+                      alt="Vlad Rulikovskiy"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <a
+                    href="https://www.linkedin.com/in/rulikovskyi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                  </a>
+                </div>
+
+                {/* Text */}
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-1">Vlad Rulikovskiy</h3>
+                  <p className="text-primary text-sm mb-4">Фаундер webf.love — Webflow Development Studio</p>
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    7 років у розробці, до цього 1.5 роки в дизайні. Керував командою з 15 людей.
+                    Студія спеціалізується на Webflow-розробці і з недавнього часу на AI Assistant Development.
+                  </p>
+                  <div>
+                    <p className="text-xs text-muted-foreground/50 mb-3 uppercase tracking-wider">Проєкти наших клієнтів</p>
+                    <p className="text-sm text-muted-foreground">
+                      Fedoriv, EnglishDom, Sister's Aroma, Venbest, Done та 30+ інших українських компаній
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Слайдер презентації — hidden until ready */}
+          {/* <section className="mb-20 animate-fade-in">
+            <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
+              <p className="text-sm text-muted-foreground mb-4 uppercase tracking-wider">Презентація</p>
+              <SlideLightbox slides={[
+                "/images/slides/creation_2316578013.png",
+                "/images/slides/creation_2316749199.png",
+                "/images/slides/creation_2316818913.png",
+                "/images/slides/creation_2316841289.png",
+                "/images/slides/creation_2316860926.png",
+                "/images/slides/creation_2316992302.png",
+              ]} />
+            </div>
+          </section> */}
+
           {/* Програма */}
           <section className="mb-20 animate-fade-in">
             <p className="text-sm text-muted-foreground mb-8 uppercase tracking-wider">Програма</p>
@@ -117,6 +177,15 @@ const Workshop = () => {
                 <p className="text-muted-foreground leading-relaxed mb-6">
                   Один інструмент — замість десяти. Ось для чого я використовую його щодня.
                 </p>
+
+                <div className="text-muted-foreground leading-relaxed space-y-3 mb-6">
+                  <p>
+                    Claude Code — це AI від Anthropic, заточений під розробку. Не чат-бот, не універсальний помічник — а інструмент, який працює з кодом напряму.
+                  </p>
+                  <p>
+                    Більшість популярних AI-сервісів для створення сайтів і додатків (<img src="/images/stack/lovable.png" alt="Lovable" className="w-4 h-4 inline-block align-middle mr-0.5" />Lovable, Cursor, Windsurf та інші) працюють на базі моделей Claude від Anthropic. Claude Code — це прямий доступ до тієї самої моделі, без посередників і обмежень інтерфейсу.
+                  </p>
+                </div>
 
                 {/* Три режими роботи */}
                 <div className="bg-muted/20 border border-border/50 rounded-xl p-5 mb-4">
@@ -699,7 +768,7 @@ npm --version`}
                 <div className="space-y-4">
                   {/* Крок 1 */}
                   <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
-                    <p className="text-sm text-muted-foreground mb-3 uppercase tracking-wider">Крок 1 — Аналіз в Plan Mode</p>
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 1 — Аналіз в Plan Mode</p>
                     <p className="text-muted-foreground leading-relaxed mb-4">
                       Кидаємо лінку на сервіс оренди авто і просимо розібрати:
                     </p>
@@ -716,7 +785,7 @@ npm --version`}
 
                   {/* Крок 2 */}
                   <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
-                    <p className="text-sm text-muted-foreground mb-3 uppercase tracking-wider">Крок 2 — PRD</p>
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 2 — PRD</p>
                     <p className="text-muted-foreground leading-relaxed mb-4">
                       PRD (Product Requirements Document) — документ, що описує що будуємо, для кого і як це працює. Просимо створити:
                     </p>
@@ -744,30 +813,30 @@ PRD має включати:
 
                 <div className="space-y-4">
                   <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
-                    <p className="text-sm text-muted-foreground mb-3 uppercase tracking-wider">Крок 1</p>
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 1</p>
                     <p className="text-muted-foreground leading-relaxed">
-                      <span className="text-foreground">Створюємо проєкт в <img src="/images/stack/lovable.png" alt="Lovable" className="w-4 h-4 inline-block align-middle mr-0.5" />Lovable</span> — новий проєкт, базовий шаблон, одразу живий URL
+                      <span className="text-foreground font-medium">Створюємо проєкт в <img src="/images/stack/lovable.png" alt="Lovable" className="w-4 h-4 inline-block align-middle mr-0.5" />Lovable</span> — новий проєкт, базовий шаблон, одразу живий URL
                     </p>
                   </div>
 
                   <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
-                    <p className="text-sm text-muted-foreground mb-3 uppercase tracking-wider">Крок 2</p>
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 2</p>
                     <p className="text-muted-foreground leading-relaxed">
-                      <span className="text-foreground">Підв'язуємо до <img src="/images/stack/github.png" alt="GitHub" className="w-4 h-4 inline-block align-middle mr-0.5" />GitHub</span> — з'єднуємо Lovable з GitHub репозиторієм
+                      <span className="text-foreground font-medium">Підв'язуємо до <img src="/images/stack/github.png" alt="GitHub" className="w-4 h-4 inline-block align-middle mr-0.5" />GitHub</span> — з'єднуємо Lovable з GitHub репозиторієм
                     </p>
                   </div>
 
                   <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
-                    <p className="text-sm text-muted-foreground mb-3 uppercase tracking-wider">Крок 3</p>
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 3</p>
                     <p className="text-muted-foreground leading-relaxed">
-                      <span className="text-foreground">Клонуємо локально</span> — через <img src="/images/stack/github.png" alt="GitHub Desktop" className="w-4 h-4 inline-block align-middle mr-0.5" />GitHub Desktop скачуємо проєкт на комп'ютер
+                      <span className="text-foreground font-medium">Клонуємо локально</span> — через <img src="/images/stack/github.png" alt="GitHub Desktop" className="w-4 h-4 inline-block align-middle mr-0.5" />GitHub Desktop скачуємо проєкт на комп'ютер
                     </p>
                   </div>
 
                   <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
-                    <p className="text-sm text-muted-foreground mb-3 uppercase tracking-wider">Крок 4</p>
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 4</p>
                     <p className="text-muted-foreground leading-relaxed">
-                      <span className="text-foreground">Відкриваємо в <img src="/images/stack/claude.png" alt="Claude Code" className="w-4 h-4 inline-block align-middle mr-0.5" />Claude Code</span> — заходимо в папку проєкту, запускаємо claude і починаємо працювати
+                      <span className="text-foreground font-medium">Відкриваємо в <img src="/images/stack/claude.png" alt="Claude Code" className="w-4 h-4 inline-block align-middle mr-0.5" />Claude Code</span> — заходимо в папку проєкту, запускаємо claude і починаємо працювати
                     </p>
                   </div>
                 </div>
@@ -785,18 +854,6 @@ PRD має включати:
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   Покажу, чому останнім часом я промпчу голосом через <img src="/images/stack/aqua.png" alt="Aqua Voice" className="w-4 h-4 inline-block align-middle mr-0.5" />Aqua Voice
-                </p>
-              </div>
-
-              {/* Interlude — Vibe Coding */}
-              <div className="bg-card border border-border rounded-xl p-6 md:p-8 text-center">
-                <img
-                  src="/images/vibe-coding-meme.jpg"
-                  alt="Slot Machines vs. Vibe Coding"
-                  className="rounded-xl mx-auto mb-6 max-w-md w-full"
-                />
-                <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto">
-                  Але не забуваємо, що vibe coding — це завжди рулетка. Особливо коли це стосується дизайну.
                 </p>
               </div>
 
@@ -861,72 +918,232 @@ PRD має включати:
                 </Tabs>
               </div>
 
+              {/* Interlude — Vibe Coding */}
+              <div className="bg-card border border-border rounded-xl p-6 md:p-8 text-center">
+                <img
+                  src="/images/photo_2026-01-15_12-28-38.jpg"
+                  alt="Slot Machines vs. Vibe Coding"
+                  className="rounded-xl mx-auto mb-6 max-w-md w-full"
+                />
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto">
+                  Але не забуваємо, що vibe coding — це завжди рулетка. Особливо коли це стосується дизайну.
+                </p>
+              </div>
+
               {/* Topic 8 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
                 <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">08</span>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">Авторизація</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Робимо базову авторизацію через Supabase, створюємо адміна і одразу плануємо
-                  на майбутнє — ролі та доступи для інших користувачів. Все фіксуємо в документації.
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Дизайн-референс</h3>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  Шукаємо референс, на який будемо орієнтуватись. Не малюємо з нуля — знаходимо те, що подобається, і показуємо Claude Code.
                 </p>
+
+                <div className="space-y-4">
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 1</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <span className="text-foreground font-medium">Шукаємо референс</span> — знаходимо сайт або скріншот з дизайном, який подобається
+                    </p>
+                  </div>
+
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 2</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <span className="text-foreground font-medium">Показуємо <img src="/images/stack/claude.png" alt="Claude Code" className="w-4 h-4 inline-block align-middle mr-0.5" />Claude Code</span> — даємо посилання або скріншот через <img src="/images/stack/teampaper.png" alt="Team Paper" className="w-4 h-4 inline-block align-middle mr-0.5" />Team Paper і просимо зверстати в такому стилі
+                    </p>
+                  </div>
+
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 3</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <span className="text-foreground font-medium"><img src="/images/stack/figma.png" alt="Figma" className="w-4 h-4 inline-block align-middle mr-0.5" />Figma MCP</span> — якщо є макет у Figma, підключаємо через MCP і Claude Code бачить стилі, кольори, відступи
+                    </p>
+                  </div>
+                </div>
               </div>
 
               {/* Topic 9 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
                 <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">09</span>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">Документація</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Як правильно зберігати документацію проєкту. Що фіксувати, де тримати, як не втратити контекст через тиждень.
-                  Бо без документації ваш проєкт — чорна скринька навіть для вас самих.
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Збираємо продукт</h3>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  Допилюємо основний функціонал — від вітрини до бронювання. Все підключене до <img src="/images/stack/supabase.png" alt="Supabase" className="w-4 h-4 inline-block align-middle mr-0.5" />Supabase.
                 </p>
+
+                <div className="space-y-4">
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 1</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <span className="text-foreground font-medium">Вітрина авто</span> — список машин з фото, ціною, характеристиками. Дані з <img src="/images/stack/supabase.png" alt="Supabase" className="w-4 h-4 inline-block align-middle mr-0.5" />Supabase
+                    </p>
+                  </div>
+
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 2</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <span className="text-foreground font-medium">Сторінка авто</span> — окрема сторінка для кожної машини з деталями і кнопкою бронювання
+                    </p>
+                  </div>
+
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 3</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <span className="text-foreground font-medium">Booking</span> — форма бронювання: вибір дат, контакти, підтвердження
+                    </p>
+                  </div>
+
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 4</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <span className="text-foreground font-medium">Зв'язка з базою</span> — всі дані зберігаються і читаються з <img src="/images/stack/supabase.png" alt="Supabase" className="w-4 h-4 inline-block align-middle mr-0.5" />Supabase
+                    </p>
+                  </div>
+                </div>
               </div>
 
               {/* Topic 10 */}
               <div className="bg-card border border-border rounded-xl p-6 md:p-8">
                 <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">10</span>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">Деплой + передача</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Як швидко деплоїти проєкт на домен. Які варіанти передачі проєкту клієнту:
-                  репозиторій, доступи до хостингу, документація.
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">Деплой + документація</h3>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  Публікуємо проєкт на живий домен і фіксуємо все, щоб можна було повернутись до проєкту через тиждень і не загубитись.
                 </p>
+
+                <div className="space-y-4">
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 1</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <span className="text-foreground font-medium">Деплой через <img src="/images/stack/lovable.png" alt="Lovable" className="w-4 h-4 inline-block align-middle mr-0.5" />Lovable</span> — один клік, проєкт вже на живому URL
+                    </p>
+                  </div>
+
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 2</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <span className="text-foreground font-medium">Кастомний домен</span> — підключаємо свій домен, якщо потрібно
+                    </p>
+                  </div>
+
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 3</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <span className="text-foreground font-medium">CLAUDE.md</span> — створюємо файл, який зберігає контекст проєкту для <img src="/images/stack/claude.png" alt="Claude Code" className="w-4 h-4 inline-block align-middle mr-0.5" />Claude Code
+                    </p>
+                  </div>
+
+                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                    <p className="text-xs text-muted-foreground/50 mb-2 uppercase tracking-wider">Крок 4</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <span className="text-foreground font-medium">Документація</span> — фіксуємо архітектурні рішення, структуру бази, доступи
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
 
-          {/* Бонус */}
+          {/* Topic 11 — Підсумки */}
           <section className="mb-20 animate-fade-in">
-            <div className="bg-primary/5 border border-primary/20 rounded-2xl p-8 md:p-12">
-              <div className="flex items-center gap-3 mb-8">
-                <span className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
-                  Додатково
-                </span>
-                <span className="text-muted-foreground text-sm">теми для наступних воркшопів</span>
+            <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
+              <span className="text-3xl md:text-4xl font-bold text-primary/40 block mb-3">11</span>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">Підсумки + Q&A</h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Коротко — що ми зробили за сьогодні і що далі.
+              </p>
+
+              <div className="bg-muted/20 border border-border/50 rounded-xl p-5 mb-6">
+                <p className="text-sm text-muted-foreground mb-3 uppercase tracking-wider">Що зробили</p>
+                <ul className="space-y-2 text-muted-foreground leading-relaxed">
+                  <li><span className="text-foreground">Налаштували середовище і стек</span></li>
+                  <li><span className="text-foreground">Написали PRD і спланували проєкт</span></li>
+                  <li><span className="text-foreground">Зібрали каркас в трьох терміналах паралельно</span></li>
+                  <li><span className="text-foreground">Підібрали дизайн і зверстали</span></li>
+                  <li><span className="text-foreground">Зібрали продукт з базою даних</span></li>
+                  <li><span className="text-foreground">Задеплоїли на живий домен</span></li>
+                </ul>
               </div>
 
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-xl md:text-2xl font-bold mb-3">Figma MCP</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    Як підключити Claude Code до Figma через MCP, щоб він бачив стилі, кольори, шрифти
-                    і відступи макету. Як працювати з ним, щоб отримати pixel-perfect верстку.
-                  </p>
-                  <p className="text-muted-foreground leading-relaxed">
-                    І головне — як це масштабувати: один раз налаштував, далі верстаєш будь-який макет
-                    в рази швидше.
-                  </p>
-                </div>
+              <p className="text-lg text-muted-foreground">
+                Далі — відповіді на питання.
+              </p>
+            </div>
+          </section>
 
-                <div className="border-t border-border pt-6">
-                  <h3 className="text-xl md:text-2xl font-bold mb-3">n8n MCP</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    Як розгорнути n8n локально, підключити до Claude Code через MCP і створювати
-                    автоматизації не складними налаштуваннями в інтерфейсі, а зрозумілими промптами.
-                  </p>
+          {/* Домашнє завдання */}
+          <section className="mb-20 animate-fade-in">
+            <div className="bg-card border border-border rounded-2xl p-8 md:p-10">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="p-3 bg-primary/10 rounded-xl shrink-0">
+                  <ClipboardList className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-1">Домашнє завдання</h3>
+                  <p className="text-muted-foreground">Зробити самостійно до наступного воркшопу:</p>
+                </div>
+              </div>
+
+              <div className="space-y-3 mb-8">
+                <div className="flex gap-3 items-start">
+                  <span className="text-primary font-bold mt-0.5 shrink-0">1.</span>
                   <p className="text-muted-foreground leading-relaxed">
-                    Кажеш "зроби мені workflow, який буде відправляти email коли хтось заповнює форму" —
-                    і воно робить.
+                    <span className="text-foreground font-medium">Обрати свій проєкт</span> — придумати або взяти реальну задачу (лендінг для бізнесу, портфоліо, невеликий сервіс)
                   </p>
                 </div>
+                <div className="flex gap-3 items-start">
+                  <span className="text-primary font-bold mt-0.5 shrink-0">2.</span>
+                  <p className="text-muted-foreground leading-relaxed">
+                    <span className="text-foreground font-medium">Написати PRD</span> — через Plan Mode в <img src="/images/stack/claude.png" alt="Claude Code" className="w-4 h-4 inline-block align-middle mr-0.5" />Claude Code: що це, для кого, які фічі, який стек
+                  </p>
+                </div>
+                <div className="flex gap-3 items-start">
+                  <span className="text-primary font-bold mt-0.5 shrink-0">3.</span>
+                  <p className="text-muted-foreground leading-relaxed">
+                    <span className="text-foreground font-medium">Зібрати каркас</span> — створити проєкт в <img src="/images/stack/lovable.png" alt="Lovable" className="w-4 h-4 inline-block align-middle mr-0.5" />Lovable, підключити <img src="/images/stack/github.png" alt="GitHub" className="w-4 h-4 inline-block align-middle mr-0.5" />GitHub, клонувати, відкрити в <img src="/images/stack/claude.png" alt="Claude Code" className="w-4 h-4 inline-block align-middle mr-0.5" />Claude Code
+                  </p>
+                </div>
+                <div className="flex gap-3 items-start">
+                  <span className="text-primary font-bold mt-0.5 shrink-0">4.</span>
+                  <p className="text-muted-foreground leading-relaxed">
+                    <span className="text-foreground font-medium">Зверстати головну сторінку</span> — знайти референс і зверстати hero + 2-3 секції
+                  </p>
+                </div>
+                <div className="flex gap-3 items-start">
+                  <span className="text-primary font-bold mt-0.5 shrink-0">5.</span>
+                  <p className="text-muted-foreground leading-relaxed">
+                    <span className="text-foreground font-medium">Підключити <img src="/images/stack/supabase.png" alt="Supabase" className="w-4 h-4 inline-block align-middle mr-0.5" />Supabase</span> — створити проєкт, підключити до коду, створити хоча б одну таблицю
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-muted-foreground leading-relaxed border-t border-border/50 pt-6">
+                На наступному воркшопі розберемо результати і продовжимо з авторизацією та адмінпанеллю.
+              </p>
+            </div>
+          </section>
+
+          {/* Next Workshop */}
+          <section className="mb-20 animate-fade-in">
+            <div className="bg-primary/5 border border-primary/20 rounded-2xl p-8 md:p-12 text-center">
+              <p className="text-sm text-primary/60 mb-4 uppercase tracking-wider">Наступний воркшоп</p>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">Частина 2: Авторизація + Адмінпанель</h3>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                Розберемо домашні завдання, реалізуємо авторизацію через <img src="/images/stack/supabase.png" alt="Supabase" className="w-4 h-4 inline-block align-middle mr-0.5" />Supabase
+                і побудуємо адмінпанель для управління контентом проєкту.
+              </p>
+            </div>
+          </section>
+
+          {/* Додаткові теми */}
+          <section className="mb-20 animate-fade-in">
+            <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
+              <p className="text-sm text-muted-foreground mb-4 uppercase tracking-wider">Додаткові теми для воркшопів</p>
+              <div className="space-y-3">
+                <p className="text-muted-foreground leading-relaxed">
+                  <span className="text-foreground font-medium"><img src="/images/stack/figma.png" alt="Figma" className="w-4 h-4 inline-block align-middle mr-0.5" />Figma MCP</span> — підключення Figma до Claude Code для роботи з дизайном напряму
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  <span className="text-foreground font-medium">N8n MCP</span> — автоматизація воркфлоу через n8n і Claude
+                </p>
               </div>
             </div>
           </section>
