@@ -158,8 +158,8 @@ const Workshop = () => {
             </div>
           </section>
 
-          {/* Слайдер презентації — hidden until ready */}
-          {/* <section className="mb-20 animate-fade-in">
+          {/* Слайдер презентації */}
+          <section className="mb-20 animate-fade-in">
             <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
               <p className="text-sm text-muted-foreground mb-4 uppercase tracking-wider">Презентація</p>
               <SlideLightbox slides={[
@@ -171,7 +171,7 @@ const Workshop = () => {
                 "/images/slides/creation_2316992302.png",
               ]} />
             </div>
-          </section> */}
+          </section>
 
           {/* Програма */}
           <section className="mb-20 animate-fade-in">
