@@ -530,6 +530,37 @@ npm --version`}
                           </p>
                         </div>
                       </div>
+
+                      {/* Step 7 - GitHub Desktop + VS Code */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">4. Встановлення GitHub Desktop і VS Code</h4>
+                        <p className="text-muted-foreground mb-3">
+                          <span className="text-foreground">GitHub Desktop</span> — візуальний клієнт для роботи з Git (замість команд у терміналі).{" "}
+                          <span className="text-foreground">VS Code</span> — редактор коду, в якому зручно працювати з проєктами і запускати Claude Code.
+                        </p>
+                        <CodeBlock
+                          code={`brew install --cask github
+brew install --cask visual-studio-code`}
+                        />
+                        <div className="mt-3 mb-3 bg-primary/5 border-l-2 border-primary/40 rounded-r-lg p-3">
+                          <p className="text-sm text-muted-foreground">
+                            Дві команди — по черзі. Після кожної чекаємо поки встановиться.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Step 8 - Connect VS Code to Claude */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">4.1 Встановлення розширення Claude Code у VS Code</h4>
+                        <p className="text-muted-foreground mb-3">
+                          Відкриваєш VS Code, переходиш у розділ <span className="text-foreground">Extensions</span> (іконка з квадратиками на бічній панелі або <span className="text-foreground font-mono text-sm">Cmd+Shift+X</span>). В пошуку вводиш <span className="text-foreground">Claude Code</span> і встановлюєш розширення від <span className="text-foreground">Anthropic</span>.
+                        </p>
+                        <div className="mt-3 bg-primary/5 border-l-2 border-primary/40 rounded-r-lg p-3">
+                          <p className="text-sm text-muted-foreground">
+                            Після встановлення розширення Claude Code буде доступний прямо у VS Code — можеш викликати його будь-коли через бічну панель або командну палітру.
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -657,6 +688,37 @@ npm --version`}
                         <div className="mt-4 bg-primary/5 border-l-2 border-primary/40 rounded-r-lg p-3">
                           <p className="text-sm text-muted-foreground">
                             Якщо бачиш щось схоже — вітаю, тепер ти майже хакер. Ти встановив Claude Code на свій комп'ютер. Далі треба під'єднати акаунт.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Step 3 - GitHub Desktop + VS Code */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">3. Встановлення GitHub Desktop і VS Code</h4>
+                        <p className="text-muted-foreground mb-3">
+                          <span className="text-foreground">GitHub Desktop</span> — візуальний клієнт для роботи з Git.{" "}
+                          <span className="text-foreground">VS Code</span> — редактор коду, в якому зручно працювати з проєктами і запускати Claude Code.
+                        </p>
+                        <CodeBlock
+                          code={`winget install GitHub.GitHubDesktop
+winget install Microsoft.VisualStudioCode`}
+                        />
+                        <div className="mt-3 mb-3 bg-primary/5 border-l-2 border-primary/40 rounded-r-lg p-3">
+                          <p className="text-sm text-muted-foreground">
+                            Дві команди — по черзі. Після кожної чекаємо поки встановиться.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Step 3.1 - Connect VS Code to Claude */}
+                      <div className="bg-muted/20 border border-border/50 rounded-xl p-5">
+                        <h4 className="text-lg font-medium mb-2">3.1 Встановлення розширення Claude Code у VS Code</h4>
+                        <p className="text-muted-foreground mb-3">
+                          Відкриваєш VS Code, переходиш у розділ <span className="text-foreground">Extensions</span> (іконка з квадратиками на бічній панелі або <span className="text-foreground font-mono text-sm">Ctrl+Shift+X</span>). В пошуку вводиш <span className="text-foreground">Claude Code</span> і встановлюєш розширення від <span className="text-foreground">Anthropic</span>.
+                        </p>
+                        <div className="mt-3 bg-primary/5 border-l-2 border-primary/40 rounded-r-lg p-3">
+                          <p className="text-sm text-muted-foreground">
+                            Після встановлення розширення Claude Code буде доступний прямо у VS Code — можеш викликати його будь-коли через бічну панель або командну палітру.
                           </p>
                         </div>
                       </div>
