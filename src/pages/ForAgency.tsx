@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Zap, Eye, Code2, Clock } from "lucide-react";
+import { useContactForm } from "@/contexts/ContactFormContext";
 
 const whyUseTabs = [
   {
@@ -246,6 +247,7 @@ const studioProfiles = [
 
 const ForAgency = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const { openContactForm } = useContactForm();
 
   return (
     <div className="min-h-screen">
@@ -278,11 +280,9 @@ const ForAgency = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2 animate-fade-in animation-delay-600">
-            <a href="https://t.me/webflove" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="text-lg px-8 glow-effect hover-lift">
-                Start a project
-              </Button>
-            </a>
+            <Button size="lg" className="text-lg px-8 glow-effect hover-lift" onClick={openContactForm}>
+              Start a project
+            </Button>
             <Link to="/#projects">
               <Button size="lg" variant="outline" className="text-lg px-8 hover-lift">
                 See projects
@@ -739,11 +739,9 @@ const ForAgency = () => {
             <br />
             Let's build something your clients will love.
           </p>
-          <a href="https://t.me/webflove" target="_blank" rel="noopener noreferrer" className="animate-fade-in animation-delay-200 inline-block">
-            <Button size="lg" className="glow-effect">
-              Start a project
-            </Button>
-          </a>
+          <Button size="lg" className="glow-effect animate-fade-in animation-delay-200" onClick={openContactForm}>
+            Start a project
+          </Button>
         </div>
       </section>
 

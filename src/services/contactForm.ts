@@ -1,12 +1,9 @@
 export interface ContactFormData {
-  email: string;
   name: string;
-  phone: string;
   companyName: string;
-  websiteUrl: string;
-  budget: string;
+  email: string;
   projectDetails: string;
-  howDidYouFindUs: string;
+  budget: string;
 }
 
 export async function submitContactForm(data: ContactFormData): Promise<void> {
@@ -25,7 +22,7 @@ export async function submitContactForm(data: ContactFormData): Promise<void> {
     body: JSON.stringify({
       ...data,
       submittedAt: new Date().toISOString(),
-      source: "webf.love/lets-talk",
+      source: "webf.love/contact-form",
     }),
   });
 

@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { Layers, LayoutGrid, Unlock } from "lucide-react";
+import { useContactForm } from "@/contexts/ContactFormContext";
 
 const Hero = () => {
+  const { openContactForm } = useContactForm();
+
   return (
     <section className="container-custom h-screen flex items-center justify-center px-6">
       <div className="max-w-5xl mx-auto text-center space-y-8">
@@ -37,11 +39,14 @@ const Hero = () => {
               View Our Work
             </Button>
           </a>
-          <a href="https://t.me/webflove" target="_blank" rel="noopener noreferrer">
-            <Button size="lg" variant="outline" className="text-lg px-8 hover-lift">
-              Start a Project
-            </Button>
-          </a>
+          <Button
+            size="lg"
+            variant="outline"
+            className="text-lg px-8 hover-lift"
+            onClick={openContactForm}
+          >
+            Start a Project
+          </Button>
         </div>
       </div>
     </section>

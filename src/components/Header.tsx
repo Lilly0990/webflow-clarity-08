@@ -2,11 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useContactForm } from "@/contexts/ContactFormContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === "/";
+  const { openContactForm } = useContactForm();
 
   const navLinks = [
     { href: "#projects", label: "Projects", isAnchor: true },
@@ -50,11 +52,9 @@ const Header = () => {
                 </Link>
               )
             ))}
-            <a href="https://t.me/webflove" target="_blank" rel="noopener noreferrer">
-              <Button size="sm" className="glow-effect">
-                Let's Talk
-              </Button>
-            </a>
+            <Button size="sm" className="glow-effect" onClick={openContactForm}>
+              Let's Talk
+            </Button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -91,11 +91,16 @@ const Header = () => {
                 </Link>
               )
             ))}
-            <a href="https://t.me/webflove" target="_blank" rel="noopener noreferrer" className="w-full">
-              <Button size="sm" className="glow-effect w-full">
-                Let's Talk
-              </Button>
-            </a>
+            <Button
+              size="sm"
+              className="glow-effect w-full"
+              onClick={() => {
+                setIsMenuOpen(false);
+                openContactForm();
+              }}
+            >
+              Let's Talk
+            </Button>
           </nav>
         )}
       </div>

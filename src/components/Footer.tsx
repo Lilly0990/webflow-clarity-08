@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useContactForm } from "@/contexts/ContactFormContext";
 
 const Footer = () => {
+  const { openContactForm } = useContactForm();
+
   const navLinks = [
     { href: "#projects", label: "Projects" },
     { href: "#about", label: "About" },
@@ -8,7 +11,6 @@ const Footer = () => {
     { href: "#process", label: "Process" },
     { href: "#testimonials", label: "Testimonials" },
     { href: "/for-agency", label: "For Agencies", isRoute: true },
-    { href: "https://t.me/webflove", label: "Let's Talk", isExternal: true },
   ];
 
   return (
@@ -35,17 +37,7 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Navigation</h4>
             <nav className="flex flex-col gap-2">
               {navLinks.map((link) => (
-                link.isExternal ? (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                ) : link.isRoute ? (
+                link.isRoute ? (
                   <Link
                     key={link.href}
                     to={link.href}
@@ -63,6 +55,12 @@ const Footer = () => {
                   </a>
                 )
               ))}
+              <button
+                onClick={openContactForm}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left"
+              >
+                Let's Talk
+              </button>
             </nav>
           </div>
 
