@@ -12,7 +12,7 @@ export async function submitContactForm(data: ContactFormData): Promise<void> {
   const response = await fetch(webhookUrl, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "text/plain",
     },
     body: JSON.stringify({
       ...data,
