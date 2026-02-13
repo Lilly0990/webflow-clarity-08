@@ -7,7 +7,7 @@ export interface ContactFormData {
 }
 
 export async function submitContactForm(data: ContactFormData): Promise<void> {
-  const webhookUrl = import.meta.env.VITE_CONTACT_WEBHOOK_URL || "https://8.webflow.digist.agency/webhook/";
+  const webhookUrl = import.meta.env.VITE_CONTACT_WEBHOOK_URL || "https://8.webflow.digist.agency/webhook/webf.love";
 
   const response = await fetch(webhookUrl, {
     method: "POST",
