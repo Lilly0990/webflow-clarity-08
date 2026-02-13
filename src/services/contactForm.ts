@@ -7,12 +7,7 @@ export interface ContactFormData {
 }
 
 export async function submitContactForm(data: ContactFormData): Promise<void> {
-  const webhookUrl = import.meta.env.VITE_CONTACT_WEBHOOK_URL;
-
-  if (!webhookUrl) {
-    console.error("Webhook URL not configured");
-    throw new Error("Form submission is not configured");
-  }
+  const webhookUrl = import.meta.env.VITE_CONTACT_WEBHOOK_URL || "https://8.webflow.digist.agency/webhook/";
 
   const response = await fetch(webhookUrl, {
     method: "POST",
