@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "title": "Mastering JavaScript Date Object",
+    "slug": "mastering-javascript-date",
+    "description": "Learn how to work with the JavaScript Date object. Create, format, parse dates and handle time zones. Avoid common pitfalls.",
+    "author": "vlad-rulikovskiy",
+    "publishedAt": "2024-06-15",
+    "updatedAt": "2024-06-15",
+    "status": "draft",
+    "metaTitle": "Mastering JavaScript Date Object | webf.love",
+    "metaDescription": "Learn how to work with the JavaScript Date object. Create, format, parse dates and handle time zones. Avoid common pitfalls.",
+    "canonicalUrl": "/blog/mastering-javascript-date",
+    "keywords": [
+      "JavaScript",
+      "Date object",
+      "timezones",
+      "formatting",
+      "parsing",
+      "web development",
+      "coding"
+    ],
+    "ogImage": "/images/blog/mastering-javascript-date.png",
+    "ogImageAlt": "JavaScript Date object illustration",
+    "twitterCard": "summary_large_image",
+    "category": "Development",
+    "tags": [
+      "JavaScript",
+      "Date",
+      "Time",
+      "Programming",
+      "Web Development"
+    ],
+    "language": "en",
+    "featuredImage": "/images/blog/mastering-javascript-date.png",
+    "featuredImageAlt": "Clock and code icon",
+    "readingTime": 2,
+    "schemaType": "BlogPosting",
+    "keyTakeaways": [
+      "Create Date instances",
+      "Format dates easily",
+      "Parse date strings",
+      "Handle time zones",
+      "Avoid common errors"
+    ],
+    "faq": [
+      {
+        "question": "How do I format a Date in JavaScript?",
+        "answer": "Use toLocaleDateString() or Intl.DateTimeFormat. You can pass options for year, month, day, hour, minute, second."
+      },
+      {
+        "question": "Why are my dates off by one day?",
+        "answer": "Time zone differences and UTC conversions can shift the date. Always account for local time vs UTC."
+      }
+    ]
+  },
+  "content": "**Hook**\n\nDates in JavaScript can be confusing. You can end up with the wrong day or time zone. Knowing the right methods makes your life easier.\n\n**Problem**\n\nDevelopers often struggle with creating, formatting, and parsing dates. Time zone issues and inconsistent browser support add more headaches. Mistakes lead to bugs and user frustration.\n\n## Creating a Date Object\n\nThe first step is **instantiating** a Date. JavaScript offers multiple constructors:\n\n- `new Date()` gives the current date and time.\n- `new Date(milliseconds)` uses Unix time.\n- `new Date(dateString)` parses a string.\n- `new Date(year, month, day, ...)` sets components manually.\n\nKeep these tips in mind:\n\n- **Month is zero-based**. January is 0, December is 11.\n- Invalid inputs yield `Invalid Date`. Always check with `isNaN(date)`.\n\n## Formatting Dates\n\nPresenting dates to users requires consistent formatting. JavaScript provides built-in methods:\n\n- `date.toLocaleDateString()` for local format.\n- `date.toLocaleTimeString()` for time only.\n- `date.toISOString()` for ISO 8601.\n\nAnd the powerful Intl API:\n\njs\nconst options = { year: 'numeric', month: 'long', day: 'numeric' };\nnew Intl.DateTimeFormat('en-US', options).format(new Date());\n\n\nBenefits of Intl.DateTimeFormat:\n\n- **Locale aware** output.\n- Customizable options.\n- Works across modern browsers.\n\n## Parsing Dates\n\nTurning strings into Date objects can be tricky:\n\n- `new Date('2024-06-15')` works in most cases.\n- Formats like `MM/DD/YYYY` or `YYYY-MM-DD` vary by browser.\n\nUse libraries or manual parsing for safety:\n\n- Split the string and pass numbers to the constructor.\n- Use `Date.parse()` but beware of inconsistent support.\n- Consider a lightweight library like **date-fns** for reliable parsing.\n\n## Dealing with Timezones\n\nTime zones cause the most errors. JavaScript Date is based on UTC internally. When you log it:\n\n- `.getHours()` returns local hour.\n- `.getUTCHours()` returns UTC hour.\n\nTips to avoid issues:\n\n- Store dates in UTC. Convert to local only when displaying.\n- Use `date.toISOString()` for storing and transmitting.\n- Leverage libraries like **Luxon** or **Moment Timezone** for complex cases.\n\n## Best Practices\n\nFollow these rules for clean date handling:\n\n- Always validate incoming date strings.\n- Standardize on UTC for storage.\n- Use Intl API for formatting.\n- Avoid manual string manipulation.\n- Test across browsers and locales.\n\n**The Bottom Line**\n\nMastering the JavaScript Date object is achievable. Use the right constructor, parse safely, format with Intl, and handle time zones with care. Follow best practices. Write reliable code.\n"
+}
