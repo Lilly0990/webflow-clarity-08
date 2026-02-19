@@ -16,6 +16,7 @@ import ForAgency from "./pages/ForAgency";
 import Founder from "./pages/Founder";
 import Workshop from "./pages/Workshop";
 import NotFound from "./pages/NotFound";
+import HexagonCvaultEstimate from "./pages/HexagonCvaultEstimate";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => {
               <Route path="/for-agency" element={<ForAgency />} />
               <Route path="/about-me" element={<Founder />} />
               <Route path="/workshop_glow-team" element={<Workshop />} />
+              <Route path="/estimate/hexagon-cvault" element={<HexagonCvaultEstimate />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
