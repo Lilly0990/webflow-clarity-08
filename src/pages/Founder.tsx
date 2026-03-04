@@ -115,39 +115,47 @@ const Founder = () => {
             </div>
           </section>
 
-          {/* Studio — video background + description */}
-          <section className="relative overflow-hidden">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-              src="/freepik_abstract.mp4"
-            />
-            <div className="absolute inset-0 bg-black/60" />
+          {/* Studio */}
+          <section className="container-custom pb-24">
+            <div className="grid md:grid-cols-2 border-t border-black">
+              {/* Video background instead of photo */}
+              <div className="relative border-b md:border-b-0 md:border-r border-black overflow-hidden aspect-square md:aspect-auto">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover"
+                  src="/freepik_abstract.mp4"
+                />
+              </div>
 
-            <div className="relative container-custom py-24 md:py-32">
-              <div className="max-w-3xl">
-                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#d4292b] mb-4">
+              {/* Bio */}
+              <div className="py-12 md:py-16 md:pl-12">
+                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#d4292b] mb-2">
                   Who We Are
                 </p>
-                <h2 className="text-3xl md:text-4xl font-bold mb-8 text-[#f3f2ef]">
-                  A technical studio with a design mindset.
+                <h2 className="text-2xl md:text-3xl font-bold mb-2">
+                  webf.love
                 </h2>
+                <p className="text-sm font-light text-muted-foreground mb-8">
+                  Ukrainian Web Development Studio
+                </p>
 
-                <div className="space-y-5 text-lg font-light text-[#f3f2ef]/80 leading-relaxed">
+                <div className="space-y-4 text-base font-light text-muted-foreground leading-relaxed">
                   <p>
-                    webf.love is a small Ukrainian team that takes projects from brief to delivery. Our core stack is Webflow + custom code, but over the past year we've added AI and automation as a dedicated practice. Our main development tool today is Claude Code.
+                    We're a small Ukrainian team that takes projects from
+                    brief to delivery. Our core stack is Webflow + custom code, but over
+                    the past year we've added AI and automation as a dedicated practice.
                   </p>
                   <p>
-                    We started from design before moving into development — so we think in UX, structure, and long-term maintainability, not just code. We've worked across fintech, SaaS, education, real estate, and beauty — building corporate sites, landing pages, custom booking systems, configurators, and CMS architectures.
+                    We started from design before moving into development — so we think in
+                    UX, structure, and long-term maintainability, not just code. Our main
+                    development tool today is Claude Code.
                   </p>
                   <p>
-                    On the automation side, we build n8n workflows for everything from voice messages to CRM tasks, Telegram bots for auto-posting and content generation, AI agents for internal QA and brief analysis, and MCP integrations connecting Figma, Webflow, and development pipelines.
-                  </p>
-                  <p>
-                    We also run workshops on integrating AI tools into studio workflows — helping product teams adopt modern tooling and ship faster.
+                    We also run workshops on integrating AI tools into
+                    studio workflows — helping product teams adopt modern tooling and ship faster.
                   </p>
                 </div>
               </div>
