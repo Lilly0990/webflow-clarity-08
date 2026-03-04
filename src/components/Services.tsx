@@ -1,29 +1,32 @@
 const services = [
   {
-    title: "Webflow Development Services",
-    description: "We develop fast, scalable Webflow websites with clean architecture and fully structured CMS.",
+    number: "01",
+    title: "Development",
+    description: "We develop fast, scalable websites with clean architecture and fully structured CMS.",
     benefits: [
-      "Pixel-perfect custom Webflow development",
+      "Pixel-perfect custom development",
       "CMS your team can manage independently",
-      "SEO-ready structure optimized from day one",
+      "SEO-ready structure from day one",
     ],
   },
   {
-    title: "Webflow Integrations & Automation",
-    description: "We connect tools, automate workflows, and extend your Webflow website's capabilities.",
+    number: "02",
+    title: "Integrations",
+    description: "We connect tools, automate workflows, and extend your website's capabilities.",
     benefits: [
       "API & service integrations",
       "n8n, Make, Zapier automation",
-      "Custom workflows that save hours weekly",
+      "Custom workflows that save hours",
     ],
   },
   {
-    title: "Webflow Support & Ongoing Partnership",
+    number: "03",
+    title: "Support",
     description: "We support, train, and empower your team — giving you full ownership of the site.",
     benefits: [
       "Documentation & video walkthroughs",
       "Full autonomy for your team",
-      "Support for updates and major improvements",
+      "Ongoing updates and improvements",
     ],
   },
 ];
@@ -31,36 +34,38 @@ const services = [
 const Services = () => {
   return (
     <section className="section-padding container-custom">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-6xl font-bold mb-4">Our Webflow Development Services</h2>
-          <p className="text-xl text-muted-foreground">
-            Three core services — one goal: help you move faster with Webflow.
-          </p>
-        </div>
+      <div className="mb-16">
+        <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#d4292b] mb-4">
+          Services
+        </p>
+        <h2 className="text-3xl md:text-5xl lg:text-[48px] font-bold leading-[1.1] tracking-tight">
+          What We Do
+        </h2>
+      </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-card border border-border rounded-lg p-8 card-hover animate-scale-in"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
-
-              <h4 className="text-lg font-semibold mb-3">What you get:</h4>
-              <ul className="space-y-3">
-                {service.benefits.map((benefit, i) => (
-                  <li key={i} className="flex items-start gap-2 text-muted-foreground">
-                    <span className="text-primary">→</span>
-                    <span>{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+      <div className="grid md:grid-cols-3 border-t border-black">
+        {services.map((service, index) => (
+          <div
+            key={index}
+            className={`py-10 ${index < services.length - 1 ? 'md:border-r md:border-black md:pr-8' : ''} ${index > 0 ? 'md:pl-8' : ''} ${index > 0 ? 'border-t md:border-t-0 border-black' : ''}`}
+          >
+            <span className="text-[#d4292b] text-sm font-bold mb-4 block">
+              {service.number}
+            </span>
+            <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+            <p className="text-muted-foreground font-light leading-relaxed mb-6">
+              {service.description}
+            </p>
+            <ul className="space-y-3">
+              {service.benefits.map((benefit, i) => (
+                <li key={i} className="flex items-start gap-3 text-sm font-light text-muted-foreground">
+                  <span className="text-[#d4292b] mt-0.5">—</span>
+                  <span>{benefit}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </section>
   );

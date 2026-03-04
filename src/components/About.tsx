@@ -1,67 +1,58 @@
+import { Link } from "react-router-dom";
+
 const stats = [
-  { value: "6", label: "Years Experience" },
-  { value: "100+", label: "Projects Delivered" },
+  { value: "6+", label: "Years" },
+  { value: "100+", label: "Projects" },
   { value: "95%", label: "Referral Rate" },
 ];
 
 const About = () => {
   return (
-    <section id="about" className="section-padding container-custom">
-      <div className="animate-fade-in">
-        <h2 className="text-5xl md:text-7xl font-bold mb-12">About</h2>
+    <section className="section-padding container-custom border-t border-black">
+      <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#d4292b] mb-4">
+        About
+      </p>
+      <h2 className="text-3xl md:text-5xl lg:text-[48px] font-bold leading-[1.1] tracking-tight mb-12">
+        A web studio that ships —
+        <br />
+        and automates the rest.
+      </h2>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Left — Text */}
-          <div className="space-y-8">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              We're a Webflow development team working globally for 6+ years.
-              Our clients come back — and bring their friends.
-            </p>
+      <div className="grid md:grid-cols-2 gap-12 md:gap-24">
+        {/* Left — Text */}
+        <div>
+          <p className="text-lg font-light text-muted-foreground leading-relaxed mb-6">
+            We're a Ukrainian team building websites and digital products for 6+ years.
+            Our stack is Webflow + custom code + AI automation. Our founder started as a
+            designer — so we think in UX, structure, and logic, not just code.
+          </p>
+          <p className="text-lg font-light text-muted-foreground leading-relaxed mb-8">
+            Clear communication. Honest pricing. No technical gatekeeping.
+            Most clients come from referrals — that says more than any tagline.
+          </p>
+          <Link
+            to="/about-me"
+            className="text-xs font-bold uppercase tracking-[0.15em] text-foreground hover:text-[#d4292b] transition-colors"
+          >
+            Learn more about us →
+          </Link>
+        </div>
 
-            <div>
-              <h3 className="text-2xl font-bold mb-3">What makes us different?</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Our founder started as a designer before becoming a Webflow developer — so we think in UX,
-                structure, logic, and long-term maintainability, not just code.
-              </p>
+        {/* Right — Stats */}
+        <div className="flex flex-col">
+          {stats.map((stat, i) => (
+            <div
+              key={stat.label}
+              className={`flex items-baseline justify-between py-6 border-t border-black ${i === stats.length - 1 ? "border-b" : ""}`}
+            >
+              <span className="text-4xl md:text-5xl font-bold text-[#d4292b]">
+                {stat.value}
+              </span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-black/40">
+                {stat.label}
+              </span>
             </div>
-
-            <div>
-              <h3 className="text-2xl font-bold mb-3">How we work</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Clear communication. Honest pricing. No complexity for the sake of complexity.
-                No technical gatekeeping. Most clients come from referrals — that says more than any tagline.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-3 gap-6 pt-4">
-              {stats.map((stat, index) => (
-                <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 200}ms` }}>
-                  <div className="text-3xl md:text-4xl font-bold gradient-text mb-1">{stat.value}</div>
-                  <div className="text-xs text-muted-foreground">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right — Photo Grid */}
-          <div className="grid grid-cols-2 gap-4">
-            <img
-              src="/images/my-photo.png"
-              alt="Vlad — Founder"
-              className="rounded-xl object-cover w-full aspect-square"
-            />
-            <img
-              src="/images/team/vlad-logo.png"
-              alt="webf.love branding"
-              className="rounded-xl object-cover w-full aspect-[3/4]"
-            />
-            <img
-              src="/images/team/post-1.png"
-              alt="Project showcase"
-              className="rounded-xl object-cover w-full col-span-2 aspect-[16/9]"
-            />
-          </div>
+          ))}
         </div>
       </div>
     </section>

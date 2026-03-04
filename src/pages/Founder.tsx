@@ -1,160 +1,269 @@
-import { Helmet } from 'react-helmet-async';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
+import { Helmet } from "react-helmet-async";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { useContactForm } from "@/contexts/ContactFormContext";
+
+const services = [
+  {
+    num: "01",
+    title: "Web Development",
+    items: [
+      "Corporate websites & landing pages",
+      "SaaS, fintech, education, real estate",
+      "Custom booking systems & configurators",
+      "CMS architecture & migrations",
+    ],
+  },
+  {
+    num: "02",
+    title: "AI & Automation",
+    items: [
+      "n8n workflows & integrations",
+      "AI agents for internal operations",
+      "Telegram bots & auto-posting",
+      "MCP integrations (Figma, Webflow, n8n)",
+    ],
+  },
+  {
+    num: "03",
+    title: "Dev Partnership",
+    items: [
+      "Technical partner for design studios",
+      "From brief to delivery",
+      "Ongoing support & maintenance",
+      "AI workshops for product teams",
+    ],
+  },
+];
+
+const stack = [
+  { name: "Webflow", logo: "/images/stack/webflow.svg" },
+  { name: "Claude Code", logo: "/images/stack/claude.png" },
+  { name: "n8n", logo: "/images/stack/n8n.png" },
+  { name: "Supabase", logo: "/images/stack/supabase.png" },
+  { name: "GSAP", logo: "/images/stack/gsap.svg" },
+  { name: "Telegram API", logo: "/images/stack/telegram.svg" },
+  { name: "GitHub API", logo: "/images/stack/github.png" },
+  { name: "OpenAI", logo: "/images/stack/openai.svg" },
+];
+
+const stats = [
+  { value: "6+", label: "Years" },
+  { value: "100+", label: "Projects" },
+  { value: "95%", label: "Referral rate" },
+  { value: "3", label: "Countries" },
+];
 
 const Founder = () => {
+  const { openContactForm } = useContactForm();
+
   return (
     <>
       <Helmet>
-        <title>Vladyslav Rulikovskij - Founder | webf.love</title>
-        <meta name="robots" content="noindex, nofollow" />
+        <title>About — webf.love</title>
+        <meta
+          name="description"
+          content="Ukrainian web studio. Webflow + AI automation. 6+ years, 100+ projects, 95% referral rate."
+        />
       </Helmet>
 
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-background">
         <Header />
 
-        <main className="section-padding container-custom pt-32">
-          <div className="max-w-3xl mx-auto">
-            {/* Profile Card */}
-            <div className="bg-card border border-border rounded-2xl p-8 md:p-12 animate-fade-in">
-              {/* Avatar & Name */}
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8">
-                <div className="w-32 h-32 rounded-full overflow-hidden flex-shrink-0 border-4 border-primary/20">
-                  <ImagePlaceholder
-                    src="/images/team/vlad-logo.png"
-                    alt="Vladyslav Rulikovskij"
-                    className="w-full h-full"
-                    type="avatar"
-                  />
-                </div>
-                <div className="text-center md:text-left">
-                  <h1 className="text-3xl md:text-4xl font-bold mb-2">
-                    Vladyslav Rulikovskij
-                  </h1>
-                  <p className="text-xl text-primary font-medium mb-2">
-                    Founder & Webflow Developer
-                  </p>
-                  <p className="text-muted-foreground">
-                    webf.love - Webflow Development Agency
-                  </p>
-                </div>
-              </div>
+        <main className="pt-32">
+          {/* Hero */}
+          <section className="section-padding container-custom">
+            <div className="relative">
+              <div className="absolute -top-6 left-0 w-32 h-[3px] bg-[#d4292b]" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#d4292b] mb-4">
+                About the Studio
+              </p>
+              <h1 className="text-4xl md:text-6xl lg:text-[72px] font-bold leading-[1.05] tracking-tight mb-6">
+                We build websites that work. And automate what doesn't need a human.
+              </h1>
+              <p className="text-lg md:text-xl font-light text-muted-foreground max-w-2xl leading-relaxed mb-10">
+                A small Ukrainian studio combining Webflow, custom code, and AI
+                automation. We work as a technical partner — from brief to
+                delivery.
+              </p>
+              <Button
+                className="bg-[#d4292b] text-[#f3f2ef] hover:bg-[#b8232a] px-8 h-12"
+                onClick={openContactForm}
+              >
+                Start a Project
+              </Button>
+            </div>
+          </section>
 
-              {/* About */}
-              <div className="mb-8">
-                <h2 className="text-xl font-bold mb-3">About</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  Expert in Webflow development with focus on enterprise solutions and high-performance websites.
-                  Leading a team of 4 professionals delivering 100+ projects over 6+ years with a 95% referral rate.
+          {/* Stats */}
+          <section className="container-custom pb-0">
+            <div className="grid grid-cols-2 md:grid-cols-4 border-t border-black">
+              {stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="py-10 md:py-12 border-b md:border-b-0 md:border-r border-black last:border-r-0 last:border-b-0 md:pl-0 md:pr-8 [&:nth-child(n+3)]:md:pl-8 [&:nth-child(2)]:md:pl-8"
+                >
+                  <span className="text-4xl md:text-5xl font-bold tracking-tight block mb-1">
+                    {stat.value}
+                  </span>
+                  <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-black/40">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Studio — video background + description */}
+          <section className="relative overflow-hidden">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+              src="/freepik_abstract.mp4"
+            />
+            <div className="absolute inset-0 bg-black/60" />
+
+            <div className="relative container-custom py-24 md:py-32">
+              <div className="max-w-3xl">
+                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#d4292b] mb-4">
+                  Who We Are
                 </p>
-              </div>
+                <h2 className="text-3xl md:text-4xl font-bold mb-8 text-[#f3f2ef]">
+                  A technical studio with a design mindset.
+                </h2>
 
-              {/* Contact Information */}
-              <div className="border-t border-border pt-8">
-                <h2 className="text-xl font-bold mb-6">Contact Information</h2>
-
-                <div className="grid gap-4">
-                  {/* Email - Business */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                        <rect width="20" height="16" x="2" y="4" rx="2"/>
-                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Business Email</p>
-                      <a href="mailto:hello@webf.love" className="text-foreground hover:text-primary transition-colors">
-                        hello@webf.love
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Email - Personal */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                        <rect width="20" height="16" x="2" y="4" rx="2"/>
-                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Personal Email</p>
-                      <a href="mailto:hellozapadloid@gmail.com" className="text-foreground hover:text-primary transition-colors">
-                        hellozapadloid@gmail.com
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Phone */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Phone</p>
-                      <a href="tel:+380930709602" className="text-foreground hover:text-primary transition-colors">
-                        +380 930709602
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Address */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                        <circle cx="12" cy="10" r="3"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Address</p>
-                      <address className="not-italic text-foreground">
-                        Drahomanova Mykhaila, build 2A, housing 3, fl 864<br />
-                        Kyiv, 02159<br />
-                        Ukraine
-                      </address>
-                    </div>
-                  </div>
-
-                  {/* LinkedIn */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-primary">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">LinkedIn</p>
-                      <a
-                        href="https://www.linkedin.com/in/rulikovskyi"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-foreground hover:text-primary transition-colors"
-                      >
-                        linkedin.com/in/rulikovskyi
-                      </a>
-                    </div>
-                  </div>
+                <div className="space-y-5 text-lg font-light text-[#f3f2ef]/80 leading-relaxed">
+                  <p>
+                    webf.love is a small Ukrainian team that takes projects from brief to delivery. Our core stack is Webflow + custom code, but over the past year we've added AI and automation as a dedicated practice. Our main development tool today is Claude Code.
+                  </p>
+                  <p>
+                    We started from design before moving into development — so we think in UX, structure, and long-term maintainability, not just code. We've worked across fintech, SaaS, education, real estate, and beauty — building corporate sites, landing pages, custom booking systems, configurators, and CMS architectures.
+                  </p>
+                  <p>
+                    On the automation side, we build n8n workflows for everything from voice messages to CRM tasks, Telegram bots for auto-posting and content generation, AI agents for internal QA and brief analysis, and MCP integrations connecting Figma, Webflow, and development pipelines.
+                  </p>
+                  <p>
+                    We also run workshops on integrating AI tools into studio workflows — helping product teams adopt modern tooling and ship faster.
+                  </p>
                 </div>
-              </div>
-
-              {/* Company Info */}
-              <div className="border-t border-border pt-8 mt-8">
-                <h2 className="text-xl font-bold mb-4">Company</h2>
-                <div className="flex items-center gap-4">
-                  <div className="text-3xl font-bold gradient-text">webf.love</div>
-                </div>
-                <p className="text-muted-foreground mt-3">
-                  Webflow Development Agency building fast, scalable, high-performance websites.
-                  6+ years of experience, 100+ projects delivered.
-                </p>
               </div>
             </div>
-          </div>
+          </section>
+
+          {/* What We Do */}
+          <section className="section-padding container-custom border-t border-black">
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#d4292b] mb-4">
+              What We Do
+            </p>
+            <h2 className="text-3xl md:text-5xl lg:text-[48px] font-bold leading-[1.1] tracking-tight mb-12">
+              Three directions. One process.
+            </h2>
+
+            <div className="grid md:grid-cols-3 border-t border-black">
+              {services.map((service) => (
+                <div
+                  key={service.num}
+                  className="py-10 md:pr-8 border-b md:border-b-0 md:border-r border-black last:border-r-0 last:border-b-0 md:pl-8 first:md:pl-0"
+                >
+                  <span className="text-[11px] font-bold text-[#d4292b] mb-4 block">
+                    {service.num}
+                  </span>
+                  <h3 className="text-xl font-bold mb-4">{service.title}</h3>
+                  <ul className="space-y-2">
+                    {service.items.map((item) => (
+                      <li
+                        key={item}
+                        className="text-sm font-light text-muted-foreground flex items-start gap-2"
+                      >
+                        <span className="text-[#d4292b] mt-0.5">—</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Stack */}
+          <section className="section-padding border-t border-black">
+            <div className="container-custom mb-12">
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#d4292b] mb-4">
+                Stack
+              </p>
+              <h2 className="text-3xl md:text-5xl lg:text-[48px] font-bold leading-[1.1] tracking-tight">
+                Tools we use daily.
+              </h2>
+            </div>
+
+            <div className="flex flex-wrap border-t border-l border-black">
+              {stack.map((tool) => (
+                <div
+                  key={tool.name}
+                  className="flex flex-col items-center justify-center gap-3 py-8 px-8 md:px-12 border-r border-b border-black"
+                >
+                  <img
+                    src={tool.logo}
+                    alt={tool.name}
+                    className="w-8 h-8 object-contain"
+                    onError={(e) => { e.currentTarget.style.display = 'none' }}
+                  />
+                  <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-black/60">
+                    {tool.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Contact */}
+          <section className="section-padding container-custom border-t border-black">
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#d4292b] mb-4">
+              Contact
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.15em] text-black/40 mb-2">
+                  Email
+                </p>
+                <a
+                  href="mailto:hello@webf.love"
+                  className="text-lg font-light hover:text-[#d4292b] transition-colors"
+                >
+                  hello@webf.love
+                </a>
+              </div>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.15em] text-black/40 mb-2">
+                  LinkedIn
+                </p>
+                <a
+                  href="https://www.linkedin.com/in/rulikovskyi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg font-light hover:text-[#d4292b] transition-colors"
+                >
+                  linkedin.com/in/rulikovskyi
+                </a>
+              </div>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.15em] text-black/40 mb-2">
+                  Phone
+                </p>
+                <a
+                  href="tel:+380930709602"
+                  className="text-lg font-light hover:text-[#d4292b] transition-colors"
+                >
+                  +380 93 070 96 02
+                </a>
+              </div>
+            </div>
+          </section>
         </main>
 
         <Footer />

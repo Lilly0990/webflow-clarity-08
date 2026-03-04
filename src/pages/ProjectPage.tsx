@@ -120,7 +120,7 @@ const ProjectPage = () => {
       {/* Main Visual - Video, Lottie or Image */}
       <section className="container-custom pb-16">
         <div className="max-w-5xl mx-auto">
-          <div className="bg-secondary/50 rounded-lg overflow-hidden animate-scale-in">
+          <div className="overflow-hidden border border-border animate-scale-in">
             {project.heroVideo ? (
               <video
                 src={project.heroVideo}
@@ -174,7 +174,7 @@ const ProjectPage = () => {
       )}
 
       {/* Challenge */}
-      <section className="section-padding container-custom bg-secondary/30">
+      <section className="section-padding container-custom border-t border-border">
         <div className="max-w-4xl mx-auto animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">The Challenge</h2>
           <p className="text-lg text-muted-foreground leading-relaxed">{project.challenge}</p>
@@ -189,7 +189,7 @@ const ProjectPage = () => {
               {project.mobileScreenshots.map((screenshot, index) => (
                 <div
                   key={index}
-                  className="bg-secondary/30 rounded-2xl p-6 md:p-8 animate-scale-in"
+                  className="border border-border p-6 md:p-8 animate-scale-in"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="aspect-[9/16] rounded-xl overflow-hidden bg-card border border-border shadow-lg">
@@ -238,15 +238,15 @@ const ProjectPage = () => {
       </section>
 
       {/* Gallery */}
-      {project.gallery.length > 1 && (
-        <section className="section-padding container-custom bg-secondary/30">
+      {project.gallery.length > 1 && !project.gallery.every(img => img.includes('placeholder')) && (
+        <section className="section-padding container-custom border-t border-border">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold mb-8 text-center animate-fade-in">Project Gallery</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {project.gallery.slice(1).map((image, index) => (
                 <div
                   key={index}
-                  className="aspect-video bg-secondary/50 rounded-lg overflow-hidden animate-scale-in"
+                  className="aspect-video overflow-hidden border border-border animate-scale-in"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <img
@@ -282,7 +282,7 @@ const ProjectPage = () => {
 
       {/* Testimonial */}
       {project.testimonial && (
-        <section className="section-padding container-custom bg-secondary/30">
+        <section className="section-padding container-custom border-t border-border">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
             <Quote className="h-12 w-12 mx-auto mb-6 text-primary opacity-50" />
             <blockquote className="text-2xl md:text-3xl font-medium mb-6 leading-relaxed">
@@ -329,8 +329,17 @@ const ProjectPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="section-padding container-custom bg-primary text-primary-foreground">
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="relative section-padding container-custom bg-primary text-primary-foreground overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/freepik_abstract.mp4"
+        />
+        <div className="absolute inset-0 bg-primary/20" />
+        <div className="relative max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Project?</h2>
           <p className="text-lg opacity-90 mb-8">
             Let's discuss how we can bring your vision to life with Webflow.
