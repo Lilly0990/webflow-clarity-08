@@ -19,7 +19,7 @@ const SEOHead = ({
   title,
   description,
   canonicalUrl,
-  ogImage = '/images/og-default.jpg',
+  ogImage = '/og-image.png',
   ogImageAlt = 'webf.love',
   ogType = 'website',
   twitterCard = 'summary_large_image',
