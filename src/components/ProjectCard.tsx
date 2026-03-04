@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 
 interface ProjectCardProps {
   id: string;
@@ -15,9 +14,8 @@ interface ProjectCardProps {
 const ProjectCard = ({ id, title, description, category, highlights, previewImage, heroVideo }: ProjectCardProps) => {
   return (
     <Link to={`/projects/${id}`} className="group block">
-      <div className="bg-card border border-border rounded-2xl overflow-hidden card-hover">
-        {/* Preview Video or Image */}
-        <div className="aspect-[16/10] overflow-hidden bg-secondary">
+      <div className="border border-black overflow-hidden transition-transform duration-500 hover:-translate-y-[2px]">
+        <div className="aspect-[16/10] overflow-hidden bg-muted">
           {heroVideo ? (
             <video
               src={heroVideo}
@@ -25,30 +23,29 @@ const ProjectCard = ({ id, title, description, category, highlights, previewImag
               loop
               muted
               playsInline
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             />
           ) : previewImage ? (
             <img
               src={previewImage}
               alt={title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-              <span className="text-6xl opacity-20">📷</span>
-            </div>
+            <div className="w-full h-full flex items-center justify-center text-muted-foreground bg-muted" />
           )}
         </div>
 
-        {/* Content */}
-        <div className="p-8">
-          <Badge className="mb-4">{category}</Badge>
-          <h3 className="text-2xl md:text-3xl font-bold mb-3 group-hover:text-primary transition-colors">{title}</h3>
-          <p className="text-muted-foreground mb-4 line-clamp-2">{description}</p>
-          <div className="flex flex-wrap gap-2">
+        <div className="p-6 border-t border-black">
+          <Badge variant="outline" className="mb-3 border-black">{category}</Badge>
+          <h3 className="text-xl md:text-2xl font-bold mb-2 group-hover:text-[#d4292b] transition-colors">
+            {title}
+          </h3>
+          <p className="text-sm text-muted-foreground font-light line-clamp-2 mb-3">{description}</p>
+          <div className="flex flex-wrap gap-x-2 gap-y-1">
             {highlights.map((highlight, index) => (
-              <span key={index} className="text-sm text-muted-foreground">
-                {highlight} {index < highlights.length - 1 && "•"}
+              <span key={index} className="text-xs text-muted-foreground font-light">
+                {highlight}{index < highlights.length - 1 && " /"}
               </span>
             ))}
           </div>

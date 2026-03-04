@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,143 +6,101 @@
 
 @layer base {
   :root {
-    /* Color System - Slate & Neon Palette */
-    --background: 200 14% 18%;
-    --foreground: 26 57% 84%;
-    
-    --card: 200 14% 22%;
-    --card-foreground: 26 57% 84%;
-    
-    --popover: 200 14% 22%;
-    --popover-foreground: 26 57% 84%;
-    
-    --primary: 0 87% 62%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 0 87% 72%;
-    
-    --secondary: 18 12% 33%;
-    --secondary-foreground: 26 57% 84%;
-    
-    --muted: 18 12% 33%;
-    --muted-foreground: 26 57% 70%;
-    
-    --accent: 26 57% 84%;
-    --accent-foreground: 200 14% 18%;
-    
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    
-    --border: 18 12% 33%;
-    --input: 18 12% 33%;
-    --ring: 0 87% 62%;
-    
-    --radius: 0.75rem;
-    
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(0 87% 62%), hsl(0 87% 72%));
-    --gradient-subtle: linear-gradient(180deg, hsl(200 14% 22%), hsl(200 14% 18%));
-    --gradient-accent: linear-gradient(135deg, hsl(26 57% 84%), hsl(0 87% 62%));
-    
-    /* Shadows */
-    --shadow-elegant: 0 10px 40px -10px hsl(0 87% 62% / 0.4);
-    --shadow-glow: 0 0 60px hsl(0 87% 62% / 0.3);
-    --shadow-card: 0 4px 20px hsl(200 14% 18% / 0.6);
-    
-    /* Animations */
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
+    /* Bauhaus Color System — 3 colors only */
+    --color-red: #d4292b;
+    --color-black: #000000;
+    --color-bg: #f3f2ef;
+    --module: 24px;
 
-  .light {
-    --background: 0 0% 100%;
-    --foreground: 200 14% 18%;
-    
-    --card: 26 57% 96%;
-    --card-foreground: 200 14% 18%;
-    
-    --popover: 0 0% 100%;
-    --popover-foreground: 200 14% 18%;
-    
-    --primary: 0 87% 62%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 0 87% 72%;
-    
-    --secondary: 26 57% 90%;
-    --secondary-foreground: 200 14% 18%;
-    
-    --muted: 26 57% 90%;
-    --muted-foreground: 18 12% 33%;
-    
-    --accent: 18 12% 33%;
-    --accent-foreground: 26 57% 84%;
-    
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    
-    --border: 26 57% 80%;
-    --input: 26 57% 80%;
-    --ring: 0 87% 62%;
-    
-    --shadow-elegant: 0 10px 40px -10px hsl(0 87% 62% / 0.3);
-    --shadow-glow: 0 0 60px hsl(0 87% 62% / 0.2);
-    --shadow-card: 0 4px 20px hsl(200 14% 18% / 0.15);
+    --background: 40 18% 95%;
+    --foreground: 0 0% 0%;
+
+    --card: 40 18% 95%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 40 18% 95%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 359 68% 50%;
+    --primary-foreground: 40 18% 95%;
+
+    --secondary: 0 0% 0%;
+    --secondary-foreground: 40 18% 95%;
+
+    --muted: 40 10% 88%;
+    --muted-foreground: 0 0% 30%;
+
+    --accent: 359 68% 50%;
+    --accent-foreground: 40 18% 95%;
+
+    --destructive: 359 68% 50%;
+    --destructive-foreground: 40 18% 95%;
+
+    --border: 0 0% 0%;
+    --input: 0 0% 0%;
+    --ring: 359 68% 50%;
+
+    --radius: 0px;
+
+    /* Bauhaus easing */
+    --ease-bauhaus: cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
 
 @layer base {
+  /* BAUHAUS RULE: No border-radius */
+  *, *::before, *::after {
+    border-radius: 0 !important;
+  }
+
+  /* BAUHAUS RULE: No shadows */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
   }
+
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     @apply font-bold;
+  }
+
+  /* Brand selection color */
+  ::selection {
+    background: #d4292b;
+    color: #f3f2ef;
+  }
+
+  /* Scrollbar — thin red */
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d4292b;
   }
 }
 
 @layer components {
   .section-padding {
-    @apply py-20 md:py-32;
-  }
-  
-  .container-custom {
-    @apply container mx-auto px-6 md:px-8 lg:px-12 max-w-7xl;
-  }
-  
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+    @apply py-24;
   }
 
-  .gradient-ukraine {
-    background: linear-gradient(135deg, hsl(210 40% 55%) 0%, hsl(200 35% 60%) 40%, hsl(55 45% 65%) 60%, hsl(45 45% 70%) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  .card-hover {
-    @apply transition-all duration-400 hover:scale-[1.02] hover:shadow-[var(--shadow-elegant)];
-  }
-  
-  .glow-effect {
-    box-shadow: var(--shadow-glow);
-    transition: all 0.3s ease;
-  }
-  
-  .glow-effect:hover {
-    box-shadow: var(--shadow-glow), 0 0 80px hsl(var(--primary) / 0.3);
-    transform: translateY(-2px);
-  }
-  
-  .hover-lift {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .hover-lift:hover {
-    transform: translateY(-4px);
+  .container-custom {
+    @apply container mx-auto px-6 md:px-8 lg:px-16 max-w-7xl;
   }
 }
 
@@ -156,13 +114,13 @@
   .animation-delay-600 {
     animation-delay: 600ms;
   }
-  .animation-delay-\[800ms\] {
+  .animation-delay-800 {
     animation-delay: 800ms;
   }
 }
 
 /* ==========================================
-   ARTICLE CONTENT STYLES (Flow Ninja inspired)
+   ARTICLE CONTENT STYLES
    ========================================== */
 
 .article-content {
@@ -171,7 +129,6 @@
   color: hsl(var(--muted-foreground));
 }
 
-/* Paragraphs */
 .article-content p {
   margin-bottom: 1.5rem;
 }
@@ -180,12 +137,11 @@
   margin-bottom: 0;
 }
 
-/* Headings */
 .article-content h1,
 .article-content h2,
 .article-content h3,
 .article-content h4 {
-  font-family: 'Bricolage Grotesque', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   color: hsl(var(--foreground));
   font-weight: 700;
   scroll-margin-top: 6rem;
@@ -205,13 +161,11 @@
   margin-bottom: 1rem;
 }
 
-/* Strong text */
 .article-content strong {
   color: hsl(var(--foreground));
   font-weight: 600;
 }
 
-/* Links */
 .article-content a {
   color: hsl(var(--primary));
   text-decoration: none;
@@ -223,7 +177,7 @@
   border-bottom-color: hsl(var(--primary));
 }
 
-/* Unordered Lists - Custom Bullets */
+/* Unordered Lists */
 .article-content ul {
   list-style: none;
   padding-left: 0;
@@ -244,11 +198,9 @@
   top: 0.6em;
   width: 8px;
   height: 8px;
-  border-radius: 50%;
   background: hsl(var(--primary));
 }
 
-/* Nested lists */
 .article-content ul ul li::before {
   background: transparent;
   border: 2px solid hsl(var(--primary));
@@ -256,7 +208,7 @@
   height: 6px;
 }
 
-/* Ordered Lists - Custom Numbers */
+/* Ordered Lists */
 .article-content ol {
   list-style: none;
   padding-left: 0;
@@ -286,16 +238,14 @@
   color: hsl(var(--primary));
   background: hsl(var(--primary) / 0.1);
   border: 1px solid hsl(var(--primary) / 0.2);
-  border-radius: 0.5rem;
 }
 
 /* Blockquotes */
 .article-content blockquote {
   margin: 2rem 0;
   padding: 1.5rem 1.5rem 1.5rem 2rem;
-  background: hsl(var(--card));
+  background: hsl(var(--muted));
   border-left: 4px solid hsl(var(--primary));
-  border-radius: 0 0.75rem 0.75rem 0;
   font-style: italic;
 }
 
@@ -306,9 +256,8 @@
 
 /* Code inline */
 .article-content code {
-  background: hsl(var(--secondary));
+  background: hsl(var(--muted));
   padding: 0.2em 0.4em;
-  border-radius: 0.25rem;
   font-size: 0.9em;
   font-family: 'JetBrains Mono', monospace;
   color: hsl(var(--primary));
@@ -318,7 +267,7 @@
 .article-content hr {
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
+  background: hsl(var(--border));
   margin: 3rem 0;
 }
 
@@ -326,7 +275,6 @@
 .article-content .callout {
   margin: 2rem 0;
   padding: 1.5rem;
-  border-radius: 0.75rem;
   border: 1px solid;
 }
 
@@ -344,7 +292,7 @@
 }
 
 .article-content .callout-tip::before {
-  content: '💡 Tip';
+  content: 'Tip';
   display: block;
   font-weight: 600;
   color: hsl(142 76% 36%);
@@ -357,7 +305,7 @@
 }
 
 .article-content .callout-warning::before {
-  content: '⚠️ Warning';
+  content: 'Warning';
   display: block;
   font-weight: 600;
   color: hsl(38 92% 50%);
@@ -370,7 +318,7 @@
 }
 
 .article-content .callout-info::before {
-  content: 'ℹ️ Info';
+  content: 'Info';
   display: block;
   font-weight: 600;
   color: hsl(217 91% 60%);
@@ -383,7 +331,7 @@
 }
 
 .article-content .callout-note::before {
-  content: '📝 Note';
+  content: 'Note';
   display: block;
   font-weight: 600;
   color: hsl(var(--primary));
@@ -392,7 +340,6 @@
 
 /* Images in article */
 .article-content img {
-  border-radius: 0.75rem;
   margin: 2rem 0;
 }
 

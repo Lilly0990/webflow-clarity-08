@@ -1,47 +1,52 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import { useContactForm } from "@/contexts/ContactFormContext";
 
 const Contact = () => {
   const { openContactForm } = useContactForm();
 
   return (
-    <section id="contact" className="section-padding container-custom">
-      <div className="max-w-4xl mx-auto">
-        <div className="relative overflow-hidden rounded-2xl bg-secondary/30 border border-border p-8 md:p-16">
-          {/* Decorative gradient orb */}
-          <div className="absolute -top-20 -right-20 w-60 h-60 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+    <section id="contact" className="relative section-padding bg-black overflow-hidden">
+      {/* Video background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        src="/freepik_abstract.mp4"
+      />
+      <div className="absolute inset-0 bg-black/20" />
+      <div className="relative container-custom">
+        <div className="max-w-2xl">
+          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#d4292b] mb-4">
+            Get in Touch
+          </p>
 
-          <div className="relative text-center space-y-6">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-fade-in">
-              Have a Cool Idea?{" "}
-              <br className="hidden sm:block" />
-              <span className="gradient-text">Let's Collaborate.</span>
-            </h2>
+          <h2 className="text-3xl md:text-5xl lg:text-[48px] font-bold leading-[1.1] tracking-tight mb-6 text-[#f3f2ef]">
+            Have a project?
+            <br />
+            Let's talk.
+          </h2>
 
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in">
-              Tell us about your project — we respond within 24 hours with realistic timelines and an honest assessment.
-            </p>
+          <p className="text-lg font-light text-[#f3f2ef]/70 mb-8 leading-relaxed">
+            We respond within 24 hours with realistic timelines and an honest assessment.
+          </p>
 
-            <div className="pt-2 animate-fade-in">
-              <Button
-                size="lg"
-                className="glow-effect text-lg px-8 py-6 gap-2 group"
-                onClick={openContactForm}
-              >
-                Get in Touch
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </div>
-
-            <p className="text-sm text-muted-foreground animate-fade-in">
-              Or email us directly at{" "}
-              <a href="mailto:hello@webf.love" className="text-primary hover:underline">
-                hello@webf.love
-              </a>
-            </p>
+          <div className="flex flex-col sm:flex-row items-start gap-4 mb-8">
+            <Button
+              className="bg-[#d4292b] text-[#f3f2ef] hover:bg-[#b8232a] px-8 h-12"
+              onClick={openContactForm}
+            >
+              Get in Touch
+            </Button>
           </div>
+
+          <p className="text-sm font-light text-[#f3f2ef]/50">
+            Or email us directly at{" "}
+            <a href="mailto:hello@webf.love" className="text-[#f3f2ef] hover:text-[#d4292b] transition-colors">
+              hello@webf.love
+            </a>
+          </p>
         </div>
       </div>
     </section>
