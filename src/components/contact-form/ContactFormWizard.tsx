@@ -78,7 +78,7 @@ const ContactFormWizard = ({ onClose }: ContactFormWizardProps) => {
               <FormItem className="space-y-1">
                 <div className="relative">
                   <FormControl>
-                    <Input placeholder="Your Name *" className="bg-secondary/30 border-border/50 h-11 pr-9" {...field} />
+                    <Input placeholder="Your Name *" className="bg-white/10 border-white/20 text-[#f3f2ef] placeholder:text-[#f3f2ef]/40 h-11 pr-9" {...field} />
                   </FormControl>
                   <FieldReward show={nameValid} />
                 </div>
@@ -93,7 +93,7 @@ const ContactFormWizard = ({ onClose }: ContactFormWizardProps) => {
               <FormItem className="space-y-1">
                 <div className="relative">
                   <FormControl>
-                    <Input placeholder="Company Name" className="bg-secondary/30 border-border/50 h-11 pr-9" {...field} />
+                    <Input placeholder="Company Name" className="bg-white/10 border-white/20 text-[#f3f2ef] placeholder:text-[#f3f2ef]/40 h-11 pr-9" {...field} />
                   </FormControl>
                   <FieldReward show={companyValid} />
                 </div>
@@ -111,7 +111,7 @@ const ContactFormWizard = ({ onClose }: ContactFormWizardProps) => {
             <FormItem className="space-y-1">
               <div className="relative">
                 <FormControl>
-                  <Input type="email" placeholder="Email *" className="bg-secondary/30 border-border/50 h-11 pr-9" {...field} />
+                  <Input type="email" placeholder="Email *" className="bg-white/10 border-white/20 text-[#f3f2ef] placeholder:text-[#f3f2ef]/40 h-11 pr-9" {...field} />
                 </FormControl>
                 <FieldReward show={emailValid} />
               </div>
@@ -130,7 +130,7 @@ const ContactFormWizard = ({ onClose }: ContactFormWizardProps) => {
                 <FormControl>
                   <Textarea
                     placeholder="Briefly about the project, idea, help... *"
-                    className="min-h-[100px] bg-secondary/30 border-border/50 pr-9 resize-none"
+                    className="min-h-[100px] bg-white/10 border-white/20 text-[#f3f2ef] placeholder:text-[#f3f2ef]/40 pr-9 resize-none"
                     {...field}
                   />
                 </FormControl>
