@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "title": "We Built a Production Website in 3 Prompts. Here's Exactly How.",
+    "slug": "building-video-site-with-claude",
+    "description": "A step-by-step breakdown of how we used Claude to build a production-ready video studio website — from reference analysis to full PRD. Learn the exact prompts and the process behind it.",
+    "author": "vlad-rulikovskiy",
+    "publishedAt": "2026-03-05",
+    "updatedAt": "2026-03-05",
+    "status": "published",
+    "metaTitle": "We Built a Production Website in 3 Prompts | webf.love",
+    "metaDescription": "Step-by-step guide to building a design-heavy video production website with Claude. Learn the exact prompts: reference analysis, style guide, and full PRD.",
+    "canonicalUrl": "/blog/building-video-site-with-claude",
+    "keywords": [
+      "claude ai web development",
+      "ai website design",
+      "prompt engineering web design",
+      "build website with claude",
+      "ai design prompt",
+      "nextjs tailwind claude",
+      "design-heavy website ai"
+    ],
+    "ogImage": "/images/blog/building-video-site-with-claude/og-image.jpg",
+    "ogImageAlt": "Visionkraft Berlin — built with Claude in 3 prompts",
+    "twitterCard": "summary_large_image",
+    "category": "Claude / AI",
+    "tags": ["claude", "ai", "web development", "design", "prompt engineering"],
+    "language": "en",
+    "featuredImage": "/images/blog/building-video-site-with-claude/result-hero.jpg",
+    "featuredImageAlt": "Visionkraft Berlin homepage — the final result",
+    "readingTime": 7,
+    "schemaType": "BlogPosting",
+    "keyTakeaways": [
+      "Always start with a reference URL — let Claude reverse-engineer it",
+      "Ask for wireframe + style guide in a separate prompt before coding",
+      "Your brand philosophy goes into the PRD, not the first prompt",
+      "Specify what's forbidden (shadows, gradients, border-radius) — Claude respects hard constraints",
+      "Attach PDFs and wireframes when you have them — Claude actually uses them"
+    ]
+  },
+  "content": "We needed a video production website for a Berlin-based studio. Clean, Bauhaus-inspired, opinionated. The kind of site that usually takes 3 weeks of back-and-forth with a designer.\n\nWe did it in 3 Claude prompts. Here's every step.\n\nThe stack: Next.js 15, Tailwind v4, Framer Motion, Sanity v3. The output: 25 TypeScript files, clean production build, no warnings.\n\n![The final result: berlin-video.vercel.app](/images/blog/building-video-site-with-claude/result-hero.jpg)\n\n## Prompt 1: Feed Claude a Reference\n\nThe single biggest mistake people make when prompting for design is describing what they want in the abstract. "Make it clean." "Make it modern." "Make it premium." These words mean nothing.\n\nInstead, show Claude a URL of a site you actually admire and ask for deep structural analysis.\n\nHere's the exact prompt:\n\n> https://www.1820productions.com/ — мені треба щоб ти зробив глибокий аналіз, текстовий опис, перелік всіх сторінок сайту і опис кожної секції та її функціоналу\n\n(Translation: "I need you to do a deep analysis, text description, a list of all pages on the site, and a description of each section and its functionality.")\n\n![The reference: 1820productions.com](/images/blog/building-video-site-with-claude/reference-1820.jpg)\n\nWhat Claude produced from a single URL:\n\n- Full page inventory — 8 pages with URLs and purposes\n- 9 homepage sections, each with layout specs, pixel values, and font sizes\n- Navigation structure with exact heights (109px header), opacity values, and transition specs\n- Hero slider mechanics — letter-by-letter animation, indicator dot format, timing\n- Typography observations — Suisseintl Condensed at 72px display, 12.5px labels with letter-spacing\n\nThis took about 45 seconds.\n\n:::info\n**Key insight:** Claude can reverse-engineer a complete design system from a single URL. Your job is just to pick the right reference.\n:::\n\n## Prompt 2: Turn the Analysis into a Style Guide\n\nOne follow-up prompt:\n\n> Can you make a very detailed wireframe and style guide with fonts, spacing, alignment?\n\nWhat Claude produced:\n\n- Color palette table — HEX + OKLCH values with semantic labels (background, text, accent, muted)\n- Full typography scale — Display H1 at 72px/600 weight down to 12px captions with exact letter-spacing\n- Spacing system — base 8px, xs through 6xl scale with exact pixel values\n- ASCII wireframes for Hero, Section blocks, Footer, and Case Page\n- Animation spec — stagger delays, marquee CSS, video player hover behavior\n\nThe result looks something like this:\n\n```\n┌─────────────────────────────────────────────┐\n│ LOGO                          NAV    CTA     │  h=109px, border-bottom: 1px\n├─────────────────────────────────────────────┤\n│                                             │\n│  HEADLINE — 72px, weight 600                │  padding: 120px 0\n│  Subheadline — 14px, weight 300             │\n│                                             │\n│  [CTA Button]  [Secondary Link →]           │\n│                                             │\n│                    ● ○ ○  Scroll ↓          │\n└─────────────────────────────────────────────┘\n```\n\n:::info\n**Key insight:** This style guide becomes your source of truth for the third prompt. You can reuse it as-is or adapt it to your brand — the structure is already there.\n:::\n\n## Prompt 3: Add Your Brand Identity + PRD\n\nThis is where you inject your vision. The third prompt is the longest — it takes the style guide from Prompt 2 and layers in everything specific to your brand and project.\n\nWhat the prompt contained:\n\n- **Brand philosophy:** "Content-made consequence" — content that leaves an intellectual trace\n- **Visual identity direction:** Bauhaus, Constructivism\n- **Logo concept:** 3 squares → film perforation → grid module\n- **Color palette:** `#d4292b` red, `#000000` black, `#f3f2ef` soft white\n- **4 reference sites** for different aspects — akkurat.tv, stinkfilms.com, heyna.berlin, sehsucht.de\n- **Bauhaus rules explicitly stated:** no shadows, no border-radius, only 3 colors, only 90° angles\n- **Full section structure:** 8 sections listed by name and purpose\n- **PDF attachments:** hand-drawn wireframes and visual references\n\n![Portfolio section — 3-col grid with hover overlay](/images/blog/building-video-site-with-claude/result-portfolio.jpg)\n\nWhat Claude produced from this:\n\n- Tech stack decision — Next.js 15 (App Router), Tailwind v4, Framer Motion, Sanity v3\n- 8-section table with key architecture decisions per section\n- Sanity CMS schemas for `project` and `clientLogo` content types\n- `globals.css` with Bauhaus rules enforced as CSS custom properties\n- Complete component architecture — 25 files, fully typed\n\nThe key move here was stating the **forbidden elements explicitly**. Not just "Bauhaus style" but "no `box-shadow`, no `border-radius`, no gradients, no more than 3 colors in the entire UI." Claude treats these as hard constraints, not suggestions.\n\n## Before You Write Your Design Prompt: A Checklist\n\nIf you're about to prompt Claude to build a design-heavy site, gather these 8 things first:\n\n1. **Reference URL** — A site you admire in your industry. One is enough to start.\n2. **Brand in 2 sentences** — What makes you different. What feeling you want to evoke.\n3. **Forbidden elements** — What's off-brand. Shadows? Gradients? Rounded corners? List them.\n4. **Color palette** — Exact HEX values, no more than 3–4 colors.\n5. **Typography direction** — Bauhaus grotesques? Serif elegance? Mixed? Name a reference typeface.\n6. **Section structure** — List the pages and sections you need. Even rough is fine.\n7. **Tech constraints** — Which framework? CMS? Integrations like Vimeo, Stripe, Calendly?\n8. **Attachments** — PDFs, wireframes, mood boards. Claude uses them — don't leave them out.\n\nThe difference between a mediocre AI-built site and a production-ready one isn't the model. It's the quality of the context you give it.\n\nThree prompts. 3 hours. One production website. The hard part is knowing what to say."
+}
