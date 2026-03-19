@@ -16,7 +16,7 @@ const budgetOptions = [
 const BudgetChips = ({ value, onChange }: BudgetChipsProps) => {
   return (
     <div className="space-y-3">
-      <p className="text-sm font-medium text-foreground">Your potential budget</p>
+      <p className="text-sm font-medium text-[#f3f2ef]">Your potential budget</p>
       <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Budget selection">
         {budgetOptions.map((option) => {
           const isSelected = value === option.value;
@@ -33,8 +33,8 @@ const BudgetChips = ({ value, onChange }: BudgetChipsProps) => {
                 "hover:border-primary/50 hover:shadow-sm",
                 "active:scale-95",
                 isSelected
-                  ? "bg-primary/10 border-primary text-primary scale-[1.02] shadow-[0_0_12px_rgba(var(--primary),0.15)]"
-                  : "bg-secondary/50 border-border text-muted-foreground hover:text-foreground"
+                  ? "bg-[#d4292b]/20 border-[#d4292b] text-[#f3f2ef] scale-[1.02] shadow-[0_0_12px_rgba(212,41,43,0.15)]"
+                  : "bg-white/10 border-white/20 text-[#f3f2ef]/60 hover:text-[#f3f2ef]"
               )}
             >
               {isSelected && (
