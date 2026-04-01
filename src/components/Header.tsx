@@ -45,7 +45,7 @@ const Header = () => {
 
   const navLinks = [
     { href: "#services", label: "Services", isAnchor: true },
-    { href: "#projects", label: "Projects", isAnchor: true },
+    { href: "/portfolio", label: "Portfolio", isAnchor: false },
     { href: "/about-me", label: "About", isAnchor: false },
     { href: "/for-agency", label: "For Agencies", isAnchor: false },
     { href: "/blog", label: "Blog", isAnchor: false },

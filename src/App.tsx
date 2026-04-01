@@ -15,6 +15,7 @@ import CookiePolicy from "./pages/CookiePolicy";
 import ForAgency from "./pages/ForAgency";
 import Founder from "./pages/Founder";
 import Workshop from "./pages/Workshop";
+import Portfolio from "./pages/Portfolio";
 import NotFound from "./pages/NotFound";
 import HexagonCvaultEstimate from "./pages/HexagonCvaultEstimate";
 
@@ -48,6 +49,7 @@ const App = () => {
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<TermsOfService />} />
               <Route path="/cookie-policy" element={<CookiePolicy />} />
+              <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/for-agency" element={<ForAgency />} />
               <Route path="/about-me" element={<Founder />} />
               <Route path="/workshop_glow-team" element={<Workshop />} />

@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "title": "Claude Code + NotebookLM: безплатна RAG-система за 10 хвилин",
+    "slug": "claude-code-notebooklm",
+    "description": "Як підключити Claude Code до Google NotebookLM через notebooklm-py і отримати власну RAG-систему без коду. Покрокова інструкція з готовими промтами.",
+    "author": "vlad-rulikovskiy",
+    "publishedAt": "2026-03-20",
+    "updatedAt": "2026-03-20",
+    "status": "published",
+    "metaTitle": "Claude Code + NotebookLM: безплатна RAG-система за 10 хвилин | webf.love",
+    "metaDescription": "Підключіть Claude Code до Google NotebookLM за 10 хвилин. Покрокова інструкція, готові промти для копіювання і чесний список обмежень.",
+    "canonicalUrl": "/blog/claude-code-notebooklm",
+    "keywords": [
+      "claude code",
+      "notebooklm",
+      "RAG система",
+      "AI автоматизація",
+      "notebooklm-py",
+      "google notebooklm api"
+    ],
+    "ogImage": "/images/blog/claude-code-notebooklm.png",
+    "ogImageAlt": "Claude Code + NotebookLM інтеграція",
+    "twitterCard": "summary_large_image",
+    "category": "AI & Automation",
+    "tags": ["claude", "notebooklm", "AI", "RAG", "automation"],
+    "language": "uk",
+    "featuredImage": "/images/blog/claude-code-notebooklm.png",
+    "featuredImageAlt": "Claude Code + NotebookLM",
+    "readingTime": 5,
+    "schemaType": "BlogPosting",
+    "keyTakeaways": [
+      "Gemini (NotebookLM) обробляє документи безплатно — Claude тільки оркеструє, токени йдуть лише на команди.",
+      "notebooklm skill install — ключовий крок: без нього Claude Code не знає як працювати з NotebookLM.",
+      "8 форматів генерації: подкаст, відео, квіз, флеш-картки, mind-map, інфографіка, звіт, слайди.",
+      "~50 запитів на день на безплатному акаунті; аудіо і відео генеруються 10–30 хвилин.",
+      "Неофіційне API — ідеально для особистих досліджень, ризиковано для продакшн."
+    ],
+    "faq": [
+      {
+        "question": "Чи це офіційний API Google NotebookLM?",
+        "answer": "Ні. notebooklm-py реверс-інжинірить внутрішні API Google. Офіційного публічного API у NotebookLM немає. Google може змінити endpoints у будь-який момент — для особистих проєктів норм, для продакшн — ризик."
+      },
+      {
+        "question": "Скільки коштує ця система?",
+        "answer": "NotebookLM безплатний (є платний Plus). Claude Code — $20/міс для Pro або pay-as-you-go. notebooklm-py — open-source. Основна вартість — підписка на Claude. Gemini обробляє документи безплатно."
+      },
+      {
+        "question": "Чому аудіо і відео так довго генеруються?",
+        "answer": "Генерація аудіо і відео в NotebookLM — асинхронна і займає 10–30 хвилин. Тому в CLI є прапорець --wait (чекати завершення) або --no-wait (запустити і перевірити пізніше). Mind-map — єдиний синхронний формат."
+      },
+      {
+        "question": "Які джерела можна додавати в NotebookLM?",
+        "answer": "URL-статті, PDF-файли, YouTube-відео, Google Drive документи, plain text. NotebookLM також вміє самостійно шукати в інтернеті через команду source add-research."
+      }
+    ]
+  },
+  "content": "**Gemini обробляє твої документи безплатно. Claude оркеструє. Разом — повноцінна RAG-система без жодного рядка коду.**\n\n## Проблема\n\nКоли досліджуєш тему з десятками джерел, є три стандартні підходи — і всі три болять.\n\n**Скидати все в Claude.** Контекстне вікно не безмежне. Токени тануть. А відповіді базуються на загальних знаннях, а не на твоїх конкретних документах.\n\n**Використовувати NotebookLM вручну.** Google зробив відмінний інструмент: до 50 джерел, 20+ мільйонів токенів контексту, відповіді з цитатами з документів. По суті — безплатна RAG-система. Але немає офіційного API. Тільки мишка і браузер.\n\n**Будувати власний RAG.** Векторна база, пайплайн парсингу, embedding-модель, інфраструктура. Це тижні роботи.\n\nРішення: підключити Claude Code до NotebookLM програмно. Gemini робить важку аналітику (безплатно), Claude тільки оркеструє — створює ноутбуки, завантажує джерела, ставить питання, генерує контент.\n\n## Що таке notebooklm-py\n\n[notebooklm-py](https://github.com/teng-lin/notebooklm-py) — неофіційний Python-клієнт, який реверс-інжинірить внутрішні API Google. Дає повний програмний доступ до NotebookLM, включаючи функції, недоступні через веб-інтерфейс: Markdown, JSON, MP3-експорт, batch-обробка десятків ноутбуків, генерація відео.\n\n## Обмеження (одразу і чесно)\n\n**Це неофіційне API.** Google може змінити внутрішні endpoints у будь-який момент. Для продакшн-проєктів — на свій ризик. Для особистих досліджень і прототипів — ідеально.\n\n**~50 запитів на день** на безплатному акаунті Google. Вичерпав? Використай інший акаунт.\n\n**Аудіо і відео генеруються 10–30 хвилин** асинхронно. `mind-map` — єдиний синхронний формат, результат одразу.\n\n**До 50 джерел** на один ноутбук.\n\n## Крок 1: Установка\n\n```bash\npip install \"notebooklm-py[browser]\"\nplaywright install chromium\n```\n\nАбо через `uv`:\n\n```bash\nuv pip install \"notebooklm-py[browser]\"\nplaywright install chromium\n```\n\n## Крок 2: Авторизація\n\n```bash\nnotebooklm login\n```\n\nВідкриється Chromium — увійди в Google-акаунт. Відбувається один раз. Сесія зберігається локально в `~/.notebooklm/` і живе кілька тижнів. Не комітти цю папку в git.\n\nПеревір що все працює:\n\n```bash\nnotebooklm list\n```\n\nПобачиш список ноутбуків (або порожній список) — авторизація успішна.\n\n## Крок 3: Встанови skill для Claude Code\n\n```bash\nnotebooklm skill install\n```\n\nЦе ключовий крок. Команда додає кастомний skill в Claude Code — і Claude починає розуміти команди типу `/notebooklm generate audio` або природну мову: \"створи подкаст з цього ноутбука\" чи \"дай цитати про MCP-сервери\".\n\n## Повний CLI: що вміє notebooklm-py\n\n### Створити ноутбук і завантажити джерела\n\n```bash\n# Створити ноутбук\nnotebooklm create \"Дослідження: мікросервіси\"\n# Повертає ID, наприклад: abc123-def456\n\n# Встановити контекст (щоб не повторювати ID)\nnotebooklm use abc123-def456\n# або коротше — унікальний префікс достатній:\nnotebooklm use abc\n\n# Додати джерела — URL, PDF, YouTube, Google Drive, текст\nnotebooklm source add \"https://martinfowler.com/articles/microservices.html\"\nnotebooklm source add \"./architecture-report.pdf\"\nnotebooklm source add \"https://youtube.com/watch?v=...\"\nnotebooklm source add --text \"Мої нотатки\" --title \"Нотатки\"\n```\n\n### Запити до документів\n\n```bash\nnotebooklm ask \"Які головні аргументи за і проти мікросервісів?\"\nnotebooklm ask \"Є суперечності між джерелами?\"\n```\n\nВідповіді — суворо з завантажених документів, з цитатами.\n\n### Генерація контенту\n\n```bash\nnotebooklm generate audio --wait          # подкаст (10–20 хв)\nnotebooklm generate video --style whiteboard --wait  # відео\nnotebooklm generate quiz --difficulty hard\nnotebooklm generate flashcards\nnotebooklm generate mind-map              # синхронно, одразу\nnotebooklm generate infographic --orientation portrait\nnotebooklm generate report --type study-guide\nnotebooklm generate slide-deck\n```\n\nСтилі відео: `classic`, `whiteboard`, `kawaii`, `anime`, `watercolor`, `retro-print`, `heritage`, `paper-craft`.\n\n### Завантаження результатів\n\n```bash\nnotebooklm download audio ./podcast.mp3\nnotebooklm download quiz ./quiz.json --format json\nnotebooklm download flashcards ./cards.md --format markdown\nnotebooklm download mind-map ./mindmap.md\n```\n\n## Через Claude Code (природна мова)\n\nПісля `notebooklm skill install` достатньо написати:\n\n```\nСтвори ноутбук \"Блокчейн\", додай ці 5 посилань і згенеруй\nінфографіку з ключовими відмінностями між фреймворками.\n```\n\n```\nЗавантаж квіз з ноутбука \"Архітектура\" у форматі JSON.\n```\n\n```\n/notebooklm generate video --style kawaii\n```\n\nClaude сам визначає які команди викликати.\n\n## Просунуті сценарії\n\n### Веб-дослідження через NotebookLM\n\nNotebookLM може сам шукати в інтернеті і додавати результати як джерела:\n\n```bash\nnotebooklm source add-research \"quantum computing\" --mode deep --no-wait\nnotebooklm research wait --import-all --timeout 300\n```\n\n### Batch-обробка кількох ноутбуків\n\n```bash\n# Запитувати конкретний ноутбук через -n, не змінюючи контекст\nnotebooklm ask -n <notebook_id_1> \"Короткий підсумок?\"\nnotebooklm ask -n <notebook_id_2> \"Ключові висновки?\"\n```\n\n## Де це реально корисно\n\n**Глибокі дослідження.** Зібрав 30–50 статей і звітів — завантажив у ноутбук — отримуєш структурований аналіз з посиланнями на конкретні джерела. Без вигаданих фактів.\n\n**Навчання і підготовка до іспитів.** Підручники, лекції, документація → квізи, флеш-картки, study guides.\n\n**Контент-продакшн.** Довге відео або подкаст → аудіо-огляд, слайди, інфографіка.\n\n**Корпоративна база знань.** Внутрішня документація, специфікації, контракти в ноутбуках. Питання природною мовою — відповіді з цитатами зі сторінок документів.\n\n**Конкурентний аналіз.** Публічний контент конкурентів (блоги, документація, прес-релізи) → аналіз стратегій і паттернів.\n\n## Готові промти для Claude Code\n\nПісля встановлення skill (`notebooklm skill install`) копіюй і запускай:\n\n**Повна установка з нуля:**\n```\nВстанови notebooklm-py: pip install \"notebooklm-py[browser]\" && playwright install chromium, потім авторизуйся через notebooklm login і встанови skill через notebooklm skill install\n```\n\n**Дослідження теми:**\n```\nСтвори ноутбук \"[назва]\", додай ці джерела: [URLs/файли], запитай \"[питання]\" і покажи відповідь з цитатами\n```\n\n**Генерація навчального матеріалу:**\n```\nЗгенеруй квіз і флеш-картки з ноутбука \"[назва]\", збережи у ./output/\n```\n\n**Batch-аналіз:**\n```\nЗапитай кожен з цих ноутбуків [id1, id2, id3] з питанням \"[питання]\" і зведи відповіді в одному файлі summary.md\n```\n\n**Контент-продакшн:**\n```\nЗгенеруй подкаст і mind-map з ноутбука \"[назва]\", завантаж podcast.mp3 і mindmap.md локально\n```\n\n---\n\nЦей підхід не замінить продакшн RAG-інфраструктуру. Але для досліджень, навчання і особистої продуктивності — це найшвидший спосіб отримати AI, який відповідає строго з твоїх документів."
+}

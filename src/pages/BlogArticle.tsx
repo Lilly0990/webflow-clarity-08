@@ -72,6 +72,50 @@ const BlogArticle = () => {
     loadPost();
   }, [slug]);
 
+  // Inject VSCode-style copy buttons into code blocks after render
+  useEffect(() => {
+    if (!post) return;
+
+    const copyIcon = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+    const checkIcon = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+
+    const blocks = document.querySelectorAll<HTMLElement>('.article-content pre');
+    blocks.forEach((pre) => {
+      if (pre.querySelector('.copy-btn')) return;
+
+      const code = pre.querySelector('code');
+      if (!code) return;
+
+      const langMatch = code.className.match(/language-(\w+)/);
+      const lang = langMatch ? langMatch[1] : '';
+
+      const header = document.createElement('div');
+      header.className = 'code-header';
+
+      const langLabel = document.createElement('span');
+      langLabel.className = 'code-lang';
+      langLabel.textContent = lang || 'code';
+      header.appendChild(langLabel);
+
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.innerHTML = `${copyIcon}<span>Copy</span>`;
+      btn.addEventListener('click', () => {
+        navigator.clipboard.writeText(code.textContent || '').then(() => {
+          btn.innerHTML = `${checkIcon}<span>Copied!</span>`;
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.innerHTML = `${copyIcon}<span>Copy</span>`;
+            btn.classList.remove('copied');
+          }, 2000);
+        });
+      });
+
+      header.appendChild(btn);
+      pre.insertBefore(header, pre.firstChild);
+    });
+  }, [post]);
+
   if (loading) {
     return (
       <div className="min-h-screen">
