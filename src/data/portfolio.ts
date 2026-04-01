@@ -57,6 +57,38 @@ export const portfolioItems: PortfolioItem[] = [
     year: "2022",
     category: "EdTech",
   },
+  {
+    title: "Paper24",
+    tagline: "Custom Academic Writing Service",
+    url: "https://paper24.com/",
+    stack: "Webflow",
+    year: "2023",
+    category: "EdTech",
+  },
+  {
+    title: "EssayPro",
+    tagline: "Expert Essay Writing Platform",
+    url: "https://essaypro.com/",
+    stack: "Webflow",
+    year: "2023",
+    category: "EdTech",
+  },
+  {
+    title: "EssayService",
+    tagline: "Professional Academic Writing Service",
+    url: "https://essayservice.com/",
+    stack: "Webflow",
+    year: "2023",
+    category: "EdTech",
+  },
+  {
+    title: "EssayHub",
+    tagline: "Affordable Essay Writing Platform",
+    url: "https://essayhub.com/",
+    stack: "Webflow",
+    year: "2023",
+    category: "EdTech",
+  },
 
   // Agencies & Production
   {
@@ -373,6 +405,14 @@ export const portfolioItems: PortfolioItem[] = [
     year: "2026",
     category: "Travel",
   },
+  {
+    title: "Tisto",
+    tagline: "Acting Studio for Non-Actors",
+    url: "https://tisto.nyc/",
+    stack: "Webflow",
+    year: "2026",
+    category: "EdTech",
+  },
 
   // AI-Assisted Development
   {
@@ -478,6 +518,55 @@ export const portfolioItems: PortfolioItem[] = [
     stack: "Claude Code",
     year: "2026",
     category: "Social Impact",
+  },
+
+  {
+    title: "Gravity",
+    tagline: "Merged Metaverse Virtual Worlds",
+    url: "https://webflove-gravity-nft.webflow.io/",
+    stack: "Webflow",
+    year: "2022",
+    category: "Crypto",
+  },
+  {
+    title: "Kaiju Cards",
+    tagline: "Roguelike NFT Trading Card Game",
+    url: "https://webflove-kaiju-island-nft.webflow.io/",
+    stack: "Webflow",
+    year: "2022",
+    category: "Gaming",
+  },
+  {
+    title: "Frankivsk Half Marathon",
+    tagline: "City Running Event Platform",
+    url: "https://run.if.ua/",
+    stack: "Webflow",
+    year: "2023",
+    category: "Social Impact",
+  },
+  {
+    title: "RFU News",
+    tagline: "Global Affairs & Geopolitics",
+    url: "https://www.rfunews.com/",
+    stack: "Webflow",
+    year: "2023",
+    category: "Media",
+  },
+  {
+    title: "UActuality",
+    tagline: "Ukrainian Science-Popular Publication",
+    url: "https://uactuality.com/",
+    stack: "Webflow",
+    year: "2023",
+    category: "Media",
+  },
+  {
+    title: "Base Bureau",
+    tagline: "Turnkey Apartment Renovation Kyiv",
+    url: "https://www.basebureau.com/",
+    stack: "Webflow",
+    year: "2024",
+    category: "Real Estate",
   },
 
   // First project
