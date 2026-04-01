@@ -20,9 +20,37 @@ function markdownToHtml(markdown: string): string {
   let inBlockquote = false;
   let inCallout = false;
   let calloutContent: string[] = [];
+  let inCodeBlock = false;
+  let codeBlockLang = '';
+  let codeBlockLines: string[] = [];
 
   for (let i = 0; i < lines.length; i++) {
     let line = lines[i];
+
+    // Fenced code blocks
+    if (line.match(/^```/)) {
+      if (!inCodeBlock) {
+        if (inList) { result.push(listType === 'ul' ? '</ul>' : '</ol>'); inList = false; }
+        inCodeBlock = true;
+        codeBlockLang = line.replace(/^```/, '').trim();
+        codeBlockLines = [];
+      } else {
+        inCodeBlock = false;
+        const escaped = codeBlockLines.join('\n')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+        const langAttr = codeBlockLang ? ` class="language-${codeBlockLang}"` : '';
+        result.push(`<pre><code${langAttr}>${escaped}</code></pre>`);
+        codeBlockLang = '';
+        codeBlockLines = [];
+      }
+      continue;
+    }
+    if (inCodeBlock) {
+      codeBlockLines.push(line);
+      continue;
+    }
 
     // Callout blocks (:::tip, :::warning, :::info)
     if (line.match(/^:::(tip|warning|info|note)/)) {
@@ -140,6 +168,10 @@ function markdownToHtml(markdown: string): string {
   }
 
   // Close any open tags
+  if (inCodeBlock) {
+    const escaped = codeBlockLines.join('\n').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    result.push(`<pre><code>${escaped}</code></pre>`);
+  }
   if (inList) result.push(listType === 'ul' ? '</ul>' : '</ol>');
   if (inBlockquote) result.push('</blockquote>');
 

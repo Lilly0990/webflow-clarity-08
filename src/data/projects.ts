@@ -37,6 +37,8 @@ export interface Project {
   backgroundText?: string;
   // Mobile screenshots
   mobileScreenshots?: string[];
+  // Build stack shown on portfolio page (e.g. "Webflow", "Claude Code", "Claude Code + Figma")
+  stack?: string;
 }
 
 export const projects: Project[] = [
