@@ -264,8 +264,8 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Done Partners",
     tagline: "Strategic Partnership Agency",
     url: "https://done.partners/",
-    stack: "Webflow",
-    year: "2023",
+    stack: "WordPress",
+    year: "2025",
     category: "Agencies",
   },
   {
@@ -358,11 +358,19 @@ export const portfolioItems: PortfolioItem[] = [
     category: "SaaS",
   },
   {
+    title: "Stop War UA",
+    tagline: "Anti-War Awareness Campaign",
+    url: "https://stop-war-ua.webflow.io/",
+    stack: "Webflow",
+    year: "2022",
+    category: "Social Impact",
+  },
+  {
     title: "Circle Hotel",
     tagline: "Boutique Hotel in Ukraine",
     url: "https://www.circlehotel.com.ua/",
     stack: "Webflow",
-    year: "2023",
+    year: "2026",
     category: "Travel",
   },
 
