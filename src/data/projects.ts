@@ -595,6 +595,55 @@ export const projects: Project[] = [
     backgroundTitle: "The Background",
     backgroundText: "Parea Travel is a Miami-based boutique travel agency specializing in ultra-luxury group travel for wineries, wellness brands, classic car collectors, and corporate clients. In Greek culture, 'Parea' refers to a group of friends who gather to share experiences—a concept that defines their approach to curated group travel.\n\nThey needed a website that would match their premium positioning, featuring sophisticated animations and smooth interactions that convey luxury without overwhelming the content."
   },
+  {
+    id: "tisto",
+    title: "Tisto",
+    description: "Acting Studio Website for Ukrainian-Founded NYC Studio",
+    category: "EdTech",
+    highlights: ["Webflow", "CMS", "Animations", "Ukrainian founders in NYC"],
+    previewImage: "/projects/tisto-preview.webp",
+    heroVideo: "/projects/tisto-hero.webm",
+    fullDescription: "Tisto is an acting studio founded by Ukrainian actors, now based in New York City. Their method — Play-shift — uses games, improvisation, and acting exercises to develop real-life skills like presence, adaptability, and communication. We built a website that captures the energy of their practice: warm, human, and grounded.",
+    challenge: "Tisto needed a website that communicates a nuanced concept — acting training for non-actors — without feeling academic or intimidating. The site had to balance a warm, approachable tone with professional credibility, showcase workshops and courses with dynamic scheduling, and reflect their Ukrainian roots while speaking to a New York audience. The CMS needed to support regularly updated workshops, courses with rich media sliders, and team member profiles.",
+    solution: "We designed and built a Webflow site centered on storytelling and clarity. The homepage flows from a bold hero with looping video into a clear explanation of the Play-Based Method, then into a skills grid, workshop listings, course details with image sliders, team profiles, and testimonials. Each section was crafted to progressively build trust and understanding. The CMS powers workshops and courses so the team can update dates, descriptions, and images independently. Smooth scroll animations and a clean typographic hierarchy (mixing serif and sans-serif) give the site a distinctive editorial feel.",
+    results: [
+      { value: "7 Sections", label: "Complete homepage with hero, method, skills, workshops, courses, about, and testimonials" },
+      { value: "CMS-Powered", label: "Dynamic workshops and courses that the team updates independently" },
+      { value: "4 Team Profiles", label: "Rich about section with actor bios and expandable details" },
+      { value: "NYC Launch", label: "Successfully launched their first course — Presence & Play — in Chelsea" }
+    ],
+    technologies: ["Webflow", "Webflow CMS", "Custom Animations", "Responsive Design", "Lenis Scroll"],
+    testimonial: {
+      quote: "Thank you for creating a space where it's possible to be alive and authentic. It was a very valuable experience.",
+      author: "Jess L.",
+      role: "Project Manager, Presence & Play Course participant"
+    },
+    gallery: [
+      "/projects/tisto-group.webp",
+      "/projects/tisto-method.avif",
+      "/projects/tisto-workshop.png",
+      "/projects/tisto-course-1.webp",
+      "/projects/tisto-course-2.webp",
+      "/projects/tisto-course-3.webp",
+      "/projects/tisto-course-4.webp",
+      "/projects/tisto-course-5.webp"
+    ],
+    year: "2026",
+    duration: "4 weeks",
+    websiteUrl: "https://tisto.nyc",
+    serviceType: "Design + Dev",
+    heroTitle: "Acting Studio for <ukraine>Non-Actors</ukraine> — Born in Ukraine, Now in NYC",
+    industry: "Education & Performing Arts",
+    stats: [
+      { label: "Sections", value: "7" },
+      { label: "CMS Collections", value: "3" },
+      { label: "Team Members", value: "4" },
+      { label: "Course Slides", value: "5" }
+    ],
+    introText: "Tisto is Ukrainian for \"dough\" — a metaphor for human potential that can be shaped, strengthened, expanded and rise through the right space. Founded by Ukrainian actors, this NYC studio uses Play-shift method to teach presence, adaptability, and authentic communication.",
+    backgroundTitle: "The Background",
+    backgroundText: "Tisto was created by a group of Ukrainian actors who moved to New York and wanted to share their craft with non-actors. Their approach — the Play-Based Method — treats play not as entertainment but as a tool for shifting how people show up in their bodies, attention, and relationships.\n\nThey needed a website for their NYC launch that would explain this unique methodology, showcase upcoming workshops and a 6-week course (Presence & Play), introduce their team of four actor-educators, and build trust through testimonials. The site had to feel warm and human — like stepping into the room."
+  },
 ];
 
 export const categories = ["All", "SaaS", "EdTech", "E-commerce", "Agencies", "Travel", "Healthcare", "Gaming", "iGaming", "FinTech", "Media", "Business Services", "Technology", "Portfolio"];
