@@ -89,6 +89,14 @@ export const portfolioItems: PortfolioItem[] = [
     year: "2023",
     category: "EdTech",
   },
+  {
+    title: "AllRight PRO",
+    tagline: "Online English Lessons with Tutors",
+    url: "https://pl.allrightpro.com/",
+    stack: "Webflow",
+    year: "2023",
+    category: "EdTech",
+  },
 
   // Agencies & Production
   {
