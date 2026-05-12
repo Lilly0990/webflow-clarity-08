@@ -57,10 +57,10 @@ const Blog = () => {
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  className={`px-4 py-2 text-sm font-medium transition-colors border ${
                     activeCategory === category
-                      ? 'bg-primary text-primary-foreground'
-                      : 'bg-secondary hover:bg-secondary/80 text-foreground'
+                      ? 'bg-primary text-primary-foreground border-primary'
+                      : 'bg-background text-foreground border-foreground hover:bg-foreground hover:text-background'
                   }`}
                 >
                   {category}
