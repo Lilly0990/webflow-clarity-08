@@ -23,7 +23,7 @@ const ShareButtons = ({ url, title }: { url: string; title: string }) => {
         href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
+        className="w-9 h-9 bg-foreground flex items-center justify-center text-background hover:bg-primary hover:text-primary-foreground transition-colors"
         aria-label="Share on Twitter"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -34,7 +34,7 @@ const ShareButtons = ({ url, title }: { url: string; title: string }) => {
         href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
+        className="w-9 h-9 bg-foreground flex items-center justify-center text-background hover:bg-primary hover:text-primary-foreground transition-colors"
         aria-label="Share on LinkedIn"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -45,7 +45,7 @@ const ShareButtons = ({ url, title }: { url: string; title: string }) => {
         href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
+        className="w-9 h-9 bg-foreground flex items-center justify-center text-background hover:bg-primary hover:text-primary-foreground transition-colors"
         aria-label="Share on Facebook"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -242,7 +242,7 @@ const BlogArticle = () => {
                     {meta.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 bg-secondary rounded-full text-sm text-muted-foreground"
+                        className="px-3 py-1 bg-background border border-foreground/40 text-sm text-foreground"
                       >
                         #{tag}
                       </span>
@@ -321,7 +321,7 @@ const BlogArticle = () => {
                       {meta.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-1 bg-secondary rounded text-xs text-muted-foreground"
+                          className="px-2 py-1 bg-background border border-foreground/40 text-xs text-foreground"
                         >
                           #{tag}
                         </span>
