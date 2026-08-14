@@ -13,9 +13,9 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ id, title, description, category, highlights, previewImage, heroVideo }: ProjectCardProps) => {
   return (
-    <Link to={`/projects/${id}`} className="group block">
-      <div className="border border-black overflow-hidden transition-transform duration-500 hover:-translate-y-[2px]">
-        <div className="aspect-[16/10] overflow-hidden bg-muted">
+    <Link to={`/projects/${id}`} className="group block h-full">
+      <div className="flex h-full flex-col border border-black overflow-hidden transition-transform duration-500 hover:-translate-y-[2px]">
+        <div className="aspect-[16/10] shrink-0 overflow-hidden bg-muted">
           {heroVideo ? (
             <video
               src={heroVideo}
@@ -36,7 +36,7 @@ const ProjectCard = ({ id, title, description, category, highlights, previewImag
           )}
         </div>
 
-        <div className="p-6 border-t border-black">
+        <div className="flex flex-1 flex-col p-6 border-t border-black">
           <Badge variant="outline" className="mb-3 border-black">{category}</Badge>
           <h3 className="text-xl md:text-2xl font-bold mb-2 group-hover:text-[#d4292b] transition-colors">
             {title}
