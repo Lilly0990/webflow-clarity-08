@@ -662,9 +662,13 @@ export const projects: Project[] = [
       { value: "6 Collections", label: "Products, crops, solutions, distributors, categories and articles the client edits alone" }
     ],
     technologies: ["Next.js", "Payload CMS", "PostgreSQL", "Vercel", "TypeScript", "SEO", "GEO/AEO"],
+    // gallery[0] is the fallback for the main visual when heroVideo is absent;
+    // the gallery section itself renders gallery.slice(1).
     gallery: [
       "/projects/rodonit-preparaty.webp",
       "/projects/rodonit-kultury.webp",
+      "/projects/rodonit-nordoks.webp",
+      "/projects/rodonit-rishennia.webp",
       "/projects/rodonit-blog.webp"
     ],
     year: "2026",
