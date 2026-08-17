@@ -421,6 +421,14 @@ export const portfolioItems: PortfolioItem[] = [
     year: "2026",
     category: "EdTech",
   },
+  {
+    title: "Rodonit Agro",
+    tagline: "Crop Protection Catalogue",
+    url: "https://rodonit.com.ua/",
+    stack: "Claude Code + Figma",
+    year: "2026",
+    category: "eCommerce",
+  },
 
   // AI-Assisted Development
   {

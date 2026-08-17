@@ -644,6 +644,44 @@ export const projects: Project[] = [
     backgroundTitle: "The Background",
     backgroundText: "Tisto was created by a group of Ukrainian actors who moved to New York and wanted to share their craft with non-actors. Their approach — the Play-Based Method — treats play not as entertainment but as a tool for shifting how people show up in their bodies, attention, and relationships.\n\nThey needed a website for their NYC launch that would explain this unique methodology, showcase upcoming workshops and a 6-week course (Presence & Play), introduce their team of four actor-educators, and build trust through testimonials. The site had to feel warm and human — like stepping into the room."
   },
+  {
+    id: "rodonit-agro",
+    title: "Rodonit Agro",
+    description: "Product Catalogue and CMS for Ukrainian Crop Protection Company",
+    category: "E-commerce",
+    highlights: ["Next.js", "Payload CMS", "SEO + GEO", "Crop-first navigation"],
+    previewImage: "/projects/rodonit-preview.webp",
+    fullDescription: "webf.love completed and launched the redesign of rodonit.com.ua: a Next.js front end with the full product catalogue in Payload CMS, SEO and generative-search groundwork, and a move onto the live domain with every legacy URL preserved.",
+    challenge: "Rodonit Agro needed a catalogue its own team could maintain: six products, twenty-two crops and the treatment norms that connect them, all editable without a developer. The harder part was navigation — agronomists start from the crop in front of them, not from a product name, so the catalogue had to work in both directions. It also had to replace an existing OpenCart install on the same domain without losing search visibility, and be readable to AI search engines, not only to Google.",
+    solution: "The catalogue moved into Payload CMS on Neon Postgres, wired through a single data layer that falls back to static content when the database is unreachable — a CMS outage cannot take the site down. Crop pages carry the product-and-norm pairs, so an agronomist can enter from either direction. Enquiries reach a real endpoint, are stored in the admin panel and emailed to the sales lead. We closed every Critical and High finding of a 60-page SEO audit, added explicit AI-crawler rules with llms.txt, and mapped 72 legacy URLs to 301s before the domain swap.",
+    results: [
+      { value: "55 Pages", label: "All answering 200 after the domain swap, verified one by one" },
+      { value: "72 Redirects", label: "Legacy OpenCart addresses mapped to 301s with no loss of search visibility" },
+      { value: "711 → 34 KB", label: "Hero image weight after asset optimisation, a 21× reduction" },
+      { value: "6 Collections", label: "Products, crops, solutions, distributors, categories and articles the client edits alone" }
+    ],
+    technologies: ["Next.js", "Payload CMS", "PostgreSQL", "Vercel", "TypeScript", "SEO", "GEO/AEO"],
+    gallery: [
+      "/projects/rodonit-preparaty.webp",
+      "/projects/rodonit-kultury.webp",
+      "/projects/rodonit-blog.webp"
+    ],
+    year: "2026",
+    duration: "",
+    websiteUrl: "https://rodonit.com.ua",
+    serviceType: "Dev",
+    heroTitle: "Agri Catalogue Built Around <ukraine>the Crop</ukraine>, Not the Product",
+    industry: "Agriculture",
+    stats: [
+      { label: "Pages", value: "55" },
+      { label: "CMS Collections", value: "6" },
+      { label: "Products", value: "6" },
+      { label: "Crops", value: "22" }
+    ],
+    introText: "Rodonit Agro supplies growth stimulants, micro-fertilisers, fungicides and adjuvants to Ukrainian farms. Founded in 2019, it presents six products through the crop a farmer is treating.",
+    backgroundTitle: "The Background",
+    backgroundText: "Rodonit Agro was founded in 2019 and works in Ukraine's agricultural sector, with a portfolio of six products for crop protection and plant nutrition — growth stimulants, micro-fertilisers, fungicides and adjuvants.\n\nTheir catalogue is only useful if an agronomist can reach it from the crop in front of them, and if the team can keep treatment norms current without calling a developer. The company's own product regulations also had to become something search engines and AI assistants could read."
+  },
 ];
 
 export const categories = ["All", "SaaS", "EdTech", "E-commerce", "Agencies", "Travel", "Healthcare", "Gaming", "iGaming", "FinTech", "Media", "Business Services", "Technology", "Portfolio"];
