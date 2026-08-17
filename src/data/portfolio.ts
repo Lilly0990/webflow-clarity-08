@@ -464,8 +464,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Gov",
   },
   {
-    title: "Intexbeta",
-    tagline: "Industrial Solutions",
+    title: "Intex Beta",
+    tagline: "Feed Additives & Premixes",
     url: "https://www.intexbeta.com.ua/",
     stack: "Claude Code",
     year: "2026",

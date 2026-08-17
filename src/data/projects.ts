@@ -588,6 +588,45 @@ export const projects: Project[] = [
     backgroundTitle: "The Background",
     backgroundText: "Rodonit Agro was founded in 2019 and works in Ukraine's agricultural sector, with a portfolio of six products for crop protection and plant nutrition — growth stimulants, micro-fertilisers, fungicides and adjuvants.\n\nTheir catalogue is only useful if an agronomist can reach it from the crop in front of them, and if the team can keep treatment norms current without calling a developer. The company's own product regulations also had to become something search engines and AI assistants could read."
   },
+  {
+    id: "intexbeta",
+    title: "Intex Beta",
+    description: "Feed Additive Catalogue with a Client-Run Blog",
+    category: "E-commerce",
+    highlights: ["Payload CMS", "Headless blog", "SEO + JSON-LD", "Vite + React"],
+    previewImage: "/projects/intexbeta-preview.webp",
+    heroVideo: "/projects/intexbeta-hero.webm",
+    fullDescription: "webf.love rebuilt the blog behind intexbeta.com.ua as a headless Payload CMS service and reworked the site's SEO foundation, so a company with a 39-page catalogue can publish and rank without a developer in the loop.",
+    challenge: "Intex Beta had a blog its own team could not touch. Every article lived as a separate hardcoded React component with its route added by hand, and publishing ran through a Python script — nine articles in, the process only worked if a developer ran it. The catalogue side had its own gap: no canonical tags, no structured data and no sitemap, on a site whose whole value is being found by farmers searching for specific feed additives. Both problems had to be solved without rebuilding the site itself, which the client was happy with.",
+    solution: "The blog became a headless Payload CMS service on its own domain — articles, categories and media on Neon Postgres and Vercel Blob, which needed a custom server-side storage adapter because the official plugin blanks the admin panel. Migrated articles kept their original rich formatting instead of being flattened into the editor's format, and reading time is calculated from length rather than hardcoded. A single hook now injects titles, descriptions, canonicals, Open Graph and JSON-LD across every route, plus Organization and LocalBusiness markup and a 39-URL sitemap.",
+    results: [
+      { value: "13 Articles", label: "Published through the admin panel, up from nine that only a script could add" },
+      { value: "Own Admin Domain", label: "admin.intexbeta.com.ua, so the client never touches a developer tool" },
+      { value: "39 URLs", label: "Sitemap and structured data across the full catalogue, from zero" },
+      { value: "3 Collections", label: "Articles, categories and media the team manages independently" }
+    ],
+    technologies: ["React", "Vite", "TypeScript", "Payload CMS", "PostgreSQL", "Vercel", "SEO"],
+    gallery: [
+      "/projects/intexbeta-products.webp",
+      "/projects/intexbeta-blog.webp",
+      "/projects/intexbeta-services.webp"
+    ],
+    year: "2026",
+    duration: "",
+    websiteUrl: "https://www.intexbeta.com.ua",
+    serviceType: "Dev",
+    heroTitle: "A Feed Additive Catalogue with a Blog the <ukraine>Client Runs</ukraine> Alone",
+    industry: "Animal Nutrition",
+    stats: [
+      { label: "Pages", value: "39" },
+      { label: "Blog Articles", value: "13" },
+      { label: "CMS Collections", value: "3" },
+      { label: "Categories", value: "6" }
+    ],
+    introText: "Intex Beta supplies inoculants, feed additives and premixes to Ukrainian livestock farms, with over 30 years in animal nutrition and forage production behind it.",
+    backgroundTitle: "The Background",
+    backgroundText: "Intex Beta has spent more than three decades in Ukrainian animal husbandry, supplying inoculants, feed additives and premixes, and acting as a Pioneer® distributor. Their site carries a 39-page catalogue organised by product category and service.\n\nAgronomy content is how they reach farmers, but their blog could only be updated by a developer running a script. What they needed was the ability to publish an article the same week it becomes relevant — and to be findable when someone searches for the problem that article solves."
+  },
 ];
 
 export const categories = ["All", "SaaS", "EdTech", "E-commerce", "Agencies", "Travel", "Healthcare", "Gaming", "iGaming", "FinTech", "Media", "Business Services", "Technology", "Portfolio"];
