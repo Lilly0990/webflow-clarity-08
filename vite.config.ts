@@ -3,6 +3,8 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import fs from "fs";
 import { componentTagger } from "lovable-tagger";
+import { projects } from "./src/data/projects";
+import { getProjectSeo } from "./src/data/projectSeo";
 
 const SITE_URL = "https://webf.love";
 
@@ -14,15 +16,19 @@ const STATIC_PAGES = [
   { path: "/webflow-integrations-automation", priority: "0.9", changefreq: "monthly" },
   { path: "/webflow-support-maintenance", priority: "0.9", changefreq: "monthly" },
   { path: "/blog", priority: "0.9", changefreq: "weekly" },
-  { path: "/projects/englishdom", priority: "0.6", changefreq: "yearly" },
-  { path: "/projects/csmplt", priority: "0.6", changefreq: "yearly" },
-  { path: "/projects/exonode", priority: "0.6", changefreq: "yearly" },
-  { path: "/projects/value-productions", priority: "0.6", changefreq: "yearly" },
-  { path: "/projects/prozora", priority: "0.6", changefreq: "yearly" },
+  { path: "/portfolio", priority: "0.8", changefreq: "monthly" },
   { path: "/privacy-policy", priority: "0.3", changefreq: "yearly" },
   { path: "/terms", priority: "0.3", changefreq: "yearly" },
   { path: "/cookie-policy", priority: "0.3", changefreq: "yearly" },
 ];
+
+// Derived from src/data/projects.ts so a new case study never has to be
+// registered here by hand.
+const PROJECT_PAGES = projects.map((p) => ({
+  path: `/projects/${p.id}`,
+  priority: "0.6",
+  changefreq: "yearly",
+}));
 
 interface BlogPostJson {
   meta: {
@@ -59,7 +65,7 @@ function blogSitemapOgPlugin(): Plugin {
       const publishedPosts = posts.filter((p) => p.meta.status === "published");
 
       // --- SITEMAP ---
-      const staticEntries = STATIC_PAGES.map(
+      const staticEntries = [...STATIC_PAGES, ...PROJECT_PAGES].map(
         (p) => `  <url>
     <loc>${SITE_URL}${p.path}</loc>
     <priority>${p.priority}</priority>
@@ -85,7 +91,7 @@ ${blogEntries}
 </urlset>
 `;
       fs.writeFileSync(path.join(distDir, "sitemap.xml"), sitemap);
-      console.log(`[blog-sitemap-og] Generated sitemap.xml (${STATIC_PAGES.length} static + ${publishedPosts.length} blog posts)`);
+      console.log(`[blog-sitemap-og] Generated sitemap.xml (${STATIC_PAGES.length} static + ${PROJECT_PAGES.length} projects + ${publishedPosts.length} blog posts)`);
 
       // --- OG PRERENDER ---
       const indexHtml = fs.readFileSync(path.join(distDir, "index.html"), "utf-8");
@@ -186,7 +192,70 @@ ${blogEntries}
       blogListingHtml = blogListingHtml.replace("</head>", `    <link rel="canonical" href="${SITE_URL}/blog" />\n  </head>`);
       fs.writeFileSync(path.join(blogDir, "index.html"), blogListingHtml);
 
-      console.log(`[blog-sitemap-og] Prerendered ${publishedPosts.length} blog posts + blog listing`);
+      // Prerender each case study, so crawlers and social scrapers that do not
+      // run JS get the project's own tags instead of the site-wide defaults.
+      for (const project of projects) {
+        const seo = getProjectSeo(project);
+        const projectDir = path.join(distDir, "projects", project.id);
+        fs.mkdirSync(projectDir, { recursive: true });
+
+        const ogImage = seo.ogImage.startsWith("http") ? seo.ogImage : `${SITE_URL}${seo.ogImage}`;
+
+        let html = indexHtml;
+
+        html = html.replace(
+          /<title>[^<]*<\/title>/,
+          `<title>${escapeHtml(seo.title)}</title>`
+        );
+        html = html.replace(
+          /<meta name="description" content="[^"]*">/,
+          `<meta name="description" content="${escapeAttr(seo.description)}">`
+        );
+        html = html.replace(
+          /<meta property="og:title" content="[^"]*">/,
+          `<meta property="og:title" content="${escapeAttr(seo.title)}">`
+        );
+        html = html.replace(
+          /<meta property="og:description" content="[^"]*">/,
+          `<meta property="og:description" content="${escapeAttr(seo.description)}">`
+        );
+        html = html.replace(
+          /<meta property="og:url" content="[^"]*" \/>/,
+          `<meta property="og:url" content="${SITE_URL}${seo.canonicalPath}" />`
+        );
+        html = html.replace(
+          /<meta property="og:image" content="[^"]*" \/>/,
+          `<meta property="og:image" content="${ogImage}" />`
+        );
+        html = html.replace(
+          /<meta name="twitter:title" content="[^"]*">/,
+          `<meta name="twitter:title" content="${escapeAttr(seo.title)}">`
+        );
+        html = html.replace(
+          /<meta name="twitter:description" content="[^"]*">/,
+          `<meta name="twitter:description" content="${escapeAttr(seo.description)}">`
+        );
+        html = html.replace(
+          /<meta name="twitter:image" content="[^"]*" \/>/,
+          `<meta name="twitter:image" content="${ogImage}" />`
+        );
+
+        // The site-wide 1200x630 dimensions do not describe project previews.
+        html = html.replace(/\s*<meta property="og:image:width" content="[^"]*" \/>/, "");
+        html = html.replace(/\s*<meta property="og:image:height" content="[^"]*" \/>/, "");
+
+        const extraTags = [
+          `<link rel="canonical" href="${SITE_URL}${seo.canonicalPath}" />`,
+          `<meta property="og:image:alt" content="${escapeAttr(seo.ogImageAlt)}" />`,
+          `<meta name="keywords" content="${escapeAttr(seo.keywords.join(", "))}" />`,
+        ].join("\n    ");
+
+        html = html.replace("</head>", `    ${extraTags}\n  </head>`);
+
+        fs.writeFileSync(path.join(projectDir, "index.html"), html);
+      }
+
+      console.log(`[blog-sitemap-og] Prerendered ${publishedPosts.length} blog posts + blog listing + ${projects.length} projects`);
     },
   };
 }

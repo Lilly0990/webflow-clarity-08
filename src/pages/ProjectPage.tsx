@@ -5,7 +5,9 @@ import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollLottie from "@/components/ScrollLottie";
+import SEOHead from "@/components/seo/SEOHead";
 import { getProjectById, projects } from "@/data/projects";
+import { getProjectSeo } from "@/data/projectSeo";
 import { useEffect, useState } from "react";
 
 const ProjectPage = () => {
@@ -42,7 +44,19 @@ const ProjectPage = () => {
   const nextProject = projects[(currentIndex + 1) % projects.length];
   const prevProject = projects[(currentIndex - 1 + projects.length) % projects.length];
 
+  const seo = getProjectSeo(project);
+
   return (
+    <>
+      <SEOHead
+        title={seo.title}
+        description={seo.description}
+        canonicalUrl={seo.canonicalPath}
+        ogImage={seo.ogImage}
+        ogImageAlt={seo.ogImageAlt}
+        keywords={seo.keywords}
+      />
+
     <div className="min-h-screen bg-background">
       <Header />
 
@@ -352,6 +366,7 @@ const ProjectPage = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 
