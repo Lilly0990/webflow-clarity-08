@@ -8,7 +8,7 @@ import { portfolioItems } from "@/data/portfolio";
 
 const stackFilters = ["All", "Webflow", "WordPress", "Claude Code"] as const;
 
-const isAIAssisted = (stack: string) => stack.toLowerCase().includes("claude") || stack.toLowerCase().includes("figma");
+const isAIAssisted = (stack: string) => stack.toLowerCase().includes("claude");
 const isWebflow = (stack: string) => stack.toLowerCase().includes("webflow");
 const isWordPress = (stack: string) => stack.toLowerCase().includes("wordpress");
 
