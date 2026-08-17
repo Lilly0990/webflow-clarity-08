@@ -51,7 +51,8 @@
 - Прибрано з головної три кейси — **GS Studio, Betbazar, Hey Canopy**. У `portfolio.ts` вони лишились, тобто на `/portfolio` присутні. Їхні `/projects/*` URL віддавали 200 із заглушкою «Project Not Found» (soft-404, бо SPA-rewrite ловить усе), тому додано **301 на `/portfolio`** у `vercel.json`. Redirects на Vercel застосовуються ДО rewrites, тому SPA-фолбек не зачеплено
 - Уніфіковано `stack` у `portfolio.ts`: шість записів `"Figma + Claude Code"` / `"Claude Code + Figma"` → `"Claude Code"`. Стало 54 Webflow / 14 Claude Code / 3 WordPress. З `isAIAssisted` у [Portfolio.tsx](src/pages/Portfolio.tsx) прибрано перевірку на figma
 - Відео Rodonit перезняте повільнішим: крок скролу 11px замість 30px, 240 кадрів, 8 секунд, 329 px/с замість 900. Вага 1.32 МБ
-- ⚠️ **`Intexbeta` не з'являється у фільтрі E-commerce на головній, бо його немає в `projects.ts`** — він існує лише як рядок у `portfolio.ts`. Фільтр на головній працює з кейсами, а на `/portfolio` фільтрація взагалі по `stack`, не по категорії. Щоб він там був, потрібен повноцінний кейс
+- ✅ **`Intex Beta` став повноцінним кейсом** (комміт `a8cdd31`) — раніше існував лише рядком у `portfolio.ts`, тому не потрапляв у фільтр E-commerce на головній: той фільтр читає `projects.ts`. Тепер фільтр E-commerce показує 4 проєкти (Feelz, Prozora, Rodonit, Intex Beta). Заодно виправлено tagline у `portfolio.ts`: компанію з кормових добавок було підписано «Industrial Solutions»
+- ⚠️ Три видалені кейси **лишились у `portfolio.ts`** (GS Studio №18, Hey Canopy №21, Betbazar №25) — прибрано тільки з головної, як і просив Бро. При перевірці `/portfolio` враховувати, що список довантажується: `innerText` одразу після `networkidle` дає хибний негатив
 
 **Лишилися борги:**
 - Три проєкти показують стокові Unsplash-картинки замість власних скріншотів — вони ж ідуть в OG
