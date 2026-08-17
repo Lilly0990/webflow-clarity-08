@@ -26,18 +26,25 @@
 - `src/data/projects.ts` — 18 детальних кейсів, інтерфейс `Project`. Живлять блок на головній ([Projects.tsx](src/components/Projects.tsx)) і сторінки `/projects/:id` ([ProjectPage.tsx](src/pages/ProjectPage.tsx))
 - `src/data/portfolio.ts` — 70 плоских записів `PortfolioItem` (title/tagline/url/stack/year/category). Живить лише `/portfolio` ([Portfolio.tsx](src/pages/Portfolio.tsx)), фільтрується по `stack`, не по категорії
 
-**Щоб додати новий проєкт, потрібно 5 ручних кроків:**
-1. Обʼєкт у `src/data/projects.ts`. Обовʼязкові поля: `id` (він же URL-слаг), `title`, `description`, `category`, `highlights`, `fullDescription`, `challenge`, `solution`, `results`, `technologies`, `gallery`, `year`, `duration`. Решта опційні
-2. Медіа руками в `public/projects/` (preview + hero-відео/картинка + галерея)
+**Щоб додати новий проєкт, потрібно 4 ручних кроки** (sitemap і SEO тепер автоматичні):
+1. Обʼєкт у `src/data/projects.ts`. Обовʼязкові поля: `id` (він же URL-слаг), `title`, `description`, `category`, `highlights`, `fullDescription`, `challenge`, `solution`, `results`, `technologies`, `gallery`, `year`, `duration`. Решта опційні. Бажано `introText` — саме з нього формується meta description, інакше візьметься `fullDescription`
+2. Медіа руками в `public/projects/` (preview + hero-відео/картинка + галерея). `previewImage` йде і в OG-картинку
 3. Якщо категорія нова — додати її в хардкод-масив `categories` (кінець `projects.ts`), інакше кнопки фільтра для неї не буде. У `portfolio.ts` категорії, навпаки, генеруються автоматично з даних
 4. Запис у `src/data/portfolio.ts` — інакше проєкт не зʼявиться на `/portfolio`
-5. Шлях `/projects/<id>` у `STATIC_PAGES` у `vite.config.ts` — інакше сторінка не потрапить у sitemap
 
-**Знайдені борги в цьому флоу:**
-- 🔴 `ProjectPage.tsx` **не використовує `SEOHead`** — сторінки кейсів без унікальних title/description/OG, хоча Portfolio і Blog їх мають. Це найдорожча дірка, бо кейси — комерційні сторінки
-- 🔴 **У sitemap лише 5 із 18 кейсів** (englishdom, csmplt, exonode, value-productions, prozora). Решта 13, включно з Tisto, у sitemap відсутні
-- Три проєкти показують стокові Unsplash-картинки замість власних скріншотів
-- Невідомий `id` дає не HTTP 404, а UI-заглушку «Project Not Found» — для SEO це soft-404
+Далі `npm run build` + `vercel deploy --prod` — sitemap, prerender і meta-теги підхопляться самі.
+
+**Полагоджено 17.08.2026 (комміт `d5ab419`):**
+- ✅ `ProjectPage.tsx` тепер рендерить `SEOHead`. Раніше всі 18 кейсів успадковували site-wide title/description/OG з `index.html` — тобто комерційні сторінки були єдиними без власних мета-тегів
+- ✅ Кожен кейс **prerender-иться** у `dist/projects/<id>/index.html` за тим самим механізмом, що й блог. Це принципово: соцмережі не виконують JS, тому одного Helmet для OG-шарингу не досить
+- ✅ Значення SEO живуть у `src/data/projectSeo.ts` і використовуються **і** prerender-ом у `vite.config.ts`, **і** клієнтським рендером — щоб не розʼїхались
+- ✅ Записи проєктів у sitemap генеруються з `projects.ts` (було 5 із 18 руками). Додано `/portfolio`, якого не було взагалі. Разом 41 URL
+
+**Лишилися борги:**
+- Три проєкти показують стокові Unsplash-картинки замість власних скріншотів — вони ж ідуть в OG
+- Невідомий `id` дає не HTTP 404, а UI-заглушку «Project Not Found» — для Google це soft-404
+- Дублювання: 15 із 18 кейсів вписані руками і в `projects.ts`, і в `portfolio.ts`. Можна було б генерувати portfolio-записи з projects, лишивши в `portfolio.ts` тільки ті 55, що не мають кейсу
+- `npm run preview` віддає prerendered сторінки лише з trailing slash (`/projects/tisto/`); на Vercel коректно працює і без нього — не сприймати як поломку
 
 ## Технічні деталі
 
